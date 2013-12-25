@@ -7705,27 +7705,21 @@ body {
 }
 
 /*  my */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/nhk\/WebstormProjects\/ReadingRoom\/app\/styles\/main\.scss}line{font-family:\0000371}}
-.book-page, .book-sheet {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/nhk\/WebstormProjects\/ReadingRoom\/app\/styles\/main\.scss}line{font-family:\0000372}}
+.promotion {
   width: 100%;
   height: 600px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/nhk\/WebstormProjects\/ReadingRoom\/app\/styles\/main\.scss}line{font-family:\0000375}}
-.book-sheet {
-  background: url("../images/old-paper-background.jpg") no-repeat center top;
-  background-size: 600px 600px;
-}
-
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/nhk\/WebstormProjects\/ReadingRoom\/app\/styles\/main\.scss}line{font-family:\0000381}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/nhk\/WebstormProjects\/ReadingRoom\/app\/styles\/main\.scss}line{font-family:\0000379}}
   .container {
-    max-width: 730px;
+    max-width: 1170px;
   }
 
   /* Remove the padding we set earlier */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/nhk\/WebstormProjects\/ReadingRoom\/app\/styles\/main\.scss}line{font-family:\0000388}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/nhk\/WebstormProjects\/ReadingRoom\/app\/styles\/main\.scss}line{font-family:\0000386}}
   .header,
   .marketing,
   .footer {
@@ -7734,14 +7728,25 @@ body {
   }
 
   /* Space out the masthead */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/nhk\/WebstormProjects\/ReadingRoom\/app\/styles\/main\.scss}line{font-family:\0000393}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/nhk\/WebstormProjects\/ReadingRoom\/app\/styles\/main\.scss}line{font-family:\0000391}}
   .header {
     margin-bottom: 30px;
   }
 
   /* Remove the bottom border on the jumbotron for visual effect */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/nhk\/WebstormProjects\/ReadingRoom\/app\/styles\/main\.scss}line{font-family:\0000397}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/nhk\/WebstormProjects\/ReadingRoom\/app\/styles\/main\.scss}line{font-family:\0000395}}
   .jumbotron {
     border-bottom: 0;
+  }
+
+  /* My */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/nhk\/WebstormProjects\/ReadingRoom\/app\/styles\/main\.scss}line{font-family:\00003100}}
+  body {
+    background: url("../images/photo.jpg") no-repeat center top;
+  }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/nhk\/WebstormProjects\/ReadingRoom\/app\/styles\/main\.scss}line{font-family:\00003103}}
+  .container {
+    background-color: #ffffff;
   }
 }

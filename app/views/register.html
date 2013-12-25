@@ -1,0 +1,54 @@
+<div id="register_form" ng-controller="accountController">
+    <div class="login_title">
+        <span> Register </span>
+        <div class="login_cancel close" ng-click='close(false)'></div>
+    </div>
+    
+    <form class="register_form">
+        <fieldset>
+            <div class='fields_container' klb-after-error>
+                <label class="login_label" for="firstname-r"> First name: </label>
+                <input class="login_input" type="text" ng-model="user.firstname"
+                       name="firstname" id="firstname-r" autocomplete='off' autofocus/>
+
+                <label class="login_label" for="lastname-r"> Last name: </label>
+                <input class="login_input" type="text" ng-model="user.lastname"
+                       name="lasttname"  id="lastname-r"  autocomplete='off'/>
+
+                <label class="login_label" for="username-r"> User name: </label>
+                <input class="login_input" type="text"  ng-model="user.username"
+                       name="username"  id="username-r"  autocomplete='off'/>
+
+                <label class="login_label" for="password1-r"> Password: </label>
+                <input class="login_input" type="password"  ng-model="user.password"
+                       name="password"  id="password1-r"  autocomplete='off'/>
+
+                <label class="login_label" for="password2-r"> Confirm password:</label>
+                <input class="login_input" type="password"  value=""  name="password-c"
+                       id="password2-r"  autocomplete='off'/>
+
+                <label class="login_label" for="country-r"> Country: </label>
+                <select class="login_input" name="country"  id="country-r"
+                        ng-model="user.country" ng-options="c for c in countries"></select>
+
+                <br/>
+
+                <label class="login_label" for="email-r"> E-mail:  </label>
+                <input class="login_input" type="email" ng-model="user.email"
+                       name="email"  id="email-r"  autocomplete='off'/>
+
+                <div class="login_input" style="display: none">
+                    <input class="login_checkbox" id="sendmessage-r" type="checkbox"  ng-model="user.notify"
+                           name="sendmessage"  value="sendmessage"/>
+                    <label class="login_label" for="sendmessage-r"> Send notification: </label>
+                </div>
+                <br/>
+
+                <div class="error_message"></div>
+                <span class="login_misc" style="color:gold"> All fields are necessary !  </span>
+
+                <input klb-button type="submit" value="Register" ng-click='close(true)'/>
+            </div>
+        </fieldset>
+    </form>
+</div>

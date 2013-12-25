@@ -1,6 +1,7 @@
 'use strict';
 
-angular.module('readingRoomApp', [
+var  readingRoomApp;
+readingRoomApp =angular.module('readingRoomApp', [
     'ngCookies',
     'ngResource',
     'ngSanitize',
