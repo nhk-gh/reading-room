@@ -1,15 +1,33 @@
 'use strict';
 
-readingRoomApp.factory('accountService', function($q, $http, $log){
+angular.module('readingRoomApp').factory('accountService', function($q, $http, $log){
   return {
+    login: function(user, password){
+      var deferred = $q.defer();
+
+      $log.info(user + ", "+ password);
+
+      $http({method:'POST', url:'/login', data:{username: user, password: password}, cache: false})
+        .success(function(data){
+          $log.info(data);
+          deferred.resolve(data);
+        })
+        .error(function(data, status){
+          $log.warn('logIn error: ' + status);
+          deferred.reject(status);
+        });
+
+      return deferred.promise;
+    },
+
     getCountriesList: function(){
       var deferred = $q.defer();
 
-      $http({method:"GET", url:"/countrieslist", cache: false}).
-        success(function(data){
+      $http({method:'GET', url:'/countrieslist', cache: false})
+        .success(function(data){
           deferred.resolve(data);
-        }).
-        error(function(data, status){
+        })
+        .error(function(data, status){
           $log.warn('getCountriesList error: ' + status);
           deferred.reject(status);
         });
@@ -20,7 +38,7 @@ readingRoomApp.factory('accountService', function($q, $http, $log){
     register: function(user){
       var deferred = $q.defer();
 
-      $http({method:"POST", url:"/register",
+      $http({method:'POST', url:'/register',
         data:{  // for compatability with prev. version:
           username: user.username,
           firstname: user.firstname,
@@ -31,8 +49,8 @@ readingRoomApp.factory('accountService', function($q, $http, $log){
         }, cache: false})
         .success(function(data){
           deferred.resolve(data);
-        }).
-        error(function(data, status){
+        })
+        .error(function(data, status){
           $log.warn('register error: ' + status);
           deferred.reject(status);
         });
@@ -43,35 +61,12 @@ readingRoomApp.factory('accountService', function($q, $http, $log){
     editProfile: function(user){
       var deferred = $q.defer();
 
-      $http({method:"POST", url:"/editprofile",
-        data: user/*{  // for compatability with prev. version:
-         username: user.userName,
-         firstname: user.firstName,
-         lastname: user.lastName,
-         password: user.password,
-         country: user.country,
-         email: user.email
-         }*/, cache: false})
+      $http({method:'POST', url:'/editprofile', data: user, cache: false})
         .success(function(data){
           deferred.resolve(data);
-        }).
-        error(function(data, status){
+        })
+        .error(function(data, status){
           $log.warn('editProfile error: ' + status);
-          deferred.reject(status);
-        });
-
-      return deferred.promise;
-    },
-
-    logIn: function(user, password){
-      var deferred = $q.defer();
-
-      $http({method:"POST", url:"/login", data:{username: user, password: password}, cache: false}).
-        success(function(data){
-          deferred.resolve(data);
-        }).
-        error(function(data, status){
-          $log.warn('logIn error: ' + status);
           deferred.reject(status);
         });
 
@@ -81,11 +76,11 @@ readingRoomApp.factory('accountService', function($q, $http, $log){
     logOut: function(user){
       var deferred = $q.defer();
 
-      $http({method:"POST", url:"/logout", data:{username: user}, cache: false}).
-        success(function(data){
+      $http({method:'POST', url:'/logout', data:{username: user}, cache: false})
+        .success(function(data){
           deferred.resolve(data);
-        }).
-        error(function(data, status){
+        })
+        .error(function(data, status){
           $log.warn('logOut error: ' + status);
           deferred.reject(status);
         });
@@ -96,16 +91,16 @@ readingRoomApp.factory('accountService', function($q, $http, $log){
     passReminder: function(params){
       var deferred = $q.defer();
 
-      $http({method:"POST", url:"/passwordreminder", data:params, cache: false}).
-        success(function(data){
+      $http({method:'POST', url:'/passwordreminder', data:params, cache: false})
+        .success(function(data){
           deferred.resolve(data);
-        }).
-        error(function(data, status){
+        })
+        .error(function(data, status){
           $log.warn('passReminder error: ' + status);
           deferred.reject(status);
         });
 
       return deferred.promise;
     }
-  }
+  };
 });

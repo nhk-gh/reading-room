@@ -1,11 +1,13 @@
 'use strict';
 
-var  readingRoomApp;
+var readingRoomApp;
+
 readingRoomApp =angular.module('readingRoomApp', [
     'ngCookies',
     'ngResource',
     'ngSanitize',
-    'ngRoute'
+    'ngRoute',
+    'ui.bootstrap'
   ])
   .config(function ($routeProvider, $locationProvider) {
     $routeProvider
@@ -13,10 +15,7 @@ readingRoomApp =angular.module('readingRoomApp', [
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
-      .when('/splendid', {
-        templateUrl: 'views/my.html',
-        controller: 'MyCtrl'
-      })
+
       .otherwise({
         redirectTo: '/'
       });

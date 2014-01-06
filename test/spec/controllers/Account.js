@@ -1,6 +1,6 @@
 'use strict';
 
-describe('Controller: AccountCtrl', function () {
+describe('Controller: accountController', function () {
 
   // load the controller's module
   beforeEach(module('readingRoomApp'));
@@ -9,14 +9,14 @@ describe('Controller: AccountCtrl', function () {
     scope;
 
   // Initialize the controller and a mock scope
-  beforeEach(inject(function ($controller, $rootScope) {
+  beforeEach(inject(function ($controller, $rootScope,$dialog) {
     scope = $rootScope.$new();
-    AccountCtrl = $controller('AccountCtrl', {
+    AccountCtrl = $controller('accountController', {
       $scope: scope
     });
   }));
 
-  it('should attach a list of awesomeThings to the scope', function () {
-    expect(scope.awesomeThings.length).toBe(3);
+  it('accountController should be', function () {
+    expect(!!AccountCtrl).toBe(true);
   });
 });

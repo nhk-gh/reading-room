@@ -59,7 +59,7 @@ if ('production' == app.get('env')) {
 }
 
 app.get('/', routes.index);
-app.get('/awesomeThings', routes.awesomeThings);
+app.post('/login', routes.login);
 
 app.post('/readers', routes.addReader);
 app.put('/readers:id', routes.editReader);
@@ -69,7 +69,7 @@ app.post('/book', routes.addBook);
 app.put('/book:id', routes.editBook);
 app.delete('/book:id', routes.deleteBook);
 
-
+routes.initDB();
 
 http.createServer(app).listen(app.get('port'), function(){
     console.log('Express server listening on port ' + app.get('port'));

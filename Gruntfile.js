@@ -38,6 +38,7 @@ module.exports = function (grunt) {
           '<%= yeoman.app %>/{,*//*}*.html',
           '{.tmp,<%= yeoman.app %>}/styles/{,*//*}*.css',
           '{.tmp,<%= yeoman.app %>}/scripts/{,*//*}*.js',
+          '{.tmp,<%= yeoman.app %>}/scripts/{,*//*}/**/*.{js,css}',
           '<%= yeoman.app %>/images/{,*//*}*.{png,jpg,jpeg,gif,webp,svg}',
           'server.js',
           'server/{,*//*}*.{js,json}'
@@ -387,9 +388,9 @@ module.exports = function (grunt) {
   grunt.registerTask('test', [
     'clean:server',
     'concurrent:test',
-    'autoprefixer',
+    'autoprefixer'//,
     //'connect:test',
-    'karma'
+    //'karma'
   ]);
 
   grunt.registerTask('build', [

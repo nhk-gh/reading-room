@@ -1,4 +1,4 @@
-'use strict';
+/*'use strict';
 
 describe('Service: MySrvc', function () {
 
@@ -16,3 +16,4 @@ describe('Service: MySrvc', function () {
   });
 
 });
+ */

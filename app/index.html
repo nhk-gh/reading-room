@@ -26,8 +26,24 @@
       <script src="bower_components/json3/lib/json3.min.js"></script>
     <![endif]-->
 
-    <!-- Add your site or application content here -->
-    <div class="container" ng-view=""></div>
+    <div class="container" ng-controller="AccountController" ng-cloak="">
+        <div class="header">
+            <ul class="nav nav-pills pull-right">
+                <li ><a href="#" ng-click="openLoginDlg()">{{ user.firstName }}</a></li>
+                <li><a ng-href="#">Register</a></li>
+
+                <!--li><a href="/splendid">Contact</a></li-->
+            </ul>
+            <h3 class="text-muted">Reading Room</h3>
+        </div>
+
+        <!-- Add your site or application content here -->
+        <div ng-view=""></div>
+
+        <login-dlg></login-dlg>
+
+    </div>
+
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
      <script>
@@ -42,6 +58,8 @@
 
     <script src="bower_components/jquery/jquery.js"></script>
     <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/ui-bootstrap-tpls-0.9.0.js"></script>
+    <script src="scripts/libs/validator/klub-validator.js"></script>
 
     <!-- build:js scripts/plugins.js -->
     <script src="bower_components/sass-bootstrap/js/affix.js"></script>
@@ -63,14 +81,16 @@
     <script src="bower_components/angular-cookies/angular-cookies.js"></script>
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
+
     <!-- endbuild -->
 
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
     <script src="scripts/app.js"></script>
     <script src="scripts/controllers/mainCtrl.js"></script>
-    <script src="scripts/controllers/accountCtrl.js"></script>
-
     <script src="scripts/services/accountSrvc.js"></script>
+    <script src="scripts/controllers/accountCtrl.js"></script>
+    <script src="scripts/directives/AccountDirective.js"></script>
+    <script src="scripts/directives/KlbAfterError.js"></script>
     <!-- endbuild -->
 
     <!--script src="//localhost:35729/livereload.js"></script-->

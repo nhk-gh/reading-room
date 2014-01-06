@@ -1,32 +1,192 @@
+var fs = require('fs');
+var path = require('path');
+var mongo = require('mongodb');
+var async = require('async');
+var encrypt = require('../lib/encrypt');
+
+/*********************************************/
+/*                                           */
+/*      Data Base Manipulations              */
+/*                                           */
+/*********************************************/
+var db = mongo.Db;
+var dbserver = mongo.Server;
+var ObjectID = mongo.ObjectID;
+var dbport = 27018;//mongo.Connection.DEFAULT_PORT;
+var photodb;
+
+var populateCollection = function(collection_name, d) {
+  var items;
+  var toCreate = true;
+
+  d.collection(collection_name, function(err, collection){
+    collection.find().toArray(function(err, docs){
+      if (docs.length == 0){
+        switch (collection_name){
+          case 'users':
+            items = [{
+                password: '46e0bfdedb9a7dc40bf6e756957650c6',     /*password*/
+                userName: 'nhk',
+                logged: false,
+                firstName: 'Naum',
+                lastName: 'Krivoruk',
+                fullName: 'Naum Krivoruk',
+                country: 'Israel',
+                email: 'naum.krivoruk@gmail.com',
+                currentBook: 1,
+                bookshelf:[{
+                   // book
+                    ind: 1,
+                    author: '',
+                    title: '',
+                    publisher:'',
+                    currentChapter: 1,
+                    chapters:[{
+                        //chapter
+                        ind: 1,
+                        title:'',
+                        offset: 0
+                      }]
+                  }]
+              }];
+            break;
+
+          case 'reviews':
+            items = [{
+                book: '',                  // title
+                author:'',                 // author
+                reviewer: 'Naum Krivoruk', // full name
+                date: Date.now(),
+                review:'Interesting!',
+                links:[{
+                  link: '' // link for the legal downloading of the book
+                }]
+              }
+            ];
+            break;
+
+          default:
+            toCreate = false;
+            break;
+        }
+      }
+      else{
+        toCreate = false;
+      }
+
+      if (toCreate === true)
+        collection.save(items, {safe:true}, function() {
+        });
+    });
+
+  });
+};
+
+var initDB = function(){
+  if (photodb === undefined){
+    photodb = new db('rr_db', new dbserver('localhost', dbport, {auto_reconnect: true,socketOptions: {keepAlive:null}}));
+
+    photodb.open(function(err, d){
+      if(!err) {
+        console.log('Connected to database (localhost:' + dbport + ')');
+
+        populateCollection('users',d) ;
+        populateCollection('reviews',d);
+        //populateCollection('photos', d);
+        //populateCollection('comments', d);
+      }
+    });
+  }
+};
+exports.initDB = initDB;
+
+/*********************************************/
+/*                                           */
+/*               Main Page                   */
+/*                                           */
+/*********************************************/
 exports.index = function(req, res){
     //res.render('index.html');
     res.sendfile('/home/nhk/WebstormProjects/ReadingRoom/app/index.html');
 };
 
+/*********************************************/
+/*                                           */
+/*          Authentication                   */
+/*                                           */
+/*********************************************/
+
+exports.login = function(req, res) {
+
+  if(req.method.toLowerCase() != 'post') {
+    res.send({error: 'Method Not Allowed', code: 405});
+  }
+  else {
+    photodb.collection('users', function(err, collection){
+      if (err)
+        console.log('Login: Can not open "users" collection!');
+      else {
+        collection.findOne({email:req.body.username}, function(err, result) {
+          if(err) console.log(err);
+
+          if(result == null) {
+            res.send({message:'invalid username', error: 403});
+          }
+          else {
+            //auth(result);
+            var encryptPasswrd = encrypt.encrypt(req.body.password);
+            if(encryptPasswrd != result.password) {
+              res.send({message:'invalid password', error: 403});
+            }
+            else {
+              collection.update({email:req.body.username, password: encryptPasswrd},
+                {$set:{logged: true}}, {w:1}, function(err){
+                  if (err)
+                    console.log(err);
+                  else{
+                    result.logged = true;
+                    req.session.user = result;
+                    res.send({message:'Ok', error: 200, user: result});
+                  }
+                });
+            }
+          }
+        });
+      }
+    });
+  }
+};
+
+/*********************************************/
+/*                                           */
+/*         Library Manipulations             */
+/*                                           */
+/*********************************************/
+
 exports.awesomeThings = function(reg,res){
-    res.send(["Ilia", "Alexander"]);
+    res.send(['Ilia', 'Alexander']);
 };
 
 exports.addReader = function(reg,res){
-  res.send("New reader added");
+  res.send('New reader added');
 };
 
 exports.editReader = function(reg,res){
-  res.send("Reader edited");
+  res.send('Reader edited');
 };
 
 exports.deleteReader = function(reg,res){
-  res.send("Reader deleted");
+  res.send('Reader deleted');
 };
 
 exports.addBook = function(reg,res){
-  res.send("New book added");
+  res.send('New book added');
 };
 
 exports.editBook = function(reg,res){
-  res.send("Book edited");
+  res.send('Book edited');
 };
 
 exports.deleteBook = function(reg,res){
-  res.send("Book deleted");
+  res.send('Book deleted');
 };

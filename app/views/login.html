@@ -1,9 +1,80 @@
-<div id='login_form'>
+<div>
+    <script type="text/ng-template" id="myLogin">
+        <form role="form" id='login-form'>
+            <div class="modal-header">
+                <button class="button btn-default close" ng-click="cancel()">&times;</button>
+                <h4 class="modal-title">Login</h4>
+            </div>
+            <div class="modal-body" klb-after-error>
+                 <div class="form-group">
+                    <label for="username">E-mail</label>
+                    <input class='form-control' type='email'  placeholder="E-mail"
+                           id='username' autocomplete='off' ng-model="res_1" autofocus/>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password" placeholder="Password"
+                           autocomplete='off' ng-model="res_2">
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary btn-sm" ng-click="ok(res_1, res_2)">Ok</button>
+                <button class="btn btn-default btn-sm" ng-click="cancel()">Cancel</button>
+            </div>
+        </form>
+    </script>
+
+    <!--button class="btn btn-default" ng-click="open()">Open me!</button>
+    <div ng-show="selected">Selection from a modal: {{ selected }}</div-->
+</div>
+
+<!--div class="modal fade" id='login-dlg1' tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">times;</button>
+                <h4 class="modal-title" id="myModalLabel">Log in</h4>
+            </div>
+            <div class="modal-body">
+                <form class='login_form'>
+                    <fieldset>
+                        <div class='fields_container' klb-after-error>
+                            <label class='login_label' for='username'> User name: </label>
+                            <input class='login_input' type='text' name='username'  autofocus
+                                   id='username' autocomplete='off' ng-model="res_1"/>
+
+                            <br/>
+                            <label class='login_label' for='password'> Password: </label>
+                            <input class='login_input' type='password' name='password'
+                                   id='password' autocomplete='off' ng-model="res_2"/>
+
+                            <span class='login_misc' >
+                                <a href='#' ng-click="accountDialog('passwordreminder')"
+                                   class='modalInput' ng-style="foregroundColor()">  Forgot password? </a>
+                            </span>
+
+                            <input klb-button type='submit' value='Log in' ng-click='close(res_1, res_2)'/>
+
+                            <
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div--><!-- /.modal-content -->
+    <!--/div><!-- /.modal-dialog -->
+<!--/div><!-- /.modal -->
+
+<!--div id='login_form'>
     <div class='login_cancel close' ng-click='close(null, null)'></div>
     <div class='login_title'>
         <span> Log in </span>
     </div>
-    <!--div id="background-img"-->
         <form class='login_form'>
             <fieldset>
                 <div class='fields_container' klb-after-error>
@@ -22,14 +93,8 @@
                     </span>
 
                     <input klb-button type='submit' value='Log in' ng-click='close(res_1, res_2)'/>
-
-                    <!--div class='login_input.aux'>
-                        <input class='login_checkbox' id='remember' type='checkbox' name='remember'/>
-                        <label class='login_label' for='remember'> Remember me </label>
-                    </div-->
                 </div>
             </fieldset>
         </form>
-    <!--/div-->
-</div>
+</div-->
 
