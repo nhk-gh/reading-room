@@ -5,15 +5,12 @@ angular.module('readingRoomApp').factory('accountService', function($q, $http, $
     login: function(user, password){
       var deferred = $q.defer();
 
-      $log.info(user + ", "+ password);
-
       $http({method:'POST', url:'/login', data:{username: user, password: password}, cache: false})
         .success(function(data){
-          $log.info(data);
           deferred.resolve(data);
         })
         .error(function(data, status){
-          $log.warn('logIn error: ' + status);
+          $log.warn('Log in error: ' + status);
           deferred.reject(status);
         });
 

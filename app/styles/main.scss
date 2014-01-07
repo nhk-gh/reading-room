@@ -73,7 +73,13 @@ body {
     width:100%;
     height: 600px;
 }
+.user-salutation{
+  margin-right: 5%;
+}
 
+#register-dlg-footer{
+  margin-top: 0px;
+}
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
     .container {
