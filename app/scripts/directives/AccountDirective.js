@@ -14,3 +14,10 @@ readingRoomApp.directive('registerDlg', function () {
       restrict: 'E'
     };
   });
+
+readingRoomApp.directive('reminderDlg', function () {
+    return {
+      templateUrl: 'views/passwordReminder.html',
+      restrict: 'E'
+    };
+  });

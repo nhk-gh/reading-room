@@ -37,9 +37,9 @@ angular.module('readingRoomApp').factory('accountService', function($q, $http, $
 
       $http({method:'POST', url:'/register',
         data:{  // for compatability with prev. version:
-          username: user.username,
-          firstname: user.firstname,
-          lastname: user.lastname,
+          userName: user.userName,
+          firstName: user.firstName,
+          lastName: user.lastName,
           password: user.password,
           country: user.country,
           email: user.email

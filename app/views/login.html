@@ -16,12 +16,26 @@
                 <div class="form-group">
                     <label for="password">Password</label>
                     <input type="password" class="form-control" id="password" placeholder="Password"
-                           autocomplete='off' ng-model="res_2">
+                           autocomplete='off' ng-model="res_2"/>
+                </div>
+
+                <div class="form-group">
+                    <div class="checkbox col-md-8 col-xs-8">
+                        <label>
+                            <input type="checkbox" ng-model="res_3">
+                            Remember me
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="checkbox col-md-4 col-xs-4">
+                        <a href="#" ng-click="passwordReminder()" >Forgot password?</a>
+                    </div>
                 </div>
 
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-primary btn-sm" ng-click="ok(res_1, res_2)">Ok</button>
+                <button type="submit" class="btn btn-primary btn-sm" ng-click="ok(res_1, res_2, res_3)">Ok</button>
                 <button class="btn btn-default btn-sm" ng-click="cancel()">Cancel</button>
             </div>
         </form>

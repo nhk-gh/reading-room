@@ -8,7 +8,7 @@ readingRoomApp.directive('klbAfterError',function(){
             var inputs = element.find('input');
 
             inputs.on('keypress', function(){
-                $(this).css('borderColor','');
+                $(this).css('border-color','');
              });
        }
     }

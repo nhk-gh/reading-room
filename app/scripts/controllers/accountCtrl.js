@@ -1,10 +1,9 @@
 'use strict';
 
 readingRoomApp.controller('AccountController',
-  function accountController($scope, $modal, $log, accountService){
+  function accountController($scope, $modal, $log, accountService, userSrvc){
 
-    $scope.user = {};
-    $scope.user.firstName = 'Log in';
+    //$scope.user = userSrvc.user;
 
     /////////////////////////////////////
     //
@@ -15,38 +14,102 @@ readingRoomApp.controller('AccountController',
 
       var modalInstance = $modal.open({
         templateUrl: 'myLogin',
-        controller: ModalLoginCtrl,
+        controller: ModalLoginCtrl/*,
         resolve: {
           items: function () {
             return $scope.items;
           }
-        }
+        } */
       });
 
       modalInstance.result.then(function (p) {
-        accountService.login(p.userName, p.password)
-          .then(function(data){
-            $scope.user = data.user;
-          }, function(status){
-            $log.info(status);
-          });
+        userSrvc.user = angular.copy(p);
       }, function () {
         $log.info('Modal dismissed at: ' + new Date());
+        userSrvc.clearUser();
       });
+      $scope.user = userSrvc.user;
     };
 
     var ModalLoginCtrl = function ($scope, $modalInstance) {
-      $scope.ok = function (res1, res2) {
+      $scope.ok = function (res1, res2, res3) {
         if($("#login-form").validateAccount() ){
-          $modalInstance.close({userName:res1, password: res2});
+          accountService.login(res1, res2)
+            .then(function(data) {
+              if (data.error === 200) {
+                $modalInstance.close(data.user);
+              } else {
+                alert(data.message);
+              }
+            }, function(status){
+              $log.info(status);
+              alert(status);
+            });
         }
       };
 
       $scope.cancel = function () {
         $modalInstance.dismiss('cancel');
       };
+
+      $scope.passwordReminder = function(){
+        $scope.$emit("reminder")
+      }
     };
 
+    /////////////////////////////////////
+    //
+    //   Password reminder dialog
+    //
+    /////////////////////////////////////
+    $scope.$on('reminder', function(){
+      $scope.openReminderDlg();
+    });
+    $scope.openReminderDlg = function () {
+
+      var modalInstance = $modal.open({
+        templateUrl: 'myReminder',
+        controller: ModalReminderCtrl/*,
+         resolve: {
+         items: function () {
+         return $scope.items;
+         }
+         } */
+      });
+
+      modalInstance.result.then(function (p) {
+        userSrvc.user = p;
+        $scope.user = userSrvc.user;
+      }, function () {
+        $log.info('Modal dismissed at: ' + new Date());
+        userSrvc.clearUser();
+      });
+    };
+
+    var ModalReminderCtrl = function ($scope, $modalInstance, countriesSrvc, userSrvc) {
+      $scope.countries = countriesSrvc.countries;
+      $scope.user = userSrvc.user;
+
+      $scope.ok_r = function () {
+        if($("#register-form").validateAccount() ){
+          accountService.register($scope.user)
+            .then(function(data){
+              if (data.error === 200) {
+                $modalInstance.close(data.user);
+              } else {
+                alert(data.message);
+              }
+            }, function(status){
+              $log.warn(status);
+              alert(status);
+            });
+        }
+      };
+
+      $scope.cancel_r = function () {
+        $modalInstance.dismiss('cancel');
+      };
+    };
 
     /////////////////////////////////////
     //
@@ -57,33 +120,40 @@ readingRoomApp.controller('AccountController',
 
       var modalInstance = $modal.open({
         templateUrl: 'myRegister',
-        controller: ModalRegisterCtrl,
+        controller: ModalRegisterCtrl/*,
         resolve: {
           items: function () {
             return $scope.items;
           }
-        }
+        } */
       });
 
       modalInstance.result.then(function (p) {
-        accountService.register(p.userName, p.password)
-          .then(function(data){
-            $scope.user = data.user;
-          }, function(status){
-            $log.info(status);
-          });
+        userSrvc.user = p;
+        $scope.user = userSrvc.user;
       }, function () {
         $log.info('Modal dismissed at: ' + new Date());
+        userSrvc.clearUser();
       });
     };
 
-    var ModalRegisterCtrl = function ($scope, $modalInstance, CountriesList) {
-      $scope.countries = CountriesList.countries;
-      $scope.country = "Israel";
+    var ModalRegisterCtrl = function ($scope, $modalInstance, countriesSrvc, userSrvc) {
+      $scope.countries = countriesSrvc.countries;
+      $scope.user = userSrvc.user;
 
-      $scope.ok_r = function (res1, res2) {
+      $scope.ok_r = function () {
         if($("#register-form").validateAccount() ){
-          $modalInstance.close({userName:res1, password: res2});
+          accountService.register($scope.user)
+            .then(function(data){
+              if (data.error === 200) {
+                $modalInstance.close(data.user);
+              } else {
+                alert(data.message);
+              }
+            }, function(status){
+              $log.warn(status);
+              alert(status);
+            });
         }
       };
 

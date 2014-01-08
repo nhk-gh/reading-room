@@ -29,7 +29,7 @@
     <div class="container" ng-controller="AccountController" ng-cloak="">
         <div class="header">
             <ul class="nav nav-pills pull-right" ng-hide='user.logged'>
-                <li><a href="#" ng-click="openLoginDlg()">{{ user.firstName }}</a></li>
+                <li><a href="#" ng-click="openLoginDlg()">Log in</a></li>
                 <li><a href="#" ng-click="openRegisterDlg()">Register</a></li>
             </ul>
             <div class="dropdown pull-right user-salutation" ng-show='user.logged'>
@@ -41,7 +41,7 @@
                 <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
                     <li role="presentation" class="disabled"><a role="menuitem" tabindex="-1" href="#">Edit profile</a></li>
                     <li role="presentation" class="divider"></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#" ng-click="openRegisterDlg()">Log out</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Log out</a></li>
                 </ul>
             </div>
             <!--ul class="nav nav-pills pull-right" ng-show='user.logged'>
@@ -58,6 +58,7 @@
         <login-dlg></login-dlg>
         <!--logout-dlg></logout-dlg-->
         <register-dlg></register-dlg>
+        <reminder-dlg></reminder-dlg>
         <!--profile-dlg></profile-dlg-->
 
     </div>
@@ -109,7 +110,8 @@
     <script src="scripts/controllers/accountCtrl.js"></script>
     <script src="scripts/directives/AccountDirective.js"></script>
     <script src="scripts/directives/KlbAfterError.js"></script>
-    <script src="scripts/services/CountriesList.js"></script>
+    <script src="scripts/services/CountriesSrvc.js"></script>
+    <script src="scripts/services/UserSrvc.js"></script>
     <!-- endbuild -->
 
     <!--script src="//localhost:35729/livereload.js"></script-->

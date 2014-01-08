@@ -115,6 +115,54 @@ exports.index = function(req, res){
 /*          Authentication                   */
 /*                                           */
 /*********************************************/
+exports.register = function(req, res) {
+
+  if(req.method.toLowerCase() !== "post") {
+    res.send({error: 'Method Not Allowed', code: 405});
+  }
+  else {
+    photodb.collection("users", function(err, collection){
+      if (err)
+        console.log("Register: Can not open 'users' collection!");
+      else {
+        collection.findOne({userName:req.body.userName}, function(err, result) {
+          if(err) console.log(err);
+
+          if(result != null) {
+            res.send({message:'User name is already in use', error: 403});
+          }
+          else {
+            //auth(result);
+            var usr = {
+              userName: req.body.userName,
+              firstName: req.body.firstName,
+              lastName: req.body.lastName,
+              password: encrypt.encrypt(req.body.password),
+              fullName: req.body.firstName + " " + req.body.lastName,
+              logged: true,
+              country: req.body.country,
+              email: req.body.email,
+              currentBook: 0,
+              bookshelf:[]
+            };
+            collection.insert(usr, {w:1}, function(err, result) {
+              //assert.equal(null, err);
+              if (err) {
+                console.log("Register: failed to insert into 'users' collection!");
+                res.send({message:'Can not register new user', error: 500, user: null});
+              }
+              else {
+                req.session.user = result[0];
+                //console.log(result[0]);
+                res.send({message:'Ok', error: 200, user: result[0]});
+              }
+            });
+          }
+        });
+      }
+    });
+  }
+};
 
 exports.login = function(req, res) {
 

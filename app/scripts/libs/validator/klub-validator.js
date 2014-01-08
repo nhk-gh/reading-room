@@ -78,12 +78,12 @@
 
                 if ((val1+val2 == "") || (val1 !=  val2)){
                     password_inequality = true;
-                    pass1.css("background-color", options.backColor);
-                    pass2.css("background-color", options.backColor);
+                    pass1.css("border-color", options.backColor);
+                    pass2.css("border-color", options.backColor);
                 }
                 else{
-                    pass1.css("background-color", "");
-                    pass2.css("background-color", "");
+                    pass1.css("border-color", "");
+                    pass2.css("border-color", "");
                 }
             }
         //});
