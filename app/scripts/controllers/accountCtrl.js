@@ -1,7 +1,7 @@
 'use strict';
 
 readingRoomApp.controller('AccountController',
-  function accountController($scope, $modal, $log, accountService, userSrvc){
+  function accountController($scope, $rootScope, $modal, $log, accountService, userSrvc){
 
     //$scope.user = userSrvc.user;
 
@@ -32,7 +32,7 @@ readingRoomApp.controller('AccountController',
     };
 
     var ModalLoginCtrl = function ($scope, $modalInstance) {
-      $scope.ok = function (res1, res2, res3) {
+      $scope.ok = function (res1, res2) {
         if($("#login-form").validateAccount() ){
           accountService.login(res1, res2)
             .then(function(data) {
@@ -53,7 +53,7 @@ readingRoomApp.controller('AccountController',
       };
 
       $scope.passwordReminder = function(){
-        $scope.$emit("reminder")
+        $rootScope.$broadcast("reminder");
       }
     };
 
@@ -66,35 +66,38 @@ readingRoomApp.controller('AccountController',
       $scope.openReminderDlg();
     });
     $scope.openReminderDlg = function () {
+      $scope.lookfor1 = "lll";
 
       var modalInstance = $modal.open({
         templateUrl: 'myReminder',
         controller: ModalReminderCtrl/*,
-         resolve: {
-         items: function () {
-         return $scope.items;
-         }
-         } */
+        resolve: {
+          lf: function () {
+            return $scope.lookfor;
+          }
+        }  */
       });
 
       modalInstance.result.then(function (p) {
         userSrvc.user = p;
         $scope.user = userSrvc.user;
+        $log.info($scope.lookfor);
       }, function () {
         $log.info('Modal dismissed at: ' + new Date());
         userSrvc.clearUser();
       });
     };
 
-    var ModalReminderCtrl = function ($scope, $modalInstance, countriesSrvc, userSrvc) {
+    var ModalReminderCtrl = function ($scope, $modalInstance, countriesSrvc, userSrvc/*, lf*/) {
       $scope.countries = countriesSrvc.countries;
       $scope.user = userSrvc.user;
 
-      $scope.ok_r = function () {
-        if($("#register-form").validateAccount() ){
-          accountService.register($scope.user)
+      $scope.ok_rem = function (email, look, name) {
+        if($("#reminder-form").validateAccount() ){
+          accountService.passwordReminder({email:email, lookfor: look, name: name})
             .then(function(data){
               if (data.error === 200) {
+                alert(data.message);
                 $modalInstance.close(data.user);
               } else {
                 alert(data.message);
@@ -106,7 +109,7 @@ readingRoomApp.controller('AccountController',
         }
       };
 
-      $scope.cancel_r = function () {
+      $scope.cancel_rem = function () {
         $modalInstance.dismiss('cancel');
       };
     };

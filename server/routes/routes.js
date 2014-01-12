@@ -3,6 +3,7 @@ var path = require('path');
 var mongo = require('mongodb');
 var async = require('async');
 var encrypt = require('../lib/encrypt');
+var mailer = require('nodemailer');
 
 /*********************************************/
 /*                                           */
@@ -203,6 +204,65 @@ exports.login = function(req, res) {
       }
     });
   }
+};
+
+exports.passwordReminder = function(req, res){
+  console.log("reminder");
+
+  var searchStr = {};
+
+  if (req.body.lookfor == "username"){
+    searchStr = {userName: req.body.name};
+  }
+  else{
+    searchStr = {fullName: req.body.name};
+  }
+  searchStr.email = req.body.email;
+
+  photodb.collection("users", function(err, collection){
+    if (err)
+      console.log("Reminder: Can not open 'users' collection!");
+    else {
+      collection.findOne(searchStr, function(err, result) {
+        if(err) console.log(err);
+
+        if(result == null) {
+          res.send({message:'Sorry, but you really do not remember your registration data', error: 403});
+        }
+        else {
+          var transport = new mailer.createTransport("SMTP",
+            {service: "Gmail",
+              auth: {
+                user: "naum.krivoruk@gmail.com",
+                pass: "nhk110859"
+              }
+            }
+          );
+          var pswrd = encrypt.decrypt(result.password);
+
+          transport.sendMail(
+            {
+              from: "<naum.krivoruk@gmail.com>", // sender address
+              to: req.body.email, // list of receivers
+              subject: "Your password", // Subject line
+              text: "Your password is: " + pswrd // plaintext body
+            },
+            function(error, response){
+              if(error){
+                console.log(error);
+                res.send({message:error.message, error: 403});
+              }
+              else{
+                res.send({message:'Registration data sent to your e-mail address!', error: 200});
+              }
+            }
+          );
+
+
+        }
+      });
+    }
+  });
 };
 
 /*********************************************/

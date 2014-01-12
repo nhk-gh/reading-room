@@ -61,6 +61,7 @@ if ('production' == app.get('env')) {
 app.get('/', routes.index);
 app.post('/login', routes.login);
 app.post('/register', routes.register);
+app.post('/passwordreminder', routes.passwordReminder);
 
 app.post('/readers', routes.addReader);
 app.put('/readers:id', routes.editReader);
