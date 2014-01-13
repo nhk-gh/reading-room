@@ -10,7 +10,8 @@ readingRoomApp.factory('userSrvc', function userSrvc() {
       lastName: "",
       fullName: "",
       country: "",
-      email: ""
+      email: "",
+      remember: false
     },
 
     getUser: function(){
@@ -26,7 +27,8 @@ readingRoomApp.factory('userSrvc', function userSrvc() {
         lastName: "",
         fullName: "",
         country: "",
-        email: ""
+        email: "",
+        remember: false
       }
     }
   }

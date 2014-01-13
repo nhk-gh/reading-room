@@ -45,7 +45,7 @@ app.set('port', process.env.PORT || 3000);
 app.use(express.logger('dev'));
 app.use(express.bodyParser());
 app.use(express.methodOverride());
-app.use(express.cookieParser('your secret here'));
+app.use(express.cookieParser('Do not try'));
 app.use(express.session());
 app.use(app.router);
 
@@ -60,6 +60,7 @@ if ('production' == app.get('env')) {
 
 app.get('/', routes.index);
 app.post('/login', routes.login);
+app.post('/logout', routes.logout);
 app.post('/register', routes.register);
 app.post('/passwordreminder', routes.passwordReminder);
 

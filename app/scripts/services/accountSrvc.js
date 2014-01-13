@@ -2,10 +2,10 @@
 
 angular.module('readingRoomApp').factory('accountService', function($q, $http, $log){
   return {
-    login: function(user, password){
+    login: function(user, password, encrypted){
       var deferred = $q.defer();
 
-      $http({method:'POST', url:'/login', data:{username: user, password: password}, cache: false})
+      $http({method:'POST', url:'/login', data:{username: user, password: password, encrypted:encrypted }, cache: false})
         .success(function(data){
           deferred.resolve(data);
         })
@@ -70,7 +70,7 @@ angular.module('readingRoomApp').factory('accountService', function($q, $http, $
       return deferred.promise;
     },
 
-    logOut: function(user){
+    logout: function(user){
       var deferred = $q.defer();
 
       $http({method:'POST', url:'/logout', data:{username: user}, cache: false})

@@ -1,9 +1,34 @@
 'use strict';
 
-angular.module('readingRoomApp').controller('MainCtrl', function ($scope, $modal, $log) {
+angular.module('readingRoomApp').controller('MainCtrl',
+  function ($scope, $rootScope, $log, accountService, userSrvc) {
 
+    $scope.readLoginCookie = function(){
+      var cook =  $.cookie('rem');
+      $log.warn(cook);
+      if ( (cook !== undefined) && (cook !== {}) ) {
+        var lastUser = JSON.parse(cook);
 
-});
+        accountService.login(lastUser.e, lastUser.p, true)
+          .then(function(data){
+            if (data.error === 200) {
+              userSrvc.user = data.user;
+              userSrvc.user.remember = true;
+              $rootScope.$broadcast('logged-in');
+
+            } else {
+              alert(data.message);
+            }
+
+          }, function(status){
+            $log.warn('Wrong cookie ??? (' + status +')');
+            userSrvc.clearUser();
+          });
+      }
+    };
+
+    $scope.readLoginCookie();
+  });
 
 
 /*

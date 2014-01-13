@@ -1,9 +1,15 @@
 'use strict';
 
-angular.module('readingRoomApp')
-  .directive('loginDlg', function () {
+readingRoomApp.directive('loginDlg', function () {
     return {
       templateUrl: 'views/login.html',
+      restrict: 'E'
+    };
+  });
+
+readingRoomApp.directive('logoutDlg', function () {
+    return {
+      templateUrl: 'views/logout.html',
       restrict: 'E'
     };
   });

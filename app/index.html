@@ -41,7 +41,7 @@
                 <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
                     <li role="presentation" class="disabled"><a role="menuitem" tabindex="-1" href="#">Edit profile</a></li>
                     <li role="presentation" class="divider"></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Log out</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#" ng-click="openLogoutDlg()">Log out</a></li>
                 </ul>
             </div>
             <!--ul class="nav nav-pills pull-right" ng-show='user.logged'>
@@ -56,7 +56,7 @@
         <div ng-view=""></div>
 
         <login-dlg></login-dlg>
-        <!--logout-dlg></logout-dlg-->
+        <logout-dlg></logout-dlg>
         <register-dlg></register-dlg>
         <reminder-dlg></reminder-dlg>
         <!--profile-dlg></profile-dlg-->
@@ -76,6 +76,7 @@
     </script>
 
     <script src="bower_components/jquery/jquery.js"></script>
+    <script src="bower_components/jquery-cookie-master/jquery.cookie.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/ui-bootstrap-tpls-0.9.0.js"></script>
     <script src="scripts/libs/validator/klub-validator.js"></script>

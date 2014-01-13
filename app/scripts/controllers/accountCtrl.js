@@ -1,9 +1,66 @@
 'use strict';
 
 readingRoomApp.controller('AccountController',
-  function accountController($scope, $rootScope, $modal, $log, accountService, userSrvc){
+  function accountController($scope, $rootScope, $modal, $location, $log, accountService, userSrvc){
 
-    //$scope.user = userSrvc.user;
+    $scope.$on('logged-in', function(){
+      $scope.user = userSrvc.user;
+
+      if ($scope.user.remember === true) {
+        $.cookie('rem', JSON.stringify({e: $scope.user.email, p: $scope.user.password}, {expires: 7, path: '/'}));
+      }
+      else {
+        $.removeCookie('rem');
+        alert('removeCookie');
+      }
+    });
+
+    /////////////////////////////////////
+    //
+    //   Log out dialog
+    //
+    /////////////////////////////////////
+    $scope.openLogoutDlg = function () {
+
+      var modalInstance = $modal.open({
+        templateUrl: 'myLogout',
+        controller: ModalLogoutCtrl/*,
+         resolve: {
+         items: function () {
+         return $scope.items;
+         }
+         } */
+      });
+
+      modalInstance.result.then(function () {
+        userSrvc.clearUser();
+        $scope.user = userSrvc.user;
+        $.removeCookie('rem');
+        $location.path("/");
+      }, function () {
+        $log.info('Modal dismissed at: ' + new Date());
+      });
+    };
+
+    var ModalLogoutCtrl = function ($scope, $modalInstance) {
+      $scope.ok_out = function () {
+        accountService.logout(userSrvc.user.email)
+          .then(function(data) {
+            if (data.error === 200) {
+              $modalInstance.close();
+            } else {
+              alert(data.message);
+            }
+          }, function(status){
+            $log.info(status);
+            alert(status);
+          });
+      };
+
+      $scope.cancel_out = function () {
+        $modalInstance.dismiss('cancel');
+      };
+    };
 
     /////////////////////////////////////
     //
@@ -24,6 +81,7 @@ readingRoomApp.controller('AccountController',
 
       modalInstance.result.then(function (p) {
         userSrvc.user = angular.copy(p);
+        $rootScope.$broadcast('logged-in');
       }, function () {
         $log.info('Modal dismissed at: ' + new Date());
         userSrvc.clearUser();
@@ -32,11 +90,12 @@ readingRoomApp.controller('AccountController',
     };
 
     var ModalLoginCtrl = function ($scope, $modalInstance) {
-      $scope.ok = function (res1, res2) {
+      $scope.ok = function (res1, res2, res3) {
         if($("#login-form").validateAccount() ){
           accountService.login(res1, res2)
             .then(function(data) {
               if (data.error === 200) {
+                data.user.remember = res3;
                 $modalInstance.close(data.user);
               } else {
                 alert(data.message);
@@ -66,7 +125,7 @@ readingRoomApp.controller('AccountController',
       $scope.openReminderDlg();
     });
     $scope.openReminderDlg = function () {
-      $scope.lookfor1 = "lll";
+//      $scope.lookfor1 = "lll";
 
       var modalInstance = $modal.open({
         templateUrl: 'myReminder',

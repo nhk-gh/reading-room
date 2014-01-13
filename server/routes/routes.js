@@ -107,8 +107,11 @@ exports.initDB = initDB;
 /*                                           */
 /*********************************************/
 exports.index = function(req, res){
-    //res.render('index.html');
-    res.sendfile('/home/nhk/WebstormProjects/ReadingRoom/app/index.html');
+  console.log(req.cookies);
+  //console.log(req.cookies.rem);
+  //console.log(JSON.parse(req.cookies.rem).e);
+
+  res.sendfile('/home/nhk/WebstormProjects/ReadingRoom/app/index.html');
 };
 
 /*********************************************/
@@ -183,7 +186,14 @@ exports.login = function(req, res) {
           }
           else {
             //auth(result);
-            var encryptPasswrd = encrypt.encrypt(req.body.password);
+            var encryptPasswrd;// = encrypt.encrypt(req.body.password);
+            if (req.body.encrypted) {
+              encryptPasswrd =  req.body.password;
+            }
+            else {
+              encryptPasswrd = encrypt.encrypt(req.body.password);
+            }
+
             if(encryptPasswrd != result.password) {
               res.send({message:'invalid password', error: 403});
             }
@@ -195,6 +205,12 @@ exports.login = function(req, res) {
                   else{
                     result.logged = true;
                     req.session.user = result;
+
+                    /*if (!req.cookies.rem) {
+                      res.cookie('rem', JSON.stringify({ e:result.email, p:result.password }),
+                                                       { maxAge: 2592000000, httpOnly: true });
+                    //}*/
+
                     res.send({message:'Ok', error: 200, user: result});
                   }
                 });
@@ -207,8 +223,6 @@ exports.login = function(req, res) {
 };
 
 exports.passwordReminder = function(req, res){
-  console.log("reminder");
-
   var searchStr = {};
 
   if (req.body.lookfor == "username"){
@@ -262,6 +276,35 @@ exports.passwordReminder = function(req, res){
         }
       });
     }
+  });
+};
+
+exports.logout = function(req, res) {
+
+  photodb.collection("users", function(err, collection){
+    if (err)
+      console.log("Login: Can not open 'users' collection!");
+    else {
+      collection.findOne({email:req.body.username}, function(err, result) {
+        if(err) console.log(err);
+
+        if(result == null) {
+          res.send({message:'invalid username', error: 403});
+        }
+        else {
+          collection.update({email:req.body.username},{$set:{logged: false, remember: false}}, {w:1},
+            function(err, rs){
+              if (err)
+                console.log(err);
+              else{
+                req.session.user = null;
+                res.send({message:'Ok', error: 200});
+              }
+
+            });
+        }
+      });
+    };
   });
 };
 
