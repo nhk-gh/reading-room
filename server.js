@@ -64,6 +64,8 @@ app.post('/logout', routes.logout);
 app.post('/register', routes.register);
 app.post('/passwordreminder', routes.passwordReminder);
 
+app.post('/file-upload', routes.fileUpload);
+
 app.post('/readers', routes.addReader);
 app.put('/readers:id', routes.editReader);
 app.delete('/readers:id', routes.deleteReader);

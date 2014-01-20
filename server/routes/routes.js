@@ -310,6 +310,17 @@ exports.logout = function(req, res) {
 
 /*********************************************/
 /*                                           */
+/*         Drag & Drop + upload                */
+/*                                           */
+/*********************************************/
+
+exports.fileUpload = function(req, res){
+  //console.log(req.files);
+  res.send("Hura!");
+};
+
+/*********************************************/
+/*                                           */
 /*         Library Manipulations             */
 /*                                           */
 /*********************************************/

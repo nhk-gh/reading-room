@@ -6,12 +6,15 @@ readingRoomApp.controller('AccountController',
     $scope.$on('logged-in', function(){
       $scope.user = userSrvc.user;
 
+      $location.path("/bookshelf")
+      $log.warn('naum.krivoruk@gmail.com');
+
       if ($scope.user.remember === true) {
         $.cookie('rem', JSON.stringify({e: $scope.user.email, p: $scope.user.password}, {expires: 7, path: '/'}));
+
       }
       else {
         $.removeCookie('rem');
-        alert('removeCookie');
       }
     });
 
