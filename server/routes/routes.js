@@ -22,6 +22,8 @@ var populateCollection = function(collection_name, d) {
 
   d.collection(collection_name, function(err, collection){
     collection.find().toArray(function(err, docs){
+      console.log(collection_name);
+
       if (docs.length == 0){
         switch (collection_name){
           case 'users':
@@ -38,9 +40,10 @@ var populateCollection = function(collection_name, d) {
                 bookshelf:[{
                    // book
                     ind: 1,
-                    author: '',
-                    title: '',
-                    publisher:'',
+                    author: 'Naum Krivoruk',
+                    title: 'Memories',
+                    publisher:'Bla-bla-bla',
+                    icon: 'images/popular-woodworking-magazine-free-bookcase-plans.jpg',
                     currentChapter: 1,
                     chapters:[{
                         //chapter

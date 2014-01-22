@@ -7721,15 +7721,21 @@ body {
   margin-top: 0px;
 }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/nhk\/WebstormProjects\/ReadingRoom\/app\/styles\/main\.scss}line{font-family:\0000384}}
+.book-ad {
+  position: relative;
+  display: inline-block;
+}
+
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/nhk\/WebstormProjects\/ReadingRoom\/app\/styles\/main\.scss}line{font-family:\0000386}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/nhk\/WebstormProjects\/ReadingRoom\/app\/styles\/main\.scss}line{font-family:\0000390}}
   .container {
     max-width: 1170px;
   }
 
   /* Remove the padding we set earlier */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/nhk\/WebstormProjects\/ReadingRoom\/app\/styles\/main\.scss}line{font-family:\0000393}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/nhk\/WebstormProjects\/ReadingRoom\/app\/styles\/main\.scss}line{font-family:\0000397}}
   .header,
   .marketing,
   .footer {
@@ -7738,24 +7744,24 @@ body {
   }
 
   /* Space out the masthead */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/nhk\/WebstormProjects\/ReadingRoom\/app\/styles\/main\.scss}line{font-family:\0000398}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/nhk\/WebstormProjects\/ReadingRoom\/app\/styles\/main\.scss}line{font-family:\00003102}}
   .header {
     margin-bottom: 30px;
   }
 
   /* Remove the bottom border on the jumbotron for visual effect */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/nhk\/WebstormProjects\/ReadingRoom\/app\/styles\/main\.scss}line{font-family:\00003102}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/nhk\/WebstormProjects\/ReadingRoom\/app\/styles\/main\.scss}line{font-family:\00003106}}
   .jumbotron {
     border-bottom: 0;
   }
 
   /* My */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/nhk\/WebstormProjects\/ReadingRoom\/app\/styles\/main\.scss}line{font-family:\00003107}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/nhk\/WebstormProjects\/ReadingRoom\/app\/styles\/main\.scss}line{font-family:\00003111}}
   body {
     background: url("../images/photo.jpg") no-repeat center top;
   }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/nhk\/WebstormProjects\/ReadingRoom\/app\/styles\/main\.scss}line{font-family:\00003110}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/nhk\/WebstormProjects\/ReadingRoom\/app\/styles\/main\.scss}line{font-family:\00003114}}
   .container {
     background-color: #ffffff;
   }

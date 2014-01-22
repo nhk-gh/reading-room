@@ -77,10 +77,14 @@ body {
   margin-right: 5%;
 }
 
-#register-dlg-footer{
+#register-dlg-footer {
   margin-top: 0px;
 }
 
+.book-ad {
+  position:relative;
+  display: inline-block;
+}
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
     .container {
