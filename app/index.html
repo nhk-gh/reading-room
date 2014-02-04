@@ -11,8 +11,18 @@
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
-        <!-- build:css(.tmp) styles/main.css -->
+      <script src="bower_components/jquery/jquery.js"></script>
+      <script src="bower_components/jquery-cookie-master/jquery.cookie.js"></script>
+      <script src="bower_components/angular/angular.js"></script>
+      <script src="bower_components/ui-bootstrap-tpls-0.9.0.js"></script>
+      <script src="bower_components/angular-file-dnd/dist/angular-file-dnd.min.js"></script>
+      <script src="scripts/libs/validator/klub-validator.js"></script>
+      <script src="scripts/libs/Dropzone/dropzone.js"></script>
+      <link rel="stylesheet" href="scripts/libs/Dropzone/dropzone.css">
+
+      <!-- build:css(.tmp) styles/main.css -->
         <link rel="stylesheet" href="styles/main.css">
+        <link rel="stylesheet" href="styles/bookshelf.css">
         <!--link rel="stylesheet"  href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css"-->
         <!-- endbuild -->
 </head>
@@ -53,7 +63,9 @@
         </div>
 
         <!-- Add your site or application content here -->
-        <div ng-view=""></div>
+        <div>
+            <div ng-view=""></div>
+        </div>
 
         <login-dlg></login-dlg>
         <logout-dlg></logout-dlg>
@@ -78,14 +90,6 @@
        ga('send', 'pageview');
     </script>
 
-    <script src="bower_components/jquery/jquery.js"></script>
-    <script src="bower_components/jquery-cookie-master/jquery.cookie.js"></script>
-    <script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/ui-bootstrap-tpls-0.9.0.js"></script>
-    <script src="scripts/libs/validator/klub-validator.js"></script>
-
-    <script src="scripts/libs/Dropzone/dropzone.js"></script>
-    <link rel="stylesheet" href="scripts/libs/Dropzone/dropzone.css">
 
     <!-- build:js scripts/plugins.js -->
     <script src="bower_components/sass-bootstrap/js/affix.js"></script>

@@ -1,17 +1,17 @@
-
-<div class='col-md-12 col-xs-12'>
-    <div class="book-ad" ng-repeat="book in reader.bookshelf">
-        <a href="#">
-            <img ng-src="{{ book.icon }}" />
-            <div> {{ book.title }} </div>
-        </a>
-    </div>
-
-    <div class="dropzone" id="bookshelf-dropzone" dnd>
-        <div class="dz-default dz-message">
-            <span>Drop files here to upload</span>
+<div class='row'>
+    <div class='col-md-12 col-xs-12'>
+        <div class="dropzone" id="bookshelf-dropzone" book-shelf>
+            <div class="dz-message">
+                <span class='drop-here'>Drop files here to upload</span>
+            </div>
+            <div class="book-ad col-md-2 col-xs-2" ng-repeat="book in reader.bookshelf">
+                <a href="#" title="{{ book.title }}">
+                    <img ng-src="{{ book.icon }}"/>
+                </a>
+                <div class="book-title"> {{ book.title }} </div>
+            </div>
         </div>
     </div>
 </div>
 
-
+<add-book-dlg></add-book-dlg>

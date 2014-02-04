@@ -1,0 +1,50 @@
+<div>
+    <script type="text/ng-template" id="addBook">
+        <form role="form" id='addbook-form'>
+            <div class="modal-header">
+                <button class="button btn-default close" ng-click="cancel()">&times;</button>
+                <h4 class="modal-title">Add Book</h4>
+            </div>
+            <div class="modal-body" klb-after-error>
+                <div class="form-group">
+                    <label >File name: {{ fileName }}</label>
+                    <!--input class='form-control' type='text' ng-model="fileName" readonly autofocus/-->
+                </div>
+
+                <div class="form-group">
+                    <label>Book title</label>
+                    <input class="form-control" type="text" ng-model="title" autofocus/>
+                </div>
+
+                <div class="form-group">
+                    <label>Author</label>
+                    <input class="form-control" type="text" ng-model="author"/>
+                </div>
+
+                <div class="form-group">
+                    <label>Publisher</label>
+                    <input class="form-control" type="text" ng-model="publisher"/>
+                </div>
+
+                <!--div class="form-group">
+                    <label>Change icon</label>
+                    <div class="dropzone" add-book-icon>
+                        <div class="dz-message">
+                            <span >Drop files here to upload</span>
+                        </div>
+
+                        <img ng-src='../images/book-icon.png'/>
+
+                    </div>
+                </div-->
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary btn-sm" ng-click="ok(title, author, publisher)">Ok</button>
+                <button class="btn btn-default btn-sm" ng-click="cancel()">Cancel</button>
+            </div>
+        </form>
+    </script>
+
+    <!--button class="btn btn-default" ng-click="open()">Open me!</button>
+    <div ng-show="selected">Selection from a modal: {{ selected }}</div-->
+</div>

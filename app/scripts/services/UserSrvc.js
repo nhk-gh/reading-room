@@ -11,7 +11,10 @@ readingRoomApp.factory('userSrvc', function userSrvc() {
       fullName: "",
       country: "",
       email: "",
-      remember: false
+      remember: false,
+
+      currentBook: 1,
+      bookshelf:[]
     },
 
     getUser: function(){
@@ -30,6 +33,12 @@ readingRoomApp.factory('userSrvc', function userSrvc() {
         email: "",
         remember: false
       }
+    },
+
+    addBook: function(file){
+      var book = {};
+
+      this.user.bookshelf.push(book);
     }
   }
 });

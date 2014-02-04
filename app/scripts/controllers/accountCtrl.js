@@ -7,7 +7,6 @@ readingRoomApp.controller('AccountController',
       $scope.user = userSrvc.user;
 
       $location.path("/bookshelf")
-      $log.warn('naum.krivoruk@gmail.com');
 
       if ($scope.user.remember === true) {
         $.cookie('rem', JSON.stringify({e: $scope.user.email, p: $scope.user.password}, {expires: 7, path: '/'}));
@@ -143,7 +142,7 @@ readingRoomApp.controller('AccountController',
       modalInstance.result.then(function (p) {
         userSrvc.user = p;
         $scope.user = userSrvc.user;
-        $log.info($scope.lookfor);
+
       }, function () {
         $log.info('Modal dismissed at: ' + new Date());
         userSrvc.clearUser();

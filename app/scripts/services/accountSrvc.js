@@ -87,7 +87,6 @@ angular.module('readingRoomApp').factory('accountService', function($q, $http, $
 
     passwordReminder: function(params){
       var deferred = $q.defer();
-      $log.warn('passwordReminder');
 
       $http({method:'POST', url:'/passwordreminder', data:params, cache: false})
         .success(function(data){

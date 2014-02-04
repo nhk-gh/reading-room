@@ -1161,6 +1161,8 @@
                     return;
                   }
                   file.fullPath = "" + path + "/" + file.name;
+                  console.log('addFile 5');
+
                   return _this.addFile(file);
                 });
               } else if (entry.isDirectory) {
@@ -1174,14 +1176,19 @@
         };
 
         Dropzone.prototype.accept = function(file, done) {
+          alert(this.getAcceptedFiles().length);
           if (file.size > this.options.maxFilesize * 1024 * 1024) {
+            alert(this.options.maxFilesize);
             return done(this.options.dictFileTooBig.replace("{{filesize}}", Math.round(file.size / 1024 / 10.24) / 100).replace("{{maxFilesize}}", this.options.maxFilesize));
           } else if (!Dropzone.isValidFile(file, this.options.acceptedFiles)) {
+            alert(this.options.dictInvalidFileType);
             return done(this.options.dictInvalidFileType);
           } else if ((this.options.maxFiles != null) && this.getAcceptedFiles().length >= this.options.maxFiles) {
+            alert(this.options.maxFiles);
             done(this.options.dictMaxFilesExceeded.replace("{{maxFiles}}", this.options.maxFiles));
             return this.emit("maxfilesexceeded", file);
           } else {
+            alert('c');
             return this.options.accept.call(this, file, done);
           }
         };

@@ -7,7 +7,8 @@ readingRoomApp =angular.module('readingRoomApp', [
     'ngResource',
     'ngSanitize',
     'ngRoute',
-    'ui.bootstrap'
+    'ui.bootstrap',
+    'omr.angularFileDnD'
   ])
   .config(function ($routeProvider, $locationProvider) {
     $routeProvider
