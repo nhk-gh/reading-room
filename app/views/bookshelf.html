@@ -1,16 +1,31 @@
 <div class='row'>
     <div class='col-md-12 col-xs-12'>
-        <div class="dropzone" id="bookshelf-dropzone" book-shelf>
-            <div class="dz-message">
-                <span class='drop-here'>Drop files here to upload</span>
+        <div class="book-ad col-md-2 col-xs-2" ng-repeat="book in reader.bookshelf" fade-menu >
+            <button class="button btn-default close hidden" ng-click="removeBook()">&times;</button>
+            <a href="#" title="Click to open '{{ book.title }}'">
+                <img ng-src="{{ book.icon }}"/>
+            </a>
+            <div class="book-title"> {{ book.title }} </div>
+        </div>
+        <div class="book-ad col-md-2 col-xs-2" file-dropzone="[text/plain, image/png, image/jpeg, image/gif]"
+             data-max-file-size="3" file="image" file-name="imageFileName" book-upload>
+            <a title="Drop file here">
+                <img ng-src="../images/drop-here.png"/>
+            </a>
+            <div ng-show="progressVisible">
+                <div class="percent">{{progress}}%</div>
+                <div class="progress-bar">
+                    <div class="uploaded" ng-style="{'width': progress+'%'}"></div>
+                </div>
             </div>
-            <div class="book-ad col-md-2 col-xs-2" ng-repeat="book in reader.bookshelf">
-                <a href="#" title="{{ book.title }}">
-                    <img ng-src="{{ book.icon }}"/>
-                </a>
-                <div class="book-title"> {{ book.title }} </div>
+            <div class="book-title">
+                <span> Drop book here</span>
             </div>
         </div>
+        <!--div class="image-container">
+            <img ng-src={{image}} />
+            <span class="file-name">{{imageFileName}}</span>
+        </div-->
     </div>
 </div>
 

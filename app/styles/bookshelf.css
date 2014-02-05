@@ -36,39 +36,93 @@
   vertical-align: top;
   border: 1px solid #acacac;
   opacity: 0;
-  animation: fadeIn 3s linear 1s 1;
+  animation: fadeIn 2s ease-out 0s 1;
   animation-fill-mode: forwards;
-  -moz-animation: fadeIn 2s linear 2s 1;
+  -moz-animation: fadeIn 2s ease-out 0s 1;
   -moz-animation-fill-mode: forwards;
-  -webkit-animation: fadeIn 3s linear 1s 1;
+  -webkit-animation: fadeIn 2s ease-out 0s 1;
   -webkit-animation-fill-mode: forwards;
-  -o-animation: fadeIn 3s linear 1s 1;
+  -o-animation: fadeIn 2s ease-out 0s 1;
   -o-animation-fill-mode: forwards;
 }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/home\/nhk\/WebstormProjects\/ReadingRoom\/app\/styles\/bookshelf\.scss}line{font-family:\0000345}}
 .book-title {
   font-size: 100%;
+  width: 100%;
+  height: 20px;
+  text-align: center;
+  overflow: hidden;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/nhk\/WebstormProjects\/ReadingRoom\/app\/styles\/bookshelf\.scss}line{font-family:\0000348}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/nhk\/WebstormProjects\/ReadingRoom\/app\/styles\/bookshelf\.scss}line{font-family:\0000352}}
 .book-ad a img {
   position: relative;
   width: 100%;
   height: auto;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/nhk\/WebstormProjects\/ReadingRoom\/app\/styles\/bookshelf\.scss}line{font-family:\0000354}}
-.dropzone {
-  clear: both;
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/nhk\/WebstormProjects\/ReadingRoom\/app\/styles\/bookshelf\.scss}line{font-family:\0000357}}
+.percent {
+  position: absolute;
+  width: 80%;
+  height: 14px;
+  z-index: 1;
+  text-align: center;
+  font-size: 0.8em;
+  color: #003333;
+  /*white;*/
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/nhk\/WebstormProjects\/ReadingRoom\/app\/styles\/bookshelf\.scss}line{font-family:\0000357}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/nhk\/WebstormProjects\/ReadingRoom\/app\/styles\/bookshelf\.scss}line{font-family:\0000366}}
+.progress-bar {
+  width: 90%;
+  height: 14px;
+  border-radius: 10px;
+  border: 1px solid #CCC;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(white), to(#fffffa));
+  background: linear-gradient(to right, #ffffff, #fffffa);
+  border-image: initial;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/nhk\/WebstormProjects\/ReadingRoom\/app\/styles\/bookshelf\.scss}line{font-family:\0000377}}
+.uploaded {
+  padding: 0;
+  height: 14px;
+  border-radius: 10px;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#66cc00), to(#4b9500));
+  background: linear-gradient(to right, #66cc00, #4b9500);
+  border-image: initial;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/nhk\/WebstormProjects\/ReadingRoom\/app\/styles\/bookshelf\.scss}line{font-family:\0000385}}
+.dropzone {
+  width: 25px;
+  height: 45px;
+  border: 1px solid #ccc;
+  text-align: center;
+  font-family: Arial;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/nhk\/WebstormProjects\/ReadingRoom\/app\/styles\/bookshelf\.scss}line{font-family:\0000393}}
+.image-container {
+  width: 300px;
+  height: 300px;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/nhk\/WebstormProjects\/ReadingRoom\/app\/styles\/bookshelf\.scss}line{font-family:\0000397}}
+.image-container img {
+  max-width: 100%;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/nhk\/WebstormProjects\/ReadingRoom\/app\/styles\/bookshelf\.scss}line{font-family:\00003101}}
 .dz-message {
   text-align: center;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/nhk\/WebstormProjects\/ReadingRoom\/app\/styles\/bookshelf\.scss}line{font-family:\0000361}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/nhk\/WebstormProjects\/ReadingRoom\/app\/styles\/bookshelf\.scss}line{font-family:\00003105}}
 .drop-here {
   font-size: 200%;
   font-family: "Lucida Grande";
@@ -94,48 +148,48 @@
 /*********************************************/
 /*  fadeIn  */
 @keyframes fadeIn {
-  /* line 89, bookshelf.scss */
+  /* line 133, bookshelf.scss */
   from {
     opacity: 0;
   }
 
-  /* line 90, bookshelf.scss */
+  /* line 134, bookshelf.scss */
   to {
     opacity: 1;
   }
 }
 
 @-moz-keyframes fadeIn {
-  /* line 94, bookshelf.scss */
+  /* line 138, bookshelf.scss */
   from {
     opacity: 0;
   }
 
-  /* line 95, bookshelf.scss */
+  /* line 139, bookshelf.scss */
   to {
     opacity: 1;
   }
 }
 
 @-webkit-keyframes fadeIn {
-  /* line 98, bookshelf.scss */
+  /* line 142, bookshelf.scss */
   from {
     opacity: 0;
   }
 
-  /* line 99, bookshelf.scss */
+  /* line 143, bookshelf.scss */
   to {
     opacity: 1;
   }
 }
 
 @-o-keyframes fadeIn {
-  /* line 102, bookshelf.scss */
+  /* line 146, bookshelf.scss */
   from {
     opacity: 0;
   }
 
-  /* line 103, bookshelf.scss */
+  /* line 147, bookshelf.scss */
   to {
     opacity: 1;
   }
@@ -143,48 +197,48 @@
 
 /*  fadeOut  */
 @keyframes fadeOut {
-  /* line 109, bookshelf.scss */
+  /* line 153, bookshelf.scss */
   from {
     opacity: 1;
   }
 
-  /* line 110, bookshelf.scss */
+  /* line 154, bookshelf.scss */
   to {
     opacity: 0;
   }
 }
 
 @-moz-keyframes fadeOut {
-  /* line 114, bookshelf.scss */
+  /* line 158, bookshelf.scss */
   from {
     opacity: 1;
   }
 
-  /* line 115, bookshelf.scss */
+  /* line 159, bookshelf.scss */
   to {
     opacity: 0;
   }
 }
 
 @-webkit-keyframes fadeOut {
-  /* line 118, bookshelf.scss */
+  /* line 162, bookshelf.scss */
   from {
     opacity: 1;
   }
 
-  /* line 119, bookshelf.scss */
+  /* line 163, bookshelf.scss */
   to {
     opacity: 0;
   }
 }
 
 @-o-keyframes fadeOut {
-  /* line 122, bookshelf.scss */
+  /* line 166, bookshelf.scss */
   from {
     opacity: 1;
   }
 
-  /* line 123, bookshelf.scss */
+  /* line 167, bookshelf.scss */
   to {
     opacity: 0;
   }
@@ -196,13 +250,13 @@
 /*                                           */
 /*********************************************/
 @media screen and (max-width: 768px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/nhk\/WebstormProjects\/ReadingRoom\/app\/styles\/bookshelf\.scss}line{font-family:\00003132}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/nhk\/WebstormProjects\/ReadingRoom\/app\/styles\/bookshelf\.scss}line{font-family:\00003176}}
   .book-title {
     font-size: 80%;
   }
 }
 @media screen and (max-width: 480px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/nhk\/WebstormProjects\/ReadingRoom\/app\/styles\/bookshelf\.scss}line{font-family:\00003138}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/nhk\/WebstormProjects\/ReadingRoom\/app\/styles\/bookshelf\.scss}line{font-family:\00003182}}
   .book-title {
     font-size: 60%;
   }

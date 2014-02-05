@@ -4,11 +4,6 @@ readingRoomApp.controller('BookshelfCtrl', function ($scope, $log, $modal, userS
 
   $scope.reader = userSrvc.getUser();
 
-  $scope.$on('refreshBookshelfView', function(event, filename){
-    $scope.$apply(function(){
-      $scope.reader = userSrvc.getUser();
-    });
-  });
   /////////////////////////////////////
   //
   //   Add Book dialog

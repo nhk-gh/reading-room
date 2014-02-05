@@ -337,6 +337,9 @@ exports.logout = function(req, res) {
 
 exports.fileUpload = function(req, res){
   //res.send("Hura!!!.. " + req.files.file.name);
+  /*console.log(req.files);
+  console.log(req.body);
+  console.log(req.params); */
 
   photodb.collection('users', function(err, collection){
     var usr;
