@@ -4,6 +4,9 @@ readingRoomApp.controller('BookshelfCtrl', function ($scope, $log, $modal, userS
 
   $scope.reader = userSrvc.getUser();
 
+  $scope.deleteBook = function(book){
+    $log.info(book);
+  };
   /////////////////////////////////////
   //
   //   Add Book dialog

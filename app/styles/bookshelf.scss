@@ -54,6 +54,21 @@
   width: 100%;
   height: auto;
 }
+.book-menu {
+  position:absolute;
+  display:none;
+  left:90%;
+  top:0px;
+  color:red;//#73dce5;
+  z-index:100;
+  opacity: 0.2;
+  filter:alpha(opacity=20)
+}
+.book-menu:hover {
+  color:red;
+  opacity: 0.7;
+  filter:alpha(opacity=70)
+}
 .percent {
   position: absolute;
   width: 80%;
@@ -176,10 +191,16 @@
   .book-title {
     font-size: 80%
   }
+  .hidden{
+    left:85%;
+  }
 }
 
 @media screen and (max-width: 480px) {
   .book-title {
     font-size: 60%
+  }
+  .hidden{
+    left:80%;
   }
 }

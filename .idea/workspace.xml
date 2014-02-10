@@ -26,25 +26,16 @@
       <file leaf-file-name="bookshelf.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/bookshelf.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="8" selection-start="879" selection-end="879" vertical-scroll-proportion="-10.0" vertical-offset="0" max-vertical-offset="555">
+            <state line="21" column="104" selection-start="1129" selection-end="1129" vertical-scroll-proportion="0.0" vertical-offset="315" max-vertical-offset="555">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FadeMenuDctv.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="FadeMenuDctv.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/scripts/directives/FadeMenuDctv.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="48" selection-start="407" selection-end="407" vertical-scroll-proportion="0.25447315" vertical-offset="67" max-vertical-offset="660">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="122" column="81" selection-start="6025" selection-end="6025" vertical-scroll-proportion="-9.166667" vertical-offset="1610" max-vertical-offset="2100">
+            <state line="20" column="4" selection-start="459" selection-end="459" vertical-scroll-proportion="0.0" vertical-offset="300" max-vertical-offset="510">
               <folding />
             </state>
           </provider>
@@ -53,7 +44,7 @@
       <file leaf-file-name="bookshelf.scss" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/styles/bookshelf.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="66" column="13" selection-start="1241" selection-end="1241" vertical-scroll-proportion="-41.25" vertical-offset="0" max-vertical-offset="2850">
+            <state line="65" column="18" selection-start="1218" selection-end="1218" vertical-scroll-proportion="0.0" vertical-offset="704" max-vertical-offset="3165">
               <folding />
             </state>
           </provider>
@@ -62,7 +53,16 @@
       <file leaf-file-name="BookshelfCtrl.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/scripts/controllers/BookshelfCtrl.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="36" selection-start="403" selection-end="403" vertical-scroll-proportion="0.0" vertical-offset="15" max-vertical-offset="840">
+            <state line="53" column="8" selection-start="1256" selection-end="1256" vertical-scroll-proportion="0.0" vertical-offset="795" max-vertical-offset="885">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="accountCtrl.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/scripts/controllers/accountCtrl.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3540">
               <folding />
             </state>
           </provider>
@@ -85,15 +85,15 @@
         <option value="$PROJECT_DIR$/app/bower_components/angular-file-dnd/dist/angular-file-dnd.js" />
         <option value="$PROJECT_DIR$/app/scripts/directives/angular-file-dnd.js" />
         <option value="$PROJECT_DIR$/server/routes/routes.js" />
-        <option value="$PROJECT_DIR$/app/scripts/controllers/BookshelfCtrl.js" />
-        <option value="$PROJECT_DIR$/app/styles/bookshelf.scss" />
         <option value="$PROJECT_DIR$/app/scripts/directives/BookshelfDctv.js" />
         <option value="$PROJECT_DIR$/app/scripts/directives/FileDndUpload.js" />
         <option value="$PROJECT_DIR$/app/scripts/directives/BookshelfDndDctv.js" />
         <option value="$PROJECT_DIR$/app/scripts/directives/BookUploadDctv.js" />
-        <option value="$PROJECT_DIR$/app/views/bookshelf.html" />
         <option value="$PROJECT_DIR$/app/index.html" />
+        <option value="$PROJECT_DIR$/app/styles/bookshelf.scss" />
+        <option value="$PROJECT_DIR$/app/views/bookshelf.html" />
         <option value="$PROJECT_DIR$/app/scripts/directives/FadeMenuDctv.js" />
+        <option value="$PROJECT_DIR$/app/scripts/controllers/BookshelfCtrl.js" />
       </list>
     </option>
   </component>
@@ -101,9 +101,9 @@
     <data>$PROJECT_DIR$/node_modules/karma</data>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="65" />
-    <option name="y" value="28" />
-    <option name="width" value="851" />
+    <option name="x" value="69" />
+    <option name="y" value="81" />
+    <option name="width" value="1110" />
     <option name="height" value="997" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
@@ -148,7 +148,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -227,87 +226,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ReadingRoom" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ReadingRoom" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="styles" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ReadingRoom" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ReadingRoom" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="scripts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ReadingRoom" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ReadingRoom" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="scripts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="services" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ReadingRoom" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ReadingRoom" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="scripts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="directives" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -333,26 +252,9 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ReadingRoom" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ReadingRoom" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="images" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -490,15 +392,14 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="65" y="28" width="851" height="997" extended-state="0" />
-    <editor active="true" />
+    <frame x="69" y="81" width="1110" height="997" extended-state="0" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.34120426" sideWeight="0.5925267" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.338843" sideWeight="0.5925267" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32762557" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3270366" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32038835" sideWeight="0.6587958" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24192059" sideWeight="0.661157" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39902082" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3127854" sideWeight="0.40658364" order="7" side_tool="true" content_ui="tabs" />
@@ -507,6 +408,7 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3270366" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24925816" sideWeight="0.69503546" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -533,136 +435,97 @@
           <line>1581</line>
           <option name="timeStamp" value="68" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/server/routes/routes.js</url>
-          <line>363</line>
-          <option name="timeStamp" value="70" />
-        </line-breakpoint>
       </breakpoints>
       <option name="time" value="71" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/styles/main.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="11.25" vertical-offset="270" max-vertical-offset="1590">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/bower_components/angular-file-dnd/src/directive/file_dropzone.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1065">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/images/photo.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/addbook.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="93" selection-start="156" selection-end="233" vertical-scroll-proportion="-2.5" vertical-offset="0" max-vertical-offset="840">
-          <folding>
-            <marker date="1391587250237" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1391587250237" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1391587250237" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1391587250237" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1391587250237" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1391587250237" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1391587250237" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1391587250237" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1391587250237" expanded="true" signature="-1:-1" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/scripts/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="525">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="525" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/main.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="465">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="465" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/bower_components/angular-file-dnd/dist/angular-file-dnd.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="37" selection-start="48" selection-end="67" vertical-scroll-proportion="0.06122449" vertical-offset="0" max-vertical-offset="1365">
-          <folding />
-        </state>
+        <state line="2" column="37" selection-start="48" selection-end="67" vertical-scroll-proportion="0.06122449" vertical-offset="0" max-vertical-offset="1365" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/scripts/directives/AccountDirective.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="525">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="525" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/scripts/directives/BookUploadDctv.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="75" column="65" selection-start="2354" selection-end="2354" vertical-scroll-proportion="2.424569" vertical-offset="0" max-vertical-offset="1815">
-          <folding>
-            <element signature="e#3281#5357#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/scripts/controllers/BookshelfCtrl.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="36" selection-start="403" selection-end="403" vertical-scroll-proportion="0.0" vertical-offset="15" max-vertical-offset="840">
-          <folding />
-        </state>
+        <state line="75" column="65" selection-start="2354" selection-end="2354" vertical-scroll-proportion="2.424569" vertical-offset="0" max-vertical-offset="1815" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/scripts/directives/FileDndDctv.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="64" column="42" selection-start="2255" selection-end="2255" vertical-scroll-proportion="1.9591837" vertical-offset="0" max-vertical-offset="1365">
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-          </folding>
-        </state>
+        <state line="64" column="42" selection-start="2255" selection-end="2255" vertical-scroll-proportion="1.9591837" vertical-offset="0" max-vertical-offset="1365" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/scripts/directives/PasswordReminder.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="503">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="503" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="122" column="81" selection-start="6025" selection-end="6025" vertical-scroll-proportion="-9.166667" vertical-offset="1610" max-vertical-offset="2100" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/images/book-icon.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/styles/bookshelf.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="65" column="18" selection-start="1218" selection-end="1218" vertical-scroll-proportion="0.0" vertical-offset="704" max-vertical-offset="3165">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/bookshelf.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="8" selection-start="879" selection-end="879" vertical-scroll-proportion="-10.0" vertical-offset="0" max-vertical-offset="555">
+        <state line="21" column="104" selection-start="1129" selection-end="1129" vertical-scroll-proportion="-0.0" vertical-offset="315" max-vertical-offset="555">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/index.html">
+    <entry file="file://$PROJECT_DIR$/server/routes/routes.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="122" column="81" selection-start="6025" selection-end="6025" vertical-scroll-proportion="-9.166667" vertical-offset="1610" max-vertical-offset="2100">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/styles/bookshelf.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="66" column="13" selection-start="1241" selection-end="1241" vertical-scroll-proportion="-41.25" vertical-offset="0" max-vertical-offset="2850">
-          <folding />
-        </state>
+        <state line="374" column="110" selection-start="11548" selection-end="11548" vertical-scroll-proportion="0.5697674" vertical-offset="5316" max-vertical-offset="7560" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/scripts/directives/FadeMenuDctv.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="48" selection-start="407" selection-end="407" vertical-scroll-proportion="0.25447315" vertical-offset="67" max-vertical-offset="660">
+        <state line="20" column="4" selection-start="459" selection-end="459" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="510">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/bower_components/angular/.bower.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="549" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/scripts/controllers/BookshelfCtrl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="53" column="8" selection-start="1256" selection-end="1256" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="270">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/scripts/controllers/accountCtrl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3540">
           <folding />
         </state>
       </provider>
