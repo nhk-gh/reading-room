@@ -64,7 +64,7 @@ app.post('/logout', routes.logout);
 app.post('/register', routes.register);
 app.post('/passwordreminder', routes.passwordReminder);
 
-app.post('/file-upload', routes.fileUpload);
+//app.post('/file-upload', routes.fileUpload);
 
 app.post('/readers', routes.addReader);
 app.put('/readers:id', routes.editReader);
@@ -72,7 +72,7 @@ app.delete('/readers:id', routes.deleteReader);
 
 app.post('/book', routes.addBook);
 app.put('/book:id', routes.editBook);
-app.delete('/book:id', routes.deleteBook);
+app.delete('/book/:title', routes.deleteBook);
 
 routes.initDB();
 

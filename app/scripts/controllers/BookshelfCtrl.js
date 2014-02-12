@@ -1,11 +1,18 @@
 'use strict';
 
-readingRoomApp.controller('BookshelfCtrl', function ($scope, $log, $modal, userSrvc) {
+readingRoomApp.controller('BookshelfCtrl', function ($scope, $log, $modal, userSrvc,BookshelfSrvc) {
 
   $scope.reader = userSrvc.getUser();
 
   $scope.deleteBook = function(book){
-    $log.info(book);
+    BookshelfSrvc.deleteBook(book)
+      .then(function(data){
+        userSrvc.user = data
+        $scope.reader = userSrvc.getUser();
+      }
+      ,function(err){
+
+      });
   };
   /////////////////////////////////////
   //

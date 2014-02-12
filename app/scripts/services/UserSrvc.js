@@ -31,7 +31,9 @@ readingRoomApp.factory('userSrvc', function userSrvc() {
         fullName: "",
         country: "",
         email: "",
-        remember: false
+        remember: false,
+        currentBook: 1,
+        bookshelf:[]
       }
     },
 

@@ -21,6 +21,12 @@ readingRoomApp =angular.module('readingRoomApp', [
         templateUrl:'views/bookshelf.html',
         controller: 'BookshelfCtrl'
       })
+
+      .when('/svg', {
+        templateUrl:'views/svg.html',
+        controller: 'SvgCtrl'
+      })
+
       .otherwise({
         redirectTo: '/'
       });

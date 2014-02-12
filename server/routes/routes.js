@@ -16,22 +16,6 @@ var ObjectID = mongo.ObjectID;
 var dbport = 27018;//mongo.Connection.DEFAULT_PORT;
 var photodb;
 
-
-function User(){
-  this.password = '';     /*password*/
-  this.userName = '';
-  this.logged = false;
-  this.firstName =  '';
-  this.lastName =  '';
-  this.fullName =  '';
-  this.country =  '';
-  this.email =  '';
-  this.currentBook =  1;
-  this.bookshelf = [];
-
-
-}
-
 var populateCollection = function(collection_name, d) {
   var items;
   var toCreate = true;
@@ -331,15 +315,18 @@ exports.logout = function(req, res) {
 
 /*********************************************/
 /*                                           */
-/*         Drag & Drop + upload                */
+/*         Library Manipulations             */
 /*                                           */
 /*********************************************/
-
-exports.fileUpload = function(req, res){
-  //res.send("Hura!!!.. " + req.files.file.name);
-  /*console.log(req.files);
-  console.log(req.body);
-  console.log(req.params); */
+exports.addBook = function(req, res){
+  var getBookIndex = function(books){
+    if (books.length === 0) {
+      return 1;
+    }
+    else {
+      return books.length + 1;
+    }
+  };
 
   photodb.collection('users', function(err, collection){
     var usr;
@@ -386,12 +373,13 @@ exports.fileUpload = function(req, res){
 
                     // fill book data
                     var newBook = {};
+                    newBook.ind = getBookIndex(usr.bookshelf);
                     newBook.author = req.body.author;
                     newBook.title = req.body.title;
                     newBook.publisher = req.body.publisher;
                     newBook.icon = 'images/book-icon.png';
                     newBook.path = target_path;
-                    newBook.currentChapter = 1,
+                    newBook.currentChapter = 1;
                     newBook.chapters = [];
 
                     usr.bookshelf.push(newBook);
@@ -451,9 +439,9 @@ exports.fileUpload = function(req, res){
                         function(err){
                           if (!err){
                             res.send(200, {user:usr});
+                            //console.log(usr);
                           }
                           else{
-                            console.log(err);
                             res.send(417);
                           }
                           //res.render("addphoto", {title:"Add photo", genre: items, loggedUser: req.session.user, info:info});
@@ -468,32 +456,74 @@ exports.fileUpload = function(req, res){
   });
 };
 
-/*********************************************/
-/*                                           */
-/*         Library Manipulations             */
-/*                                           */
-/*********************************************/
-
-exports.addReader = function(reg,res){
+exports.addReader = function(req, res){
   res.send('New reader added');
 };
 
-exports.editReader = function(reg,res){
+exports.editReader = function(req, res){
   res.send('Reader edited');
 };
 
-exports.deleteReader = function(reg,res){
+exports.deleteReader = function(req, res){
   res.send('Reader deleted');
 };
-
+/*
 exports.addBook = function(reg,res){
   res.send('New book added');
 };
-
-exports.editBook = function(reg,res){
+*/
+exports.editBook = function(req, res){
   res.send('Book edited');
 };
 
-exports.deleteBook = function(reg,res){
-  res.send('Book deleted');
+exports.deleteBook = function(req, res) {
+
+  photodb.collection('users', function(err, collection) {
+    var usr;
+
+    if (err) {
+      console.log('Delete book: can not open \'users\' collection');
+      res.send(500);
+    } else {
+      // find user
+      collection.findOne({
+          'firstName': req.session.user.firstName,
+          'lastName': req.session.user.lastName
+        }, function(err, result) {
+          if (err) {
+            console.log("Delete book error (0): " + err);
+            res.send(500);
+          } else {
+            usr = result;
+            var target_dir = '/home/ubuntu/bookcase/' + usr._id;
+            var target_path;
+
+            // remove book from bookshelf
+            for (var i=0; i<usr.bookshelf.length; i++) {
+              if (usr.bookshelf[i].title == req.params.title) {
+                target_path = usr.bookshelf[i].path;
+                usr.bookshelf.splice(i,1);
+                break;
+              }
+            }
+
+            //delete book from disk
+            fs.unlink(target_path, function(err) {
+              if (err) {
+                console.log("Delete book error (1): " + err);
+              }
+              else {
+                collection.update({}, {$pull:{'bookshelf':{'title':req.params.title}}}, function(err, r){
+                  if (err) {
+                    console.log("Delete photo error (2): " + err);
+                  } else {
+                    res.send(usr);
+                  }
+                });
+              }
+            });
+          }
+      })
+    }
+  });
 };

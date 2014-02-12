@@ -65,7 +65,7 @@ angular.module('readingRoomApp')
           xhr.addEventListener("load", uploadComplete, false);
           xhr.addEventListener("error", uploadFailed, false);
           xhr.addEventListener("abort", uploadCanceled, false);
-          xhr.open("POST", "/file-upload");
+          xhr.open("POST", "/book");
           scope.progressVisible = true;
           xhr.send(fd);
         };
