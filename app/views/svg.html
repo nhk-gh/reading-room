@@ -1,3 +1,18 @@
-<div class="jumbotron">
-    <p>SVG training</p>
+<div style="border: 1px solid lightgray;">
+    <svg id='drawing' xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg"
+     ng-init="Init()" style="fill:yellow; stroke:#000000;">
+
+        <a ng-repeat="r in rects" xlink:href="{{ r.link }}" xlink:show="replace">
+            <rect draw-line ng-attr-x="{{ r.x }}" ng-attr-y="{{ r.y }}"
+                  ng-attr-width="{{ r.w }}" ng-attr-height="{{ r.h }}"
+                  style="fill:bisque; stroke:#acacac;" id="{{ $index }}"/>
+            <rect ng-attr-x="{{ r.x }}" ng-attr-y="{{ r.y  + top_zone }}"
+                  ng-attr-width="{{ r.w }}" ng-attr-height="{{ r.h - top_zone }}"
+                  style="fill:white; stroke:#acacac;"/>
+            <image ng-attr-x="{{ r.x }}" ng-attr-y="{{ r.y + top_zone }}"
+                   ng-attr-width="{{ r.w }}" ng-attr-height="{{ r.h - top_zone }}"
+                   xlink:href="images/book-icon.png" style="stroke:green"/>
+        </a>
+
+    </svg>
 </div>
