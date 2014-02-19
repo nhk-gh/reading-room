@@ -71,7 +71,7 @@ app.put('/readers:id', routes.editReader);
 app.delete('/readers:id', routes.deleteReader);
 
 app.post('/book', routes.addBook);
-app.put('/book:id', routes.editBook);
+app.get('/book/:title', routes.editBook);
 app.delete('/book/:title', routes.deleteBook);
 
 routes.initDB();

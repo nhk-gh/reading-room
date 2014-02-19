@@ -70,8 +70,8 @@
   top: 0px;
   color: red;
   z-index: 100;
-  opacity: 0.2;
-  filter: alpha(opacity=20);
+  opacity: 0.4;
+  filter: alpha(opacity=40);
 }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/home\/nhk\/WebstormProjects\/ReadingRoom\/app\/styles\/bookshelf\.scss}line{font-family:\0000367}}

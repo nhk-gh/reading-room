@@ -3,17 +3,19 @@
 readingRoomApp.controller('BookshelfCtrl', function ($scope, $log, $modal, userSrvc,BookshelfSrvc) {
 
   $scope.reader = userSrvc.getUser();
+  $scope.errorMsg = null; // upload file error message
 
   $scope.deleteBook = function(book){
     BookshelfSrvc.deleteBook(book)
       .then(function(data){
-        userSrvc.user = data
+        userSrvc.user = data;
         $scope.reader = userSrvc.getUser();
       }
       ,function(err){
 
       });
   };
+
   /////////////////////////////////////
   //
   //   Add Book dialog

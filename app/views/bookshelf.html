@@ -1,8 +1,15 @@
-<div class='row'>
+<div class="row">
     <div class='col-md-12 col-xs-12'>
-        <div class="book-ad col-md-2 col-xs-2" ng-repeat="book in reader.bookshelf" fade-menu >
+        <ol class="breadcrumb" style='background-color: inherit'>
+            <li class="active"><h4>Bookshelf</h4></li>
+        </ol>
+    </div>
+</div>
+<div class='row'>
+   <div class='col-md-12 col-xs-12'>
+        <div fade-menu class="book-ad col-md-2 col-xs-2" ng-repeat="book in reader.bookshelf" >
             <button class="book-menu button btn-default close" ng-click="deleteBook(book)">&times;</button>
-            <a href="#" title="Click to open '{{ book.title }}'">
+            <a href="#/book/{{ book.title }}" title="Click to open '{{ book.title }}'">
                 <img ng-src="{{ book.icon }}"/>
             </a>
             <div class="book-title"> {{ book.title }} </div>
@@ -27,6 +34,16 @@
             <span class="file-name">{{imageFileName}}</span>
         </div-->
     </div>
+
 </div>
+<div class="row">
+    <div class='col-md-12 col-xs-12'>
+        <div class="alert alert-danger text-center" ng-show="errorMsg !== null">{{ errorMsg }}
+            <button class="button btn-default close" ng-click="errorMsg = null">&times;</button>
+        </div>
+
+    </div>
+</div>
+
 
 <add-book-dlg></add-book-dlg>

@@ -82,11 +82,20 @@ angular.module('readingRoomApp')
 
         function uploadComplete(evt) {
           /* This event is raised when the server send back a response */
+          console.log(evt)
           scope.$apply(function(){
-            scope.progressVisible = false;
-            userSrvc.user = JSON.parse(evt.target.responseText).user;
-            scope.reader = userSrvc.getUser();
-          })
+            if (evt.target.readyState === 4) {
+              scope.progressVisible = false;
+
+              if (evt.target.status === 200 ) {
+                userSrvc.user = JSON.parse(evt.target.responseText).user;
+                scope.reader = userSrvc.getUser();
+                scope.errorMsg = null;
+              } else {
+                scope.errorMsg = evt.target.responseText;
+              }
+            }
+          });
         }
 
         function uploadFailed(evt) {

@@ -22,14 +22,14 @@ readingRoomApp =angular.module('readingRoomApp', [
         controller: 'BookshelfCtrl'
       })
 
-      .when('/svg', {
-        templateUrl:'views/svg.html',
-        controller: 'SvgCtrl'
+      .when('/book/:title', {
+        templateUrl:'views/book.html',
+        controller: 'BookCtrl'
       })
 
       .otherwise({
         redirectTo: '/'
       });
 
-    $locationProvider.html5Mode(true);
+    //$locationProvider.html5Mode(true);
   });
