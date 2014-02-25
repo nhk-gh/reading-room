@@ -18,12 +18,15 @@
       <script src="scripts/libs/validator/klub-validator.js"></script>
       <!--script src="scripts/libs/Dropzone/dropzone.js"></script>
       <link rel="stylesheet" href="scripts/libs/Dropzone/dropzone.css"-->
+      <script src="https://rawgithub.com/akrennmair/ng-pdfviewer/ed053c7c8030fee678d8c854376b55d8de42b76d/dist/ng-pdfviewer.min.js"></script>
+      <script src="https://rawgithub.com/mozilla/pdf.js/gh-pages/build/pdf.js"></script>
+      <script src="https://rawgithub.com/mozilla/pdf.js/gh-pages/build/pdf.worker.js"></script>
 
       <!-- build:css(.tmp) styles/main.css -->
         <link rel="stylesheet" href="styles/main.css">
         <link rel="stylesheet" href="styles/bookshelf.css">
         <!--link rel="stylesheet"  href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css"-->
-        <!-- endbuild -->
+      <!-- endbuild -->
 </head>
   <body ng-app="readingRoomApp">
     <!--[if lt IE 7]>
@@ -130,6 +133,8 @@
     <script src="scripts/services/BookshelfSrvc.js"></script>
     <script src="scripts/controllers/SvgCtrl.js"></script>
     <script src="scripts/controllers/BookCtrl.js"></script>
+    <script src="scripts/services/BookSrvc.js"></script>
+
     <!-- endbuild -->
 
     <!--script src="//localhost:35729/livereload.js"></script-->

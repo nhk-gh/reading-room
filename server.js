@@ -57,6 +57,7 @@ if ('production' == app.get('env')) {
     app.use(express.errorHandler());
     console.log("----- " + path.join(__dirname, 'app'));
 }
+app.use(express.static('/home/ubuntu/bookcase', {maxAge: 31557600000}));
 
 app.get('/', routes.index);
 app.post('/login', routes.login);
@@ -71,7 +72,7 @@ app.put('/readers:id', routes.editReader);
 app.delete('/readers:id', routes.deleteReader);
 
 app.post('/book', routes.addBook);
-app.get('/book/:title', routes.editBook);
+app.get('/book/:title', routes.getBook);
 app.delete('/book/:title', routes.deleteBook);
 
 routes.initDB();

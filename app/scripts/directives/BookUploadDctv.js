@@ -82,8 +82,7 @@ angular.module('readingRoomApp')
 
         function uploadComplete(evt) {
           /* This event is raised when the server send back a response */
-          console.log(evt)
-          scope.$apply(function(){
+           scope.$apply(function(){
             if (evt.target.readyState === 4) {
               scope.progressVisible = false;
 

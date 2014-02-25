@@ -1,22 +1,21 @@
 'use strict';
 
 angular.module('readingRoomApp')
-  .factory('BookshelfSrvc', function BookshelfSrvc($q, $http, $log) {
+  .factory('BookSrvc', function BookSrvc($http, $q, $log) {
     return {
-      deleteBook: function(book) {
+      getBook: function(title){
         var deferred = $q.defer();
 
-        $http({ method:'DELETE', url:'/book/' + book.title, cache: false })
+        $http({method:'GET', url:'/book/' + title})
           .success(function(data){
             deferred.resolve(data);
           })
           .error(function(data, status){
-            $log.warn('Delete book error: ' + status);
+            $log.warn('Log in error: ' + status);
             deferred.reject(status);
           });
 
         return deferred.promise;
       }
-
     };
   });

@@ -61,9 +61,10 @@ readingRoomApp.directive('fileDropzone', function() {
                 return scope.fileName = name;
               }
             });
+
             return scope.$emit('file-dropzone-drop-event', {
               // I've change the following string; reason:
-              // to get a dropped file in the req.files object!!!
+              // to get a dropped file from the req.files!!!
               file: file, //scope.file,
               type: type,
               name: name,

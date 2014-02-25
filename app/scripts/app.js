@@ -2,13 +2,13 @@
 
 var readingRoomApp;
 
-readingRoomApp =angular.module('readingRoomApp', [
+readingRoomApp = angular.module('readingRoomApp', [
     'ngCookies',
     'ngResource',
     'ngSanitize',
     'ngRoute',
-    'ui.bootstrap'/*,
-    'omr.angularFileDnD' */
+    'ngPDFViewer',
+    'ui.bootstrap'
   ])
   .config(function ($routeProvider, $locationProvider) {
     $routeProvider

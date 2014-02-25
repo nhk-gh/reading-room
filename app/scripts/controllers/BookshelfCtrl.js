@@ -1,6 +1,6 @@
 'use strict';
 
-readingRoomApp.controller('BookshelfCtrl', function ($scope, $log, $modal, userSrvc,BookshelfSrvc) {
+readingRoomApp.controller('BookshelfCtrl', function ($scope, $log, userSrvc,BookshelfSrvc) {
 
   $scope.reader = userSrvc.getUser();
   $scope.errorMsg = null; // upload file error message
@@ -8,6 +8,7 @@ readingRoomApp.controller('BookshelfCtrl', function ($scope, $log, $modal, userS
   $scope.deleteBook = function(book){
     BookshelfSrvc.deleteBook(book)
       .then(function(data){
+        $log.warn(data);
         userSrvc.user = data;
         $scope.reader = userSrvc.getUser();
       }
