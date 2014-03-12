@@ -1,13 +1,13 @@
 'use strict';
 
 var readingRoomApp;
+//'ngPDFViewer',
 
 readingRoomApp = angular.module('readingRoomApp', [
     'ngCookies',
     'ngResource',
     'ngSanitize',
     'ngRoute',
-    'ngPDFViewer',
     'ui.bootstrap'
   ])
   .config(function ($routeProvider, $locationProvider) {

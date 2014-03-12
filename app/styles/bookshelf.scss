@@ -136,6 +136,11 @@
   -o-animation-fill-mode: forwards;
 }
 
+.page-container {
+  overflow:auto;
+  background-clip: content-box;
+  background-color: inherit;
+}
 /*********************************************/
 /*                                           */
 /*               Animations                  */

@@ -1,29 +1,37 @@
 <div id="single-book" ng-init="getBookContent()">
     <div class="row">
         <ol class="breadcrumb" style='background-color: inherit'>
-            <li class="active"><h3>Bookshelf</h3></li>
+            <li><a href="#">Bookshelf</a></li>
+            <li class="active">{{ currentBook.title }}</li>
         </ol>
     </div>
-    <div class='row'>
-        <div class='col-md-12 col-xs-12' ng-switch on="currentBook.type">
-            <pdfviewer src="{{ currentBook.path }}" on-page-load='pageLoaded(page,total)' id="viewer"
-                    ng-switch-when="application/pdf">
-            </pdfviewer>
+
+    <book-toolbar></book-toolbar>
+
+    <div class='row' style="overflow: auto; padding-left:10px; padding-right:10px;">
+         <div style="float:none; margin-left: auto; margin-right: auto; display: table" ng-switch on="currentBook.type">
+            <div pdfviewer src="{{ currentBook.link }}" on-page-load="pageLoaded(page,total)" id="viewer"
+                      ng-switch-when="application/pdf">
+            </div>
+            <!--iframe src=""  style="width:100%; height:100%;" frameborder="10" ng-switch-when="application/pdf">
+                <pdfviewer src="{{ currentBook.link }}" on-page-load="pageLoaded(page,total)" id="viewer"
+                       ng-switch-when="application/pdf">
+                </pdfviewer>
+            </iframe-->
+            <!--div id="pdf-content" style="width:400px; height:400px; margin-left: auto; margin-right: auto; display: inline-block">
+            </div-->
+            <!--view-pdf class="page-container" src="{{ currentBook.link }}" ng-switch-when="application/pdf">
+            </view-pdf-->
+
             <div ng-switch-when="text/plain">
                 Text container
             </div>
-            <div ng-switch-default>
-                <img ng-src="{{currentBook.link}}"/>
-            </div>
 
+             <div ng-switch-default>
+                <img ng-src="{{currentBook.link}}"/>
+             </div>
         </div>
     </div>
-    <div class='row'>
-        <div class='col-md-12 col-xs-12'>
-            <span class="glyphicon glyphicon-fast-backward pull-left btn-link"></span>
-            <span class="glyphicon glyphicon-step-backward pull-left btn-link"></span>
-            <span class="glyphicon glyphicon-step-forward pull-right btn-link"></span>
-            <span class="glyphicon glyphicon-fast-forward pull-right btn-link"></span>
-        </div>
-    </div>
+
+     <book-toolbar></book-toolbar>
 </div>

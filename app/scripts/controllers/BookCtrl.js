@@ -2,18 +2,30 @@
 
 angular.module('readingRoomApp')
   .controller('BookCtrl', [ '$scope', '$log', '$routeParams', 'BookSrvc','PDFViewerService',
-    function ($scope, $log, $routeParams, BookSrvc, pdf) {
+    function ($scope, $log, $routeParams, BookSrvc, PDFViewerService) {
 
     //////////////////////////////////////////////////
 
-    $scope.viewer = pdf.Instance("viewer");
+    $scope.vwer = PDFViewerService.Instance("viewer");
 
     $scope.nextPage = function() {
-      $scope.viewer.nextPage();
+      $scope.vwer.nextPage();
     };
 
     $scope.prevPage = function() {
-      $scope.viewer.prevPage();
+      $scope.vwer.prevPage();
+    };
+
+     $scope.gotoPage = function(pgNum) {
+      $scope.vwer.gotoPage(pgNum);
+    };
+
+    $scope.zoomIn = function() {
+      $scope.vwer.zoomIn();
+    };
+
+    $scope.zoomOut = function() {
+      $scope.vwer.zoomOut();
     };
 
     $scope.pageLoaded = function(curPage, totalPages) {
@@ -31,11 +43,17 @@ angular.module('readingRoomApp')
           $scope.currentBook = data.book;
           var ar = $scope.currentBook.path.split('/');
           $scope.currentBook.link = ar[ar.length -2] + '/' + ar[ar.length -1];
-          $log.info($scope.currentBook.link)
-          $log.info(data.book);
+          //$log.info($scope.currentBook.link)
+          //$log.info(data.book);
+
+
+          //var myPDF = new PDFObject({ url: $scope.currentBook.link }).embed('pdf-content');
+          //$log.info(myPDF);
+
         }, function(status){
 
         });
 
-    }
+    };
+
   }]);

@@ -1,0 +1,29 @@
+<div class='row book-tb'>
+    <div class='col-md-1 col-xs-1 col-md-offset-1 col-xs-offset-1'>
+        <span class="glyphicon glyphicon-fast-backward pull-right btn-link blue-tooltip" ng-click="gotoPage(1)"
+              data-toggle="tooltip" data-placement="top" title="First page"></span>
+    </div>
+    <div class='col-md-1 col-xs-1'>
+        <span class="glyphicon glyphicon-step-backward pull-left btn-link blue-tooltip" ng-click="prevPage()"
+              data-toggle="tooltip" data-placement="top" title="Previous page"></span>
+    </div>
+    <div class='col-md-1 col-xs-1 col-md-offset-1 col-xs-offset-1'>
+        <span class="glyphicon glyphicon-zoom-out btn-link pull-right blue-tooltip" ng-click="zoomOut()"
+              data-toggle="tooltip" data-placement="top" title="Zoom out"></span>
+    </div>
+    <div class='col-md-2 col-xs-2'>
+        <span style="float:none; margin-left: auto; margin-right: auto; display: table">{{currentPage}} / {{totalPages}}</span>
+    </div>
+    <div class='col-md-1 col-xs-1'>
+        <span class="glyphicon glyphicon-zoom-in pull-left btn-link blue-tooltip" ng-click="zoomIn()"
+              data-toggle="tooltip" data-placement="bottom" title="Zoom in"></span>
+    </div>
+    <div class='col-md-1 col-xs-1 col-md-offset-1 col-xs-offset-1'>
+        <span class="glyphicon glyphicon-step-forward pull-right btn-link blue-tooltip" ng-click="nextPage()"
+              data-toggle="tooltip" data-placement="bottom" title="Next page"></span>
+    </div>
+    <div class='col-md-1 col-xs-1'>
+        <span class="glyphicon glyphicon-fast-forward pull-left btn-link blue-tooltip" ng-click="gotoPage(totalPages)"
+              data-toggle="tooltip" data-placement="bottom" title="Last page"></span>
+    </div>
+</div>

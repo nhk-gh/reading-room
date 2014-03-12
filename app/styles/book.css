@@ -1,0 +1,30 @@
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/nhk\/WebstormProjects\/ReadingRoom\/app\/styles\/book\.scss}line{font-family:\000031}}
+.book-tb {
+  background-color: rgba(228, 232, 240, 0.63);
+  margin-bottom: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  height: 2em;
+  padding-top: 7px;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/nhk\/WebstormProjects\/ReadingRoom\/app\/styles\/book\.scss}line{font-family:\0000310}}
+.blue-tooltip + .tooltip > .tooltip-inner {
+  background-color: rgba(228, 232, 240, 0.63);
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/nhk\/WebstormProjects\/ReadingRoom\/app\/styles\/book\.scss}line{font-family:\0000314}}
+.tooltip-inner {
+  max-width: 200px;
+  padding: 3px 8px;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  background-color: red;
+  border-radius: 4px;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/nhk\/WebstormProjects\/ReadingRoom\/app\/styles\/book\.scss}line{font-family:\0000324}}
+.tooltip.in {
+  opacity: 0.9;
+}

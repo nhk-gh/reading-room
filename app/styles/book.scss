@@ -1,0 +1,26 @@
+.book-tb {
+  background-color: rgba(228, 232, 240, 0.63);
+  margin-bottom: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  height: 2em;
+  padding-top:7px
+}
+
+.blue-tooltip + .tooltip > .tooltip-inner {
+  background-color: rgba(228, 232, 240, 0.63);
+}
+
+.tooltip-inner {
+  max-width: 200px;
+  padding: 3px 8px;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  background-color: red;
+  border-radius: 4px;
+}
+
+.tooltip.in {
+  opacity: .9
+}
