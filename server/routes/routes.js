@@ -45,7 +45,7 @@ var populateCollection = function(collection_name, d) {
                     publisher:'Bla-bla-bla',
                     icon: 'images/popular-woodworking-magazine-free-bookcase-plans.jpg',
                     path: '',
-                    currentChapter: 1,
+                    currentChapter: '1',
                     chapters:[{
                         //chapter
                         ind: 1,
@@ -151,6 +151,7 @@ exports.register = function(req, res) {
               country: req.body.country,
               email: req.body.email,
               currentBook: 0,
+              remember: false,
               bookshelf:[]
             };
             collection.insert(usr, {w:1}, function(err, result) {
@@ -265,7 +266,7 @@ exports.passwordReminder = function(req, res){
               subject: "Your password", // Subject line
               text: "Your password is: " + pswrd // plaintext body
             },
-            function(error, response){
+            function(error){
               if(error){
                 console.log(error);
                 res.send({message:error.message, error: 403});
@@ -298,7 +299,7 @@ exports.logout = function(req, res) {
         }
         else {
           collection.update({email:req.body.username},{$set:{logged: false, remember: false}}, {w:1},
-            function(err, rs){
+            function(err){
               if (err)
                 console.log(err);
               else{
@@ -309,7 +310,7 @@ exports.logout = function(req, res) {
             });
         }
       });
-    };
+    }
   });
 };
 
@@ -319,13 +320,14 @@ exports.logout = function(req, res) {
 /*                                           */
 /*********************************************/
 exports.addBook = function(req, res){
-  var getBookIndex = function(books){
-    if (books.length === 0) {
+  var getBookIndex = function(book){
+    /*if (books.length === 0) {
       return 1;
     }
     else {
       return books.length + 1;
-    }
+    }*/
+    return encrypt.getHash(book.author + book.title + book.publisher + book.icon + book.type + book.path)
   };
 
   photodb.collection('users', function(err, collection){
@@ -343,7 +345,7 @@ exports.addBook = function(req, res){
         }, function(err, result) {
           if (err)
           {
-            console.log("Upload photo (0) " + err);
+            console.log("Upload book (0) " + err);
             res.send(500);
           } else {
             //user found!
@@ -363,26 +365,25 @@ exports.addBook = function(req, res){
               }, function(err, result) {
                 if (err)
                 {
-                  console.log("Upload photo (1) " + err);
+                  console.log("Upload book (1) " + err);
                   res.send(500);
                 } else {
                   if (result !== null) {
-                    console.log("Upload photo (2): file already exist" );
+                    console.log("Upload book (2): file already exist" );
                     res.send(409, 'File already exist!');
                   } else {
 
                     // fill book data
                     var newBook = {};
-                    newBook.ind = getBookIndex(usr.bookshelf);
                     newBook.author = req.body.author;
                     newBook.title = req.body.title;
                     newBook.publisher = req.body.publisher;
                     newBook.icon = 'images/book-icon.png';
                     newBook.type= book.type; //mime type
                     newBook.path = target_path;
-                    newBook.currentChapter = 1;
+                    newBook.currentChapter = '1';
                     newBook.chapters = [];
-
+                    newBook.ind = getBookIndex(newBook);
                     usr.bookshelf.push(newBook);
 
                     //console.log(usr);
@@ -408,7 +409,7 @@ exports.addBook = function(req, res){
                       },
 
                       // folder exists (or created successfully):
-                      // move the photo from the temporary location to the intended location
+                      // move the book from the temporary location to the intended location
                       function(callback){
                         fs.rename(tmp_path, target_path, function(err) {
                           if (err) {
@@ -420,7 +421,7 @@ exports.addBook = function(req, res){
                         });
                       },
 
-                      //add data about photo to DB
+                      //add data about book to DB
                       function(callback){
                         collection.update({_id: usr._id},
                           {$set:
@@ -429,7 +430,7 @@ exports.addBook = function(req, res){
                             }
                           },
                           {w:1},
-                          function (err, updated) {
+                          function (err) {
                             //usr = updated;
                             //console.log(usr);
                             callback(err);
@@ -445,7 +446,7 @@ exports.addBook = function(req, res){
                           else{
                             res.send(417);
                           }
-                          //res.render("addphoto", {title:"Add photo", genre: items, loggedUser: req.session.user, info:info});
+                          //res.render("addphoto", {title:"Add book", genre: items, loggedUser: req.session.user, info:info});
 
                         });
                     }
@@ -464,34 +465,77 @@ exports.getBook = function(req, res){
       res.send(500);
     } else {
       // find book
-      collection.findOne(
-        {
-          'firstName': req.session.user.firstName,
-          'lastName': req.session.user.lastName,
-          'bookshelf.title': req.params.title
-        }, function(err, result) {
-          if (err)
-          {
-            console.log("Get book (1) " + err);
-            res.send(500);
-          } else {
-            if (result === null) {
-              console.log("Get book (2): book not found" );
-              res.send(409, 'Book not found!');
-            } else {
-              var book;
+      var asyncErr = null;
+      var usrId;
 
-              for (var i=0; i<result.bookshelf.length; i++) {
-                if (result.bookshelf[i].title == req.params.title) {
-                  book = result.bookshelf[i];
-                  break;
+      async.waterfall([
+        function(callback){
+          collection.findOne(
+            {
+              'firstName': req.session.user.firstName,
+              'lastName': req.session.user.lastName,
+              'bookshelf.ind': req.params.ind
+            }, function(err, result) {
+              if (err)
+              {
+                console.log("Get book (1) " + err);
+                //res.send(500);
+                asyncErr = new Error("Get book (1) " + err);
+                asyncErr.code = 500;
+                callback(asyncErr);
+
+              } else {
+                if (result === null) {
+                  console.log("Get book (2): book not found" );
+                  //res.send(409, 'Book not found!');
+                  asyncErr = new Error("Get book (2): book not found");
+                  asyncErr.code = 409;
+                  callback(asyncErr);
+
+                } else {
+                  var book;
+
+                  for (var i=0; i<result.bookshelf.length; i++) {
+                    if (result.bookshelf[i].ind == req.params.ind) {
+                      book = result.bookshelf[i];
+                      break;
+                    }
+                  }
+                  usrId = result._id;
+                  callback(null, book);
                 }
               }
-              res.send(200, {book: book});
-            }
+            })
+        },
+
+        function(book, callback) {
+          collection.update({_id: usrId},
+            {$set:
+              {
+                currentBook: book.ind
+              }
+            },
+            {w:1},
+            function (err) {
+              if (err) {
+                console.log("Get book (3) " + err);
+                //res.send(500);
+                asyncErr = new Error("Get book (1) " + err);
+                asyncErr.code = 500;
+                callback(asyncErr);
+              } else {
+                callback(null, book);
+              }
+            })
+        }],
+
+        function(err, result){
+          if (err) {
+            res.send(err.code, err.message);
+          } else {
+            res.send(200, {book: result});
           }
-        }
-      );
+        });
     }
   });
 };
@@ -515,13 +559,13 @@ exports.deleteBook = function(req, res) {
           res.send(500);
         } else {
           usr = result;
-          var target_dir = '/home/ubuntu/bookcase/' + usr._id;
+          //var target_dir = '/home/ubuntu/bookcase/' + usr._id;
           var target_path;
 
           // remove book from bookshelf
-          console.log(usr.bookshelf.length) ;
+          console.log(req.params) ;
           for (var i=0; i<usr.bookshelf.length; i++) {
-            if (usr.bookshelf[i].title == req.params.title) {
+            if (usr.bookshelf[i].ind == req.params.ind) {
               target_path = usr.bookshelf[i].path;
               usr.bookshelf.splice(i,1);
               break;
@@ -529,15 +573,14 @@ exports.deleteBook = function(req, res) {
           }
 
           //delete book from disk
-          console.log(target_path) ;
           fs.unlink(target_path, function(err) {
             if (err) {
               console.log("Delete book error (1): " + err);
             }
             else {
-              collection.update({}, {$pull:{'bookshelf':{'title':req.params.title}}}, function(err, r){
+              collection.update({}, {$pull:{'bookshelf':{'ind':req.params.ind}}}, function(err){
                 if (err) {
-                  console.log("Delete photo error (2): " + err);
+                  console.log("Delete book error (2): " + err);
                 } else {
                   res.send(usr);
                 }
@@ -546,6 +589,64 @@ exports.deleteBook = function(req, res) {
           });
         }
       })
+    }
+  });
+};
+
+exports.resetReaderCurrentBook = function(req, res) {
+  console.log(req.params);
+
+  photodb.collection('users', function(err, collection) {
+    //var usr;
+
+    if (err) {
+      console.log('resetReaderCurrentBook: can not open \'users\' collection');
+      res.send(500);
+    } else {
+
+      // update user's currentBook fields
+
+      collection.update(
+        {
+          _id: new ObjectID(req.params.userID),
+          'bookshelf.ind': req.params.bookInd,
+          'bookshelf.currentChapter': req.params.oldPage
+        },
+        {
+          $set:
+          {
+            'bookshelf.$.currentChapter': req.params.newPage,
+            'currentBook': '0'
+          }
+        },
+        {w:1},
+        function(err, result) {
+          console.log(result);
+          if (err) {
+            console.log("resetReaderCurrentBook error (2): " + err);
+            res.send(500, "resetReaderCurrentBook error (2): " + err);
+          } else {
+            console.log("resetReaderCurrentBook Ok");
+            res.send(200, "resetReaderCurrentBook Ok");
+          }
+        });
+       /*
+      collection.findOne(
+        {
+          _id: new ObjectID(req.params.userID),
+          'bookshelf.ind': req.params.bookInd,
+          'bookshelf.currentChapter': req.params.oldPage
+        },
+        function(err, object) {
+          console.log(object);
+          if (err) {
+            console.log("resetReaderCurrentBook error (2): " + err);
+            res.send(500, "resetReaderCurrentBook error (2): " + err);
+          } else {
+            console.log("resetReaderCurrentBook Ok");
+            res.send(200, "resetReaderCurrentBook Ok");
+          }
+        });*/
     }
   });
 };

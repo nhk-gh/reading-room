@@ -3,10 +3,10 @@
 angular.module('readingRoomApp')
   .factory('BookshelfSrvc', function BookshelfSrvc($q, $http, $log) {
     return {
-      deleteBook: function(book) {
+      deleteBook: function(ind) {
         var deferred = $q.defer();
 
-        $http({ method:'DELETE', url:'/book/' + book.title, cache: false })
+        $http({ method:'DELETE', url:'/book/' + ind, cache: false })
           .success(function(data){
             deferred.resolve(data);
           })
@@ -17,6 +17,5 @@ angular.module('readingRoomApp')
 
         return deferred.promise;
       }
-
     };
   });

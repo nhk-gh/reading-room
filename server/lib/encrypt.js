@@ -25,3 +25,7 @@ exports.decrypt = function(data){
     //console.log(decrypted);
     return decrypted;
 };
+
+exports.getHash = function(data){
+  return crypto.createHash("md5").update(data).digest("hex");
+};

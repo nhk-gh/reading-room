@@ -8,8 +8,8 @@
 <div class='row'>
    <div class='col-md-12 col-xs-12'>
         <div fade-menu class="book-ad col-md-2 col-xs-2" ng-repeat="book in reader.bookshelf" >
-            <button class="book-menu button btn-default close" ng-click="deleteBook(book)">&times;</button>
-            <a href="#/book/{{ book.title }}" title="Click to open '{{ book.title }}'">
+            <button class="book-menu button btn-default close" ng-click="deleteBook(book.ind)">&times;</button>
+            <a href="#/book/{{ book.ind }}/{{ book.currentChapter }}" title="Click to open '{{ book.title }}'">
                 <img ng-src="{{ book.icon }}"/>
             </a>
             <div class="book-title"> {{ book.title }} </div>

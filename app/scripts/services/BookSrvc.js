@@ -3,7 +3,7 @@
 angular.module('readingRoomApp')
   .factory('BookSrvc', function BookSrvc($http, $q, $log) {
     return {
-      getBook: function(title){
+      getBook: function(title) {
         var deferred = $q.defer();
 
         $http({method:'GET', url:'/book/' + title})
@@ -12,6 +12,22 @@ angular.module('readingRoomApp')
           })
           .error(function(data, status){
             $log.warn('Log in error: ' + status);
+            deferred.reject(status);
+          });
+
+        return deferred.promise;
+      },
+
+      resetCurrentBook: function(userID, bookInd, oldPage, newPage) {
+        //resets current book and set current page
+        var deferred = $q.defer();
+        $log.warn('resetCurrentBook ');
+        $http({ method:'PUT', url:'/reader/'+userID+'/'+bookInd+'/'+oldPage+'/'+newPage, cache: false })
+          .success(function(data) {
+            deferred.resolve(data);
+          })
+          .error(function(data, status) {
+            $log.warn('resetCurrentBook book error: ' + status);
             deferred.reject(status);
           });
 

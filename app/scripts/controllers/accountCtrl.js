@@ -6,11 +6,22 @@ readingRoomApp.controller('AccountController',
     $scope.$on('logged-in', function(){
       $scope.user = userSrvc.user;
 
-      $location.path("/bookshelf")
+      if (parseInt($scope.user.currentBook,16)  > 0)  {
+        var page;
+        for (var i=0; i < $scope.user.bookshelf.length; i++) {
+          if ($scope.user.bookshelf[i].ind === $scope.user.currentBook) {
+            page = $scope.user.bookshelf[i].currentChapter > 0 ? $scope.user.bookshelf[i].currentChapter : 1;
+            break;
+          }
+        }
+        $location.path("/book/" + $scope.user.currentBook + "/" + page);
+
+      } else {
+        $location.path("/bookshelf");
+      }
 
       if ($scope.user.remember === true) {
-        $.cookie('rem', JSON.stringify({e: $scope.user.email, p: $scope.user.password}, {expires: 7, path: '/'}));
-
+        $.cookie('rem', JSON.stringify({e: $scope.user.email, p: $scope.user.password}, {expires: 31, path: '/'}));
       }
       else {
         $.removeCookie('rem');
@@ -195,6 +206,7 @@ readingRoomApp.controller('AccountController',
       modalInstance.result.then(function (p) {
         userSrvc.user = p;
         $scope.user = userSrvc.user;
+        $rootScope.$broadcast('logged-in');
       }, function () {
         $log.info('Modal dismissed at: ' + new Date());
         userSrvc.clearUser();

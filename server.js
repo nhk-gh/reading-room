@@ -67,13 +67,14 @@ app.post('/passwordreminder', routes.passwordReminder);
 
 //app.post('/file-upload', routes.fileUpload);
 
-app.post('/readers', routes.addReader);
-app.put('/readers:id', routes.editReader);
-app.delete('/readers:id', routes.deleteReader);
+app.post('/reader', routes.addReader);
+app.put('/reader/:id', routes.editReader);
+app.put('/reader/:userID/:bookInd/:oldPage/:newPage', routes.resetReaderCurrentBook);
+app.delete('/reader/:id', routes.deleteReader);
 
 app.post('/book', routes.addBook);
-app.get('/book/:title', routes.getBook);
-app.delete('/book/:title', routes.deleteBook);
+app.get('/book/:ind', routes.getBook);
+app.delete('/book/:ind', routes.deleteBook);
 
 routes.initDB();
 

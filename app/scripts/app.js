@@ -22,7 +22,7 @@ readingRoomApp = angular.module('readingRoomApp', [
         controller: 'BookshelfCtrl'
       })
 
-      .when('/book/:title', {
+      .when('/book/:ind/:chapter', {
         templateUrl:'views/book.html',
         controller: 'BookCtrl'
       })

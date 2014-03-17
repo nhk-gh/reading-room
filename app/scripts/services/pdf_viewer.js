@@ -135,7 +135,7 @@ angular.module('readingRoomApp')
         iAttr.$observe('src', function(v) {
           console.log('src attribute changed, new value is', v);
           if (v !== undefined && v !== null && v !== '') {
-            scope.pageNum = 1;
+            scope.pageNum = parseInt(iAttr.page);
             scope.loadPDF(scope.src);
           }
         });

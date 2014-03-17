@@ -5,10 +5,10 @@ readingRoomApp.controller('BookshelfCtrl', function ($scope, $log, userSrvc,Book
   $scope.reader = userSrvc.getUser();
   $scope.errorMsg = null; // upload file error message
 
+
   $scope.deleteBook = function(book){
     BookshelfSrvc.deleteBook(book)
       .then(function(data){
-        $log.warn(data);
         userSrvc.user = data;
         $scope.reader = userSrvc.getUser();
       }
@@ -16,6 +16,7 @@ readingRoomApp.controller('BookshelfCtrl', function ($scope, $log, userSrvc,Book
 
       });
   };
+
 
   /////////////////////////////////////
   //

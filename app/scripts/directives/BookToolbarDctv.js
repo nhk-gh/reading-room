@@ -7,7 +7,7 @@ angular.module('readingRoomApp')
       restrict: 'E',
       replace: true,
       link: function postLink(scope, element, attrs) {
-        $log.info(element)
+        //$log.info(element)
       }
     };
   });

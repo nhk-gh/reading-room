@@ -4,7 +4,7 @@ angular.module('readingRoomApp').controller('MainCtrl',
   function ($scope, $rootScope, $log, accountService, userSrvc) {
 
     $scope.readLoginCookie = function(){
-      var cook =  $.cookie('rem');
+      var cook =  $.cookie('rem'); // last user e-mail and password
 
       if ( (cook !== undefined) && (cook !== {}) ) {
         var lastUser = JSON.parse(cook);
