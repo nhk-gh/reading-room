@@ -1,22 +1,40 @@
 'use strict';
 
-readingRoomApp.controller('BookshelfCtrl', function ($scope, $log, userSrvc,BookshelfSrvc) {
+angular.module('readingRoomApp').controller('BookshelfCtrl', function ($scope, userSrvc, BookSrvc, BookshelfSrvc) {
 
   $scope.reader = userSrvc.getUser();
   $scope.errorMsg = null; // upload file error message
 
+  $scope.$on('ERROR-MSG', function(evt, msg) {
+    $scope.$apply(function(){
+      $scope.errorMsg = msg;
+    });
+
+  });
 
   $scope.deleteBook = function(book){
     BookshelfSrvc.deleteBook(book)
-      .then(function(data){
+      .then(function(data) {
         userSrvc.user = data;
         $scope.reader = userSrvc.getUser();
-      }
-      ,function(err){
+      },
+      function() {
 
-      });
+    });
   };
 
+  BookSrvc.setCurrentBook(
+      userSrvc.getUser()._id, // current user id
+      null,                   // current book id
+      null,                   // current page before (user begin/continue reading the book)
+      null,                   // current page after (user stop/finish reading the book)
+      true)                   // true - reset currenBook field (0), flase set it equal to bookInd value
+    .then(function() {
+
+  },
+  function(){
+
+  });
 
   /////////////////////////////////////
   //

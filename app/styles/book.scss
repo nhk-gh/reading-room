@@ -24,3 +24,13 @@
 .tooltip.in {
   opacity: .9
 }
+
+.goto-page {
+  position: relative;
+  width: 40px;
+  height: 20px;
+  top:-2px;
+  border: 1px solid #acacac;
+  text-align: center;
+  border-radius: 9px;
+}

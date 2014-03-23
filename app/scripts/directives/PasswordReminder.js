@@ -1,26 +1,26 @@
-"use strict";
+'use strict';
 
-readingRoomApp.directive("passwordReminder",
+angular.module('readingRoomApp').directive('passwordReminder',
   function($log, $timeout){
     return {
-      restrict: "A",
+      restrict: 'A',
 
       link: function(scope, element){
         //initial state
         $timeout(function(){
-          $("#radio1").prop('checked', true);
-          $("label#lbl-fullname").css('display', 'none');
-          scope.$parent.lookfor = "username";
+          element.find('#radio1').prop('checked', true);
+          element.find('label#lbl-fullname').css('display', 'none');
+          scope.$parent.lookfor = 'username';
         }, 200);
 
-        element.find("#radio1").on("click", function(){
-          $("label#lbl-username").css('display', 'block');
-          $("label#lbl-fullname").css('display', 'none');
+        element.find('#radio1').on('click', function(){
+          element.find('label#lbl-username').css('display', 'block');
+          element.find('label#lbl-fullname').css('display', 'none');
         });
 
-        element.find("#radio2").on("click", function(){
-          $("label#lbl-username").css('display', 'none');
-          $("label#lbl-fullname").css('display', 'block');
+        element.find('#radio2').on('click', function(){
+          element.find('label#lbl-username').css('display', 'none');
+          element.find('label#lbl-fullname').css('display', 'block');
         });
       }
     };

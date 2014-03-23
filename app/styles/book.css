@@ -28,3 +28,14 @@
 .tooltip.in {
   opacity: 0.9;
 }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/nhk\/WebstormProjects\/ReadingRoom\/app\/styles\/book\.scss}line{font-family:\0000328}}
+.goto-page {
+  position: relative;
+  width: 40px;
+  height: 20px;
+  top: -2px;
+  border: 1px solid #acacac;
+  text-align: center;
+  border-radius: 9px;
+}

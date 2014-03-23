@@ -47,5 +47,5 @@ angular.module('readingRoomApp')
           'Wallis and Futuna', 'Western Sahara', 'Yemen', 'Zambia', 'Zimbabwe'
         ]
       }
-    }
+    };
   });

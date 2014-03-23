@@ -15,8 +15,8 @@
             <div class="book-title"> {{ book.title }} </div>
         </div>
 
-        <div class="book-ad col-md-2 col-xs-2" file-dropzone="[text/plain, application/pdf, image/png, image/jpeg, image/gif]"
-             data-max-file-size="30" file="image" file-name="imageFileName" book-upload>
+        <div class="book-ad col-md-2 col-xs-2" file-dropzone="[text/plain, application/pdf]"
+             data-max-file-size="30" file="book" file-name="bookFileName" book-upload>
             <a title="Drop file here">
                 <img ng-src="../images/drop-here.png"/>
             </a>
@@ -27,8 +27,10 @@
                 </div>
             </div>
             <div class="book-title">
-                <span> Drop book here</span>
+                <span>Drop or click here</span>
             </div>
+            <input type="file" name="book" id="file-browse" accept="text/plain, application/pdf"
+                    style="display: none"/>
         </div>
         <!--div class="image-container">
             <img ng-src={{image}} />

@@ -4739,7 +4739,6 @@ var WorkerTransport = (function WorkerTransportClosure() {
     },
 
     getPage: function WorkerTransport_getPage(pageNumber, promise) {
-      console.log('ddd ',pageNumber);
       if (pageNumber <= 0 || pageNumber > this.numPages ||
           (pageNumber|0) !== pageNumber) {
         var pagePromise = new PDFJS.LegacyPromise();

@@ -18,11 +18,11 @@ angular.module('readingRoomApp')
         return deferred.promise;
       },
 
-      resetCurrentBook: function(userID, bookInd, oldPage, newPage) {
-        //resets current book and set current page
+      setCurrentBook: function(userID, bookInd, oldPage, newPage, reset) {
+        // resets current book and set current page
         var deferred = $q.defer();
-        $log.warn('resetCurrentBook ');
-        $http({ method:'PUT', url:'/reader/'+userID+'/'+bookInd+'/'+oldPage+'/'+newPage, cache: false })
+
+        $http({ method:'PUT', url:'/reader/'+userID+'/'+bookInd+'/'+oldPage+'/'+newPage, params:{reset:reset}, cache: false })
           .success(function(data) {
             deferred.resolve(data);
           })

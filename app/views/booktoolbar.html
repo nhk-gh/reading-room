@@ -12,7 +12,11 @@
               data-toggle="tooltip" data-placement="top" title="Zoom out"></span>
     </div>
     <div class='col-md-2 col-xs-2'>
-        <span style="float:none; margin-left: auto; margin-right: auto; display: table">{{currentPage}} / {{totalPages}}</span>
+
+        <span style="float:none; margin-left: auto; margin-right: auto; display: table">
+            <input type="text" class="goto-page" ng-model="currentPage" int-only/>
+            / {{totalPages}}
+        </span>
     </div>
     <div class='col-md-1 col-xs-1'>
         <span class="glyphicon glyphicon-zoom-in pull-left btn-link blue-tooltip" ng-click="zoomIn()"

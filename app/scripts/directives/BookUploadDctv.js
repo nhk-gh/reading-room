@@ -4,7 +4,7 @@ angular.module('readingRoomApp')
   .directive('bookUpload', function ($log, $modal, userSrvc) {
     return {
       restrict: 'A',
-      link: function(scope, el) {
+      link: function(scope) {
         //////////
         //
         //  add book dialog functions
@@ -61,11 +61,11 @@ angular.module('readingRoomApp')
           fd.append('publisher', data.publisher);
 
           var xhr = new XMLHttpRequest();
-          xhr.upload.addEventListener("progress", uploadProgress, false);
-          xhr.addEventListener("load", uploadComplete, false);
-          xhr.addEventListener("error", uploadFailed, false);
-          xhr.addEventListener("abort", uploadCanceled, false);
-          xhr.open("POST", "/book");
+          xhr.upload.addEventListener('progress', uploadProgress, false);
+          xhr.addEventListener('load', uploadComplete, false);
+          xhr.addEventListener('error', uploadFailed, false);
+          xhr.addEventListener('abort', uploadCanceled, false);
+          xhr.open('POST', '/book');
           scope.progressVisible = true;
           xhr.send(fd);
         };
@@ -82,7 +82,7 @@ angular.module('readingRoomApp')
 
         function uploadComplete(evt) {
           /* This event is raised when the server send back a response */
-           scope.$apply(function(){
+          scope.$apply(function(){
             if (evt.target.readyState === 4) {
               scope.progressVisible = false;
 
@@ -97,18 +97,18 @@ angular.module('readingRoomApp')
           });
         }
 
-        function uploadFailed(evt) {
+        function uploadFailed() {
           scope.$apply(function(){
             scope.progressVisible = false;
-            scope.info = "There was an error attempting to upload the file.";
+            scope.info = 'There was an error attempting to upload the file.';
           });
         }
 
-        function uploadCanceled(evt) {
+        function uploadCanceled() {
           scope.$apply(function(){
             scope.progressVisible = false;
-            scope.info = "The upload has been canceled by the user or the browser dropped the connection.";
-          })
+            scope.info = 'The upload has been canceled by the user or the browser dropped the connection.';
+          });
         }
 
         /*
@@ -186,7 +186,7 @@ angular.module('readingRoomApp')
     };
   });
 
-readingRoomApp.directive('addBookDlg', function () {
+angular.module('readingRoomApp').directive('addBookDlg', function () {
   return {
     templateUrl: 'views/addbook.html',
     restrict: 'E'

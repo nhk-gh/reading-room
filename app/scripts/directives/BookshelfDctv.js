@@ -1,10 +1,10 @@
 'use strict';
 
 angular.module('readingRoomApp')
-  .directive('bookShelf', function ($log, $modal, userSrvc) {
+  .directive('bookShelf', function ($log, $modal) {
     return {
       restrict: 'A',
-      link: function(scope, el) {
+      link: function(scope) {
         //scope.files=[];
         //var action = "";
 
@@ -99,7 +99,7 @@ readingRoomApp.directive('addBookIcon', function ($log) {
   };
 });
 */
-readingRoomApp.directive('addBookDlg', function () {
+angular.module('readingRoomApp').directive('addBookDlg', function () {
   return {
     templateUrl: 'views/addbook.html',
     restrict: 'E'

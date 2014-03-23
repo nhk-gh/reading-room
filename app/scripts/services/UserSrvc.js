@@ -1,19 +1,20 @@
 'use strict';
 
-readingRoomApp.factory('userSrvc', function userSrvc() {
+
+angular.module('readingRoomApp').factory('userSrvc', function userSrvc() {
   return {
     user:{
-      password: "",
-      userName: "",
+      password: '',
+      userName: '',
       logged: false,
-      firstName: "",
-      lastName: "",
-      fullName: "",
-      country: "",
-      email: "",
+      firstName: '',
+      lastName: '',
+      fullName: '',
+      country: '',
+      email: '',
       remember: false,
 
-      currentBook: 1,
+      currentBook: '0',
       bookshelf:[]
     },
 
@@ -23,24 +24,24 @@ readingRoomApp.factory('userSrvc', function userSrvc() {
 
     clearUser: function(){
       this.user = {
-        password: "",
-        userName: "",
+        password: '',
+        userName: '',
         logged: false,
-        firstName: "",
-        lastName: "",
-        fullName: "",
-        country: "",
-        email: "",
+        firstName: '',
+        lastName: '',
+        fullName: '',
+        country: '',
+        email: '',
         remember: false,
         currentBook: 1,
         bookshelf:[]
-      }
+      };
     },
 
-    addBook: function(file){
+    addBook: function(){
       var book = {};
 
       this.user.bookshelf.push(book);
     }
-  }
+  };
 });

@@ -1,12 +1,12 @@
 'use strict';
 
-readingRoomApp.controller('AccountController',
+angular.module('readingRoomApp').controller('AccountController',
   function accountController($scope, $rootScope, $modal, $location, $log, accountService, userSrvc){
 
     $scope.$on('logged-in', function(){
       $scope.user = userSrvc.user;
 
-      if (parseInt($scope.user.currentBook,16)  > 0)  {
+      if (parseInt($scope.user.currentBook,16) !== 0)  {
         var page;
         for (var i=0; i < $scope.user.bookshelf.length; i++) {
           if ($scope.user.bookshelf[i].ind === $scope.user.currentBook) {
@@ -14,10 +14,10 @@ readingRoomApp.controller('AccountController',
             break;
           }
         }
-        $location.path("/book/" + $scope.user.currentBook + "/" + page);
+        $location.path('/book/' + $scope.user.currentBook + '/' + page);
 
       } else {
-        $location.path("/bookshelf");
+        $location.path('/bookshelf');
       }
 
       if ($scope.user.remember === true) {
@@ -49,28 +49,27 @@ readingRoomApp.controller('AccountController',
         userSrvc.clearUser();
         $scope.user = userSrvc.user;
         $.removeCookie('rem');
-        $location.path("/");
+        $location.path('/');
       }, function () {
         $log.info('Modal dismissed at: ' + new Date());
       });
     };
 
     var ModalLogoutCtrl = function ($scope, $modalInstance) {
-      $scope.ok_out = function () {
+      $scope.okOut = function () {
         accountService.logout(userSrvc.user.email)
           .then(function(data) {
             if (data.error === 200) {
               $modalInstance.close();
             } else {
-              alert(data.message);
+              $log.warn(data.message);
             }
           }, function(status){
-            $log.info(status);
-            alert(status);
+            $log.warn(status);
           });
       };
 
-      $scope.cancel_out = function () {
+      $scope.cancelOut = function () {
         $modalInstance.dismiss('cancel');
       };
     };
@@ -104,18 +103,18 @@ readingRoomApp.controller('AccountController',
 
     var ModalLoginCtrl = function ($scope, $modalInstance) {
       $scope.ok = function (res1, res2, res3) {
-        if($("#login-form").validateAccount() ){
+        if($('#login-form').validateAccount() ){
           accountService.login(res1, res2)
             .then(function(data) {
               if (data.error === 200) {
                 data.user.remember = res3;
                 $modalInstance.close(data.user);
               } else {
-                alert(data.message);
+                $log.warn(data.message);
               }
             }, function(status){
               $log.info(status);
-              alert(status);
+              $log.warn(status);
             });
         }
       };
@@ -125,8 +124,8 @@ readingRoomApp.controller('AccountController',
       };
 
       $scope.passwordReminder = function(){
-        $rootScope.$broadcast("reminder");
-      }
+        $rootScope.$broadcast('reminder');
+      };
     };
 
     /////////////////////////////////////
@@ -138,7 +137,7 @@ readingRoomApp.controller('AccountController',
       $scope.openReminderDlg();
     });
     $scope.openReminderDlg = function () {
-//      $scope.lookfor1 = "lll";
+//      $scope.lookfor1 = 'lll';
 
       var modalInstance = $modal.open({
         templateUrl: 'myReminder',
@@ -164,24 +163,24 @@ readingRoomApp.controller('AccountController',
       $scope.countries = countriesSrvc.countries;
       $scope.user = userSrvc.user;
 
-      $scope.ok_rem = function (email, look, name) {
-        if($("#reminder-form").validateAccount() ){
+      $scope.okRem = function (email, look, name) {
+        if($('#reminder-form').validateAccount() ){
           accountService.passwordReminder({email:email, lookfor: look, name: name})
             .then(function(data){
               if (data.error === 200) {
-                alert(data.message);
+                $log.warn(data.message);
                 $modalInstance.close(data.user);
               } else {
-                alert(data.message);
+                $log.warn(data.message);
               }
             }, function(status){
               $log.warn(status);
-              alert(status);
+              $log.warn(status);
             });
         }
       };
 
-      $scope.cancel_rem = function () {
+      $scope.cancelRem = function () {
         $modalInstance.dismiss('cancel');
       };
     };
@@ -217,23 +216,22 @@ readingRoomApp.controller('AccountController',
       $scope.countries = countriesSrvc.countries;
       $scope.user = userSrvc.user;
 
-      $scope.ok_r = function () {
-        if($("#register-form").validateAccount() ){
+      $scope.okReg = function () {
+        if($('#register-form').validateAccount() ){
           accountService.register($scope.user)
             .then(function(data){
               if (data.error === 200) {
                 $modalInstance.close(data.user);
               } else {
-                alert(data.message);
+                $log.warn(data.message);
               }
             }, function(status){
               $log.warn(status);
-              alert(status);
             });
         }
       };
 
-      $scope.cancel_r = function () {
+      $scope.cancelReg = function () {
         $modalInstance.dismiss('cancel');
       };
     };

@@ -1,14 +1,14 @@
-"use strict";
+'use strict';
 
 angular.module('readingRoomApp')
-  .directive('pdfviewer', [ '$parse', function($parse) {
+  .directive('pdfviewer', [ '$parse', function() {
     var canvas = null;
-    var instance_id = null;
+    var instanceId = null;
     var viewer = null;
 
 
     return {
-      restrict: "EA",
+      restrict: 'EA',
       template: '<canvas></canvas>',
       scope: {
         onPageLoad: '&',
@@ -24,7 +24,7 @@ angular.module('readingRoomApp')
 
         $scope.documentProgress = function(progressData) {
           if ($scope.loadProgress) {
-            $scope.loadProgress({state: "loading", loaded: progressData.loaded, total: progressData.total});
+            $scope.loadProgress({state: 'loading', loaded: progressData.loaded, total: progressData.total});
           }
         };
 
@@ -32,21 +32,21 @@ angular.module('readingRoomApp')
           console.log('loadPDF ', path);
           PDFJS.getDocument(path, null, null, $scope.documentProgress).then(function(_pdfDoc) {
             $scope.pdfDoc = _pdfDoc;
-            $scope.renderPage($scope.pageNum, function(success) {
+            $scope.renderPage($scope.pageNum, function() {
               if ($scope.loadProgress) {
-                $scope.loadProgress({state: "finished", loaded: 0, total: 0});
+                $scope.loadProgress({state: 'finished', loaded: 0, total: 0});
               }
             });
-          }, function(message, exception) {
-            console.log("PDF load error: " + message);
+          }, function(message) {
+            console.log('PDF load error: ' + message);
             if ($scope.loadProgress) {
-              $scope.loadProgress({state: "error", loaded: 0, total: 0});
+              $scope.loadProgress({state: 'error', loaded: 0, total: 0});
             }
           });
         };
 
         $scope.renderPage = function(num, callback) {
-          console.log('renderPage ', num);
+          //console.log('renderPage ', num);
           $scope.pdfDoc.getPage(num).then(function(page) {
             var viewport = page.getViewport($scope.scale);
             var ctx = canvas.getContext('2d');
@@ -76,7 +76,7 @@ angular.module('readingRoomApp')
         };
 
         $scope.$on('pdfviewer.nextPage', function(evt, id) {
-          if (id !== instance_id) {
+          if (id !== instanceId) {
             return;
           }
 
@@ -87,7 +87,7 @@ angular.module('readingRoomApp')
         });
 
         $scope.$on('pdfviewer.prevPage', function(evt, id) {
-          if (id !== instance_id) {
+          if (id !== instanceId) {
             return;
           }
 
@@ -98,7 +98,7 @@ angular.module('readingRoomApp')
         });
 
         $scope.$on('pdfviewer.gotoPage', function(evt, id, page) {
-          if (id !== instance_id) {
+          if (id !== instanceId) {
             return;
           }
 
@@ -128,7 +128,7 @@ angular.module('readingRoomApp')
 
       link: function(scope, iElement, iAttr) {
         canvas = iElement.find('canvas')[0];
-        instance_id = iAttr.id;
+        instanceId = iAttr.id;
 
         viewer = angular.element('#viewer');
 
@@ -144,7 +144,7 @@ angular.module('readingRoomApp')
   }]);
 
 angular.module('readingRoomApp')
-  .service("PDFViewerService", [ '$rootScope', function($rootScope) {
+  .service('PDFViewerService', [ '$rootScope', function($rootScope) {
 
     var svc = { };
     svc.nextPage = function() {
@@ -156,19 +156,19 @@ angular.module('readingRoomApp')
     };
 
     svc.Instance = function(id) {
-      var instance_id = id;
+      var instanceId = id;
 
       return {
         prevPage: function() {
-          $rootScope.$broadcast('pdfviewer.prevPage', instance_id);
+          $rootScope.$broadcast('pdfviewer.prevPage', instanceId);
         },
 
         nextPage: function() {
-          $rootScope.$broadcast('pdfviewer.nextPage', instance_id);
+          $rootScope.$broadcast('pdfviewer.nextPage', instanceId);
         },
 
         gotoPage: function(page) {
-          $rootScope.$broadcast('pdfviewer.gotoPage', instance_id, page);
+          $rootScope.$broadcast('pdfviewer.gotoPage', instanceId, page);
         },
 
         zoomIn: function() {

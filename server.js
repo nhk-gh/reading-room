@@ -69,7 +69,7 @@ app.post('/passwordreminder', routes.passwordReminder);
 
 app.post('/reader', routes.addReader);
 app.put('/reader/:id', routes.editReader);
-app.put('/reader/:userID/:bookInd/:oldPage/:newPage', routes.resetReaderCurrentBook);
+app.put('/reader/:userID/:bookInd/:oldPage/:newPage', routes.setReaderCurrentBook);
 app.delete('/reader/:id', routes.deleteReader);
 
 app.post('/book', routes.addBook);

@@ -1,6 +1,7 @@
 /* based on 'omr.angularFileDnD'' module by Louis Sivillo*/
+'use strict';
 
-readingRoomApp.directive('fileDropzone', function() {
+angular.module('readingRoomApp').directive('fileDropzone', function() {
   return {
     restrict: 'A',
     scope: {
@@ -8,11 +9,16 @@ readingRoomApp.directive('fileDropzone', function() {
       fileName: '='
     },
     link: function(scope, element, attrs) {
+      // DnD
       var checkSize, getDataTransfer, isTypeValid, processDragOverOrEnter, validMimeTypes;
+
+      validMimeTypes = attrs.fileDropzone;
+
       getDataTransfer = function(event) {
-        var dataTransfer;
-        return dataTransfer = event.dataTransfer || event.originalEvent.dataTransfer;
+        var dataTransfer = event.dataTransfer || event.originalEvent.dataTransfer;
+        return dataTransfer;
       };
+
       processDragOverOrEnter = function(event) {
         if (event) {
           if (event.preventDefault) {
@@ -25,40 +31,68 @@ readingRoomApp.directive('fileDropzone', function() {
         getDataTransfer(event).effectAllowed = 'copy';
         return false;
       };
-      validMimeTypes = attrs.fileDropzone;
+
       checkSize = function(size) {
         var _ref;
         if (((_ref = attrs.maxFileSize) === (void 0) || _ref === '') || (size / 1024) / 1024 < attrs.maxFileSize) {
           return true;
         } else {
-          alert("File must be smaller than " + attrs.maxFileSize + " MB");
+          //$log.error('File must be smaller than ' + attrs.maxFileSize + ' MB');
+          scope.$emit('errorMsg', 'File must be smaller than ' + attrs.maxFileSize + ' MB');
           return false;
         }
       };
+
       isTypeValid = function(type) {
         if ((validMimeTypes === (void 0) || validMimeTypes === '') || validMimeTypes.indexOf(type) > -1) {
           return true;
         } else {
-          alert("Invalid file type.  File must be one of following types " + validMimeTypes);
+          //$log.error('Invalid file type.  File must be one of following types ' + validMimeTypes);
+          scope.$emit('ERROR-MSG', 'Invalid file type.  File must be one of following types ' + validMimeTypes);
           return false;
         }
       };
+
       element.bind('dragover', processDragOverOrEnter);
+
       element.bind('dragenter', processDragOverOrEnter);
-      return element.bind('drop', function(event) {
-        var file, name, reader, size, type, p;
-        if (event != null) {
+
+      element.bind('drop', function(event) {
+        if (event !== null) {
           event.preventDefault();
         }
 
+        prepareFile(getDataTransfer(event).files[0]);
+
+        return false;
+      });
+
+      // Open dialog
+      var fb = element.find('#file-browse');
+
+      element.on('click', function(evt) {
+        console.log(evt);
+        fb[0].click();
+      });
+
+      fb.on('change', function(evt){
+        console.log(evt);
+        prepareFile(evt.target.files[0]);
+      });
+
+      // read file and prepare data for upload
+      var prepareFile = function(fl){
+        var file, name, reader, size, type;
+
         reader = new FileReader();
         reader.onload = function(evt) {
-
           if (checkSize(size) && isTypeValid(type)) {
             scope.$apply(function() {
               scope.file = evt.target.result;
               if (angular.isString(scope.fileName)) {
-                return scope.fileName = name;
+                //return scope.fileName = name;
+                scope.fileName = name;
+                return scope.fileName;
               }
             });
 
@@ -72,13 +106,13 @@ readingRoomApp.directive('fileDropzone', function() {
             });
           }
         };
-        file = getDataTransfer(event).files[0];
+        file = fl;
         name = file.name;
         type = file.type;
         size = file.size;
+
         reader.readAsDataURL(file);
-        return false;
-      });
+      };
     }
   };
 });

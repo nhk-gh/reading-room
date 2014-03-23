@@ -578,7 +578,8 @@ exports.deleteBook = function(req, res) {
               console.log("Delete book error (1): " + err);
             }
             else {
-              collection.update({}, {$pull:{'bookshelf':{'ind':req.params.ind}}}, function(err){
+              collection.update({}, {$pull:{'bookshelf':{'ind':req.params.ind}},
+                                     $set: {'currentBook': '0'} }, function(err){
                 if (err) {
                   console.log("Delete book error (2): " + err);
                 } else {
@@ -593,60 +594,56 @@ exports.deleteBook = function(req, res) {
   });
 };
 
-exports.resetReaderCurrentBook = function(req, res) {
-  console.log(req.params);
+exports.setReaderCurrentBook = function(req, res) {
+ // console.log(req.params);
+  //console.log(req.query);
 
   photodb.collection('users', function(err, collection) {
-    //var usr;
-
     if (err) {
       console.log('resetReaderCurrentBook: can not open \'users\' collection');
       res.send(500);
     } else {
 
       // update user's currentBook fields
-
-      collection.update(
-        {
-          _id: new ObjectID(req.params.userID),
-          'bookshelf.ind': req.params.bookInd,
-          'bookshelf.currentChapter': req.params.oldPage
-        },
-        {
-          $set:
+      if (req.query.reset == 'true' ) {
+        // reset current book to 0 when leaving book page (to bookshelf (today - 18.03.2014) or any page in future
+        collection.update({ _id: new ObjectID(req.session.user._id) }, {$set: {'currentBook': '0' }},  {w:1},
+          function(err, result) {
+            if (err) {
+              console.log("rsetReaderCurrentBook error (2): " + err);
+              res.send(500, "rsetReaderCurrentBook error (2): " + err);
+            } else {
+              console.log("resetReaderCurrentBook Ok");
+              res.send(200, "resetReaderCurrentBook Ok");
+            }
+          });
+      } else {
+        // remember book and page on page load
+        collection.update(
           {
-            'bookshelf.$.currentChapter': req.params.newPage,
-            'currentBook': '0'
-          }
-        },
-        {w:1},
-        function(err, result) {
-          console.log(result);
-          if (err) {
-            console.log("resetReaderCurrentBook error (2): " + err);
-            res.send(500, "resetReaderCurrentBook error (2): " + err);
-          } else {
-            console.log("resetReaderCurrentBook Ok");
-            res.send(200, "resetReaderCurrentBook Ok");
-          }
-        });
-       /*
-      collection.findOne(
-        {
-          _id: new ObjectID(req.params.userID),
-          'bookshelf.ind': req.params.bookInd,
-          'bookshelf.currentChapter': req.params.oldPage
-        },
-        function(err, object) {
-          console.log(object);
-          if (err) {
-            console.log("resetReaderCurrentBook error (2): " + err);
-            res.send(500, "resetReaderCurrentBook error (2): " + err);
-          } else {
-            console.log("resetReaderCurrentBook Ok");
-            res.send(200, "resetReaderCurrentBook Ok");
-          }
-        });*/
+            _id: new ObjectID(req.params.userID),
+            'bookshelf.ind': req.params.bookInd,
+            'bookshelf.currentChapter': req.params.oldPage
+          },
+          {
+            $set:
+            {
+              'bookshelf.$.currentChapter': req.params.newPage,
+              'currentBook': req.params.bookInd
+            }
+          },
+          {w:1},
+          function(err, result) {
+            //console.log(result);
+            if (err) {
+              console.log("setReaderCurrentBook error (2): " + err);
+              res.send(500, "setReaderCurrentBook error (2): " + err);
+            } else {
+              console.log("setReaderCurrentBook Ok");
+              res.send(200, "setReaderCurrentBook Ok");
+            }
+          });
+      }
     }
   });
 };

@@ -1,16 +1,16 @@
 'use strict';
 
-readingRoomApp.directive('klbAfterError',function(){
-    return {
-        restrict: 'A',
+angular.module('readingRoomApp').directive('klbAfterError',function(){
+  return {
+    restrict: 'A',
 
-        link: function(scope, element){
-            var inputs = element.find('input');
+    link: function(scope, element) {
+      var inputs = element.find('input');
 
-            inputs.on('keypress', function(){
-                $(this).css('border-color','');
-             });
-       }
+      inputs.on('keypress', function() {
+        $(this).css('border-color','');
+      });
     }
+  };
 
 });

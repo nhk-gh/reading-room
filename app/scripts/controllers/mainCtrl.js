@@ -17,7 +17,7 @@ angular.module('readingRoomApp').controller('MainCtrl',
               $rootScope.$broadcast('logged-in');
 
             } else {
-              alert(data.message);
+              $log.error(data.message);
             }
 
           }, function(status){
