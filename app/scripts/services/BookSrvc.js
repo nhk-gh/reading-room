@@ -27,7 +27,7 @@ angular.module('readingRoomApp')
             deferred.resolve(data);
           })
           .error(function(data, status) {
-            $log.warn('resetCurrentBook book error: ' + status);
+            $log.warn('resetCurrentBook error: ' + status);
             deferred.reject(status);
           });
 

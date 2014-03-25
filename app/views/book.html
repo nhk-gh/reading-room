@@ -23,7 +23,7 @@
             <!--view-pdf class="page-container" src="{{ currentBook.link }}" ng-switch-when="application/pdf">
             </view-pdf-->
 
-            <div ng-switch-when="text/plain">
+            <div txtviewer on-page-load="pageLoaded(page,total)" id="txt-viewer" ng-switch-when="text/plain" >
                 Text container
             </div>
 

@@ -114,8 +114,11 @@ exports.index = function(req, res){
   //console.log(req.cookies);
   //console.log(req.cookies.rem);
   //console.log(JSON.parse(req.cookies.rem).e);
-
-  res.sendfile('/home/nhk/WebstormProjects/ReadingRoom/app/index.html');
+  if ('production' == process.env.NODE_ENV) {
+    res.sendfile('/home/nhk/WebstormProjects/ReadingRoom/dist/index.html');
+  } else {
+    res.sendfile('/home/nhk/WebstormProjects/ReadingRoom/app/index.html');
+  }
 };
 
 /*********************************************/

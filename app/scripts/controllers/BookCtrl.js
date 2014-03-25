@@ -2,30 +2,40 @@
 
 angular.module('readingRoomApp')
   .controller('BookCtrl', [ '$scope', '$rootScope', '$window', '$log', '$routeParams', 'BookSrvc', 'userSrvc', 'PDFViewerService',
-    function ($scope, $rootScope, $window, $log, $routeParams, BookSrvc, userSrvc, PDFViewerService) {
+    function ($scope, $rootScope, $window, $log, $routeParams, BookSrvc, userSrvc, PDFViewerService, TXTViewerSrvc) {
 
     //////////////////////////////////////////////////
 
-    $scope.vwer = PDFViewerService.Instance('viewer');
+   // $scope.vwer = PDFViewerService.Instance('viewer');
 
     $scope.nextPage = function() {
-      $scope.vwer.nextPage();
+      if ($scope.vwer) {
+        $scope.vwer.nextPage();
+      }
     };
 
     $scope.prevPage = function() {
-      $scope.vwer.prevPage();
+      if ($scope.vwer) {
+        $scope.vwer.prevPage();
+      }
     };
 
     $scope.gotoPage = function(pgNum) {
-      $scope.vwer.gotoPage(pgNum);
+      if ($scope.vwer) {
+        $scope.vwer.gotoPage(pgNum);
+      }
     };
 
     $scope.zoomIn = function() {
-      $scope.vwer.zoomIn();
+      if ($scope.vwer) {
+        $scope.vwer.zoomIn();
+      }
     };
 
     $scope.zoomOut = function() {
-      $scope.vwer.zoomOut();
+      if ($scope.vwer) {
+        $scope.vwer.zoomOut();
+      }
     };
 
     $scope.pageLoaded = function(curPage, totalPages) {
@@ -43,6 +53,12 @@ angular.module('readingRoomApp')
             if (userSrvc.user.bookshelf[i].ind === $scope.currentBook.ind) {
               $scope.currentBook.currentChapter = $scope.currentPage;
               userSrvc.user.bookshelf[i].currentChapter = $scope.currentPage;
+
+              if ($scope.currentBook.type === 'application/pdf') {
+                $scope.vwer = PDFViewerService.Instance('viewer');
+              } else {
+                $scope.vwer = TXTViewerSrvc.Instance('txt-viewer');
+              }
               break;
             }
           }

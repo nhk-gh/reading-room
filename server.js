@@ -40,7 +40,11 @@ var app = express();
 
 // all environments
 
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 9000);
+/*
+app.set('env','production');
+process.env.NODE_ENV = 'production';
+*/
 
 app.use(express.logger('dev'));
 app.use(express.bodyParser());
@@ -51,11 +55,9 @@ app.use(app.router);
 
 if ('production' == app.get('env')) {
     app.use(express.static(path.join(__dirname, 'dist')));
-    console.log("env");
 } else {
     app.use(express.static(path.join(__dirname, 'app')));
     app.use(express.errorHandler());
-    console.log("----- " + path.join(__dirname, 'app'));
 }
 app.use(express.static('/home/ubuntu/bookcase', {maxAge: 31557600000}));
 
@@ -79,5 +81,6 @@ app.delete('/book/:ind', routes.deleteBook);
 routes.initDB();
 
 http.createServer(app).listen(app.get('port'), function(){
-    console.log('Express server listening on port ' + app.get('port'));
+    //console.log('Express server listening on port ' + app.get('port'));
+  console.log('Express server listening on port %d in %s mode', app.get('port'), app.get('env'));
 });

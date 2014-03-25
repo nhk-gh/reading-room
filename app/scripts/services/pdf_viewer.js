@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('readingRoomApp')
-  .directive('pdfviewer', [ '$parse', function() {
+  .directive('pdfviewer', function() {
     var canvas = null;
     var instanceId = null;
     var viewer = null;
@@ -141,7 +141,7 @@ angular.module('readingRoomApp')
         });
       }
     };
-  }]);
+  });
 
 angular.module('readingRoomApp')
   .service('PDFViewerService', [ '$rootScope', function($rootScope) {

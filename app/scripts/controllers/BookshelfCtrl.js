@@ -28,7 +28,7 @@ angular.module('readingRoomApp').controller('BookshelfCtrl', function ($scope, u
       null,                   // current book id
       null,                   // current page before (user begin/continue reading the book)
       null,                   // current page after (user stop/finish reading the book)
-      true)                   // true - reset currenBook field (0), flase set it equal to bookInd value
+      true)                   // true - reset currentBook field (0), false set it equal to bookInd value
     .then(function() {
 
   },
