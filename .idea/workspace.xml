@@ -26,19 +26,7 @@
       <file leaf-file-name="book.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/book.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="31" selection-start="31" selection-end="31" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="630">
-              <folding>
-                <element signature="n#style#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="bookshelf.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/bookshelf.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="855">
+            <state line="21" column="7" selection-start="1191" selection-end="1191" vertical-scroll-proportion="-13.125" vertical-offset="0" max-vertical-offset="645">
               <folding />
             </state>
           </provider>
@@ -47,11 +35,10 @@
       <file leaf-file-name="BookCtrl.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/scripts/controllers/BookCtrl.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="27" column="45" selection-start="745" selection-end="745" vertical-scroll-proportion="0.0" vertical-offset="480" max-vertical-offset="1575">
+            <state line="62" column="30" selection-start="2124" selection-end="2124" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1980">
               <folding>
-                <element signature="e#2927#3911#0" expanded="false" />
-                <element signature="e#3916#4915#0" expanded="false" />
-                <element signature="e#4920#5301#0" expanded="false" />
+                <element signature="e#2970#3954#0" expanded="false" />
+                <element signature="e#4963#5344#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -60,7 +47,7 @@
       <file leaf-file-name="TextViewerSrvc.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/scripts/services/TextViewerSrvc.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="34" column="24" selection-start="804" selection-end="804" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="600">
+            <state line="12" column="0" selection-start="347" selection-end="347" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="810">
               <folding />
             </state>
           </provider>
@@ -69,25 +56,16 @@
       <file leaf-file-name="BookSrvc.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/scripts/services/BookSrvc.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="21" selection-start="510" selection-end="510" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="645">
+            <state line="23" column="16" selection-start="674" selection-end="674" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="645">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BookshelfCtrl.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/scripts/controllers/BookshelfCtrl.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1320">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TextViewerDctv.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="TextViewerDctv.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/scripts/directives/TextViewerDctv.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="67" column="32" selection-start="1886" selection-end="1886" vertical-scroll-proportion="0.0" vertical-offset="990" max-vertical-offset="1770">
+            <state line="32" column="76" selection-start="874" selection-end="874" vertical-scroll-proportion="0.50595236" vertical-offset="225" max-vertical-offset="1830">
               <folding />
             </state>
           </provider>
@@ -96,7 +74,7 @@
       <file leaf-file-name="server.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="78" column="40" selection-start="2101" selection-end="2101" vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="975">
+            <state line="69" column="9" selection-start="1733" selection-end="1733" vertical-scroll-proportion="0.0" vertical-offset="372" max-vertical-offset="975">
               <folding />
             </state>
           </provider>
@@ -105,22 +83,17 @@
       <file leaf-file-name="pdf_viewer.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/scripts/services/pdf_viewer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="181" column="18" selection-start="4507" selection-end="5099" vertical-scroll-proportion="-22.692308" vertical-offset="2125" max-vertical-offset="2865">
+            <state line="142" column="13" selection-start="4166" selection-end="4166" vertical-scroll-proportion="0.0" vertical-offset="2106" max-vertical-offset="2880">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="routes.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="routes.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server/routes/routes.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="621" column="26" selection-start="20159" selection-end="20159" vertical-scroll-proportion="0.4847973" vertical-offset="8803" max-vertical-offset="9825">
-              <folding>
-                <element signature="e#2652#3123#0" expanded="false" />
-                <element signature="e#21085#21120#0" expanded="false" />
-                <element signature="e#21162#21194#0" expanded="false" />
-                <element signature="e#21238#21271#0" expanded="false" />
-              </folding>
+            <state line="557" column="8" selection-start="18366" selection-end="18366" vertical-scroll-proportion="0.0" vertical-offset="7969" max-vertical-offset="10785">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -141,16 +114,16 @@
         <option value="$PROJECT_DIR$/app/scripts/directives/FileDndDctv.js" />
         <option value="$PROJECT_DIR$/app/scripts/controllers/BookshelfCtrl.js" />
         <option value="$PROJECT_DIR$/app/scripts/libs/pdfjs/pdf.js" />
-        <option value="$PROJECT_DIR$/app/views/book.html" />
         <option value="$PROJECT_DIR$/app/scripts/directives/txtViewer.js" />
         <option value="$PROJECT_DIR$/app/index.html" />
-        <option value="$PROJECT_DIR$/server/routes/routes.js" />
         <option value="$PROJECT_DIR$/server.js" />
-        <option value="$PROJECT_DIR$/app/scripts/services/pdf_viewer.js" />
-        <option value="$PROJECT_DIR$/app/scripts/directives/TextViewerDctv.js" />
-        <option value="$PROJECT_DIR$/app/scripts/services/TextViewerSrvc.js" />
-        <option value="$PROJECT_DIR$/app/scripts/controllers/BookCtrl.js" />
         <option value="$PROJECT_DIR$/app/scripts/services/BookSrvc.js" />
+        <option value="$PROJECT_DIR$/app/views/book.html" />
+        <option value="$PROJECT_DIR$/server/routes/routes.js" />
+        <option value="$PROJECT_DIR$/app/scripts/services/pdf_viewer.js" />
+        <option value="$PROJECT_DIR$/app/scripts/controllers/BookCtrl.js" />
+        <option value="$PROJECT_DIR$/app/scripts/services/TextViewerSrvc.js" />
+        <option value="$PROJECT_DIR$/app/scripts/directives/TextViewerDctv.js" />
       </list>
     </option>
   </component>
@@ -158,10 +131,10 @@
     <data>$PROJECT_DIR$/node_modules/karma</data>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="65" />
-    <option name="y" value="24" />
+    <option name="x" value="67" />
+    <option name="y" value="52" />
     <option name="width" value="1182" />
-    <option name="height" value="1023" />
+    <option name="height" value="997" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -258,6 +231,38 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ReadingRoom" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ReadingRoom" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="node_modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ReadingRoom" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ReadingRoom" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="node_modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="buffered-reader" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -435,6 +440,24 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ReadingRoom" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ReadingRoom" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bower_components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
@@ -444,7 +467,7 @@
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="recentsLimit" value="5" />
-    <property name="options.lastSelected" value="editor.preferences.smartKeys" />
+    <property name="options.lastSelected" value="editor.preferences.appearance" />
     <property name="restartRequiresConfirmation" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../TheKlub" />
     <property name="FullScreen" value="false" />
@@ -576,15 +599,14 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="65" y="24" width="1182" height="1023" extended-state="0" />
+    <frame x="67" y="52" width="1182" height="997" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2142039" sideWeight="0.6978355" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.36187214" sideWeight="0.6978355" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32762557" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32646048" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26753247" sideWeight="0.7857961" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2662057" sideWeight="0.63812786" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39902082" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22336769" sideWeight="0.3012987" order="7" side_tool="true" content_ui="tabs" />
@@ -593,6 +615,7 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32646048" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24925816" sideWeight="0.69503546" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -643,36 +666,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="41" selection-start="486" selection-end="486" vertical-scroll-proportion="-2.5304878" vertical-offset="1395" max-vertical-offset="2415">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/libs/pdfjs/pdf.worker.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5667" column="28" selection-start="173224" selection-end="173228" vertical-scroll-proportion="0.33263597" vertical-offset="84846" max-vertical-offset="614790">
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/libs/pdfjs/pdf.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7880" column="7" selection-start="252686" selection-end="252686" vertical-scroll-proportion="1.6214876" vertical-offset="117219" max-vertical-offset="120150">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/scripts/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="623">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/bookshelf.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="855">
@@ -687,85 +680,94 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/scripts/services/pdf_viewer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="181" column="18" selection-start="4507" selection-end="5099" vertical-scroll-proportion="-22.692308" vertical-offset="2125" max-vertical-offset="2865">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/scripts/directives/BookToolbarDctv.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="631">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/book.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="31" selection-start="31" selection-end="31" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="630">
-          <folding>
-            <element signature="n#style#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/scripts/directives/TextViewerDctv.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="67" column="32" selection-start="1886" selection-end="1886" vertical-scroll-proportion="0.0" vertical-offset="990" max-vertical-offset="1770">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/scripts/controllers/BookCtrl.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="45" selection-start="745" selection-end="745" vertical-scroll-proportion="0.0" vertical-offset="435" max-vertical-offset="1575">
-          <folding>
-            <element signature="e#2927#3911#0" expanded="false" />
-            <element signature="e#3916#4915#0" expanded="false" />
-            <element signature="e#4920#5301#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/scripts/services/TextViewerSrvc.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="24" selection-start="804" selection-end="804" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="600">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="631" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/scripts/controllers/BookshelfCtrl.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1320">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1320" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/scripts/services/BookSrvc.js">
+    <entry file="file://$PROJECT_DIR$/app/scripts/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="21" selection-start="510" selection-end="510" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="645">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="623" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server.js">
+    <entry file="file://$PROJECT_DIR$/app/bower_components/angular-file-dnd/dist/angular-file-dnd.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="78" column="40" selection-start="2101" selection-end="2101" vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="975">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1365" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/scripts/directives/FileDndDctv.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1890" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/book.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="7" selection-start="1191" selection-end="1191" vertical-scroll-proportion="-13.125" vertical-offset="0" max-vertical-offset="645">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/server/routes/routes.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="621" column="26" selection-start="20159" selection-end="20159" vertical-scroll-proportion="0.4847973" vertical-offset="8803" max-vertical-offset="9825">
+        <state line="557" column="8" selection-start="18366" selection-end="18366" vertical-scroll-proportion="0.0" vertical-offset="7969" max-vertical-offset="10785">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="78.75" vertical-offset="1890" max-vertical-offset="2430">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/scripts/services/BookSrvc.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="16" selection-start="674" selection-end="674" vertical-scroll-proportion="0.0" vertical-offset="55" max-vertical-offset="645">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/scripts/services/pdf_viewer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="142" column="13" selection-start="4166" selection-end="4166" vertical-scroll-proportion="0.0" vertical-offset="2106" max-vertical-offset="2880">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/scripts/controllers/BookCtrl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="62" column="30" selection-start="2124" selection-end="2124" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1980">
           <folding>
-            <element signature="e#2652#3123#0" expanded="false" />
-            <element signature="e#21085#21120#0" expanded="false" />
-            <element signature="e#21162#21194#0" expanded="false" />
-            <element signature="e#21238#21271#0" expanded="false" />
+            <element signature="e#2970#3954#0" expanded="false" />
+            <element signature="e#4963#5344#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/scripts/services/TextViewerSrvc.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="0" selection-start="347" selection-end="347" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="810">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="69" column="9" selection-start="1733" selection-end="1733" vertical-scroll-proportion="0.0" vertical-offset="372" max-vertical-offset="975">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/scripts/directives/TextViewerDctv.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="32" column="76" selection-start="874" selection-end="874" vertical-scroll-proportion="0.50595236" vertical-offset="225" max-vertical-offset="1830">
+          <folding />
         </state>
       </provider>
     </entry>

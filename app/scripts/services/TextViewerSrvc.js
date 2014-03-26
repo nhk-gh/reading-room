@@ -1,34 +1,48 @@
 'use strict';
 
 angular.module('readingRoomApp')
-  .factory('TextViewerSrvc', function() {
-    return {
-      getDocument: function(){},
+  .service('TextViewerSrvc', function($q, $http, $rootScope, $log, $routeParams) {
+    var svc = { };
 
-      instance: function(id) {
-        var instanceId = id;
+    svc.getDocument = function(){
+      var deferred = $q.defer();
 
-        return {
-          prevPage: function() {
-            $rootScope.$broadcast('pdfviewer.prevPage', instanceId);
-          },
+      $http({method:'GET', url:'/book/' + $routeParams.ind})
+        .success(function(data){
+          deferred.resolve(data);
+        })
+        .error(function(data, status){
+          $log.warn('Log in error: ' + status);
+          deferred.reject(status);
+        });
 
-          nextPage: function() {
-            $rootScope.$broadcast('pdfviewer.nextPage', instanceId);
-          },
+      return deferred.promise;
+    };
 
-          gotoPage: function(page) {
-            $rootScope.$broadcast('pdfviewer.gotoPage', instanceId, page);
-          },
+    svc.Instance = function(id) {
+      var instanceId = id;
 
-          zoomIn: function() {
-            $rootScope.$broadcast('pdfviewer.zoomIn');
-          },
+      return {
+        prevPage: function() {
+          $rootScope.$broadcast('txtviewer.prevPage', instanceId);
+        },
 
-          zoomOut: function() {
-            $rootScope.$broadcast('pdfviewer.zoomOut');
-          }
-        };
-      }
+        nextPage: function() {
+          $rootScope.$broadcast('txtviewer.nextPage', instanceId);
+        },
+
+        gotoPage: function(page) {
+          $rootScope.$broadcast('txtviewer.gotoPage', instanceId, page);
+        },
+
+        zoomIn: function() {
+          $rootScope.$broadcast('txtviewer.zoomIn');
+        },
+
+        zoomOut: function() {
+          $rootScope.$broadcast('txtviewer.zoomOut');
+        }
+      };
     }
+    return svc;
   });

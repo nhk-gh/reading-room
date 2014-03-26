@@ -9,7 +9,7 @@ angular.module('readingRoomApp')
 
     return {
       restrict: 'EA',
-      template: '<p></p>',
+      template: '<canvas></canvas>',
       scope: {
         onPageLoad: '&',
         src: '@',
@@ -24,13 +24,14 @@ angular.module('readingRoomApp')
         $scope.loadTXT = function(path) {
           console.log('loadTXT ', path);
           TextViewerSrvc.getDocument(path).then(function(_txtDoc) {
-            $scope.txtDoc = _txtDoc;
+            $scope.txtDoc = _txtDoc.book.content;
             $scope.renderPage($scope.pageNum);
           });
         };
 
         $scope.renderPage = function(num, callback) {
           var viewport = {width:612, height:792};
+          var fontSize = 10;
           var ctx = canvas.getContext('2d');
 
           canvas.height = viewport.height * $scope.scale;
@@ -38,11 +39,14 @@ angular.module('readingRoomApp')
           viewer.height = viewport.height * $scope.scale;
           viewer.width = viewport.width * $scope.scale;
 
-          ctx.fillText($scope.txtDoc[num-1], 10, 10);
 
-          $scope.$apply(function() {
+          ctx.font= fontSize * $scope.scale +"px sans-serif";
+          ctx.textAlign = 'center';
+          ctx.fillText($scope.txtDoc[num-1], canvas.width/2, 10);
+
+          //$scope.$apply(function() {
             $scope.onPageLoad({ page: $scope.pageNum, total: $scope.txtDoc.numPages });
-          });
+          //});
         };
 
         $scope.$on('txtviewer.nextPage', function(evt, id) {

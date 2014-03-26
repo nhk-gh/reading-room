@@ -4,6 +4,7 @@ var mongo = require('mongodb');
 var async = require('async');
 var encrypt = require('../lib/encrypt');
 var mailer = require('nodemailer');
+var txtreader = require('buffered-reader');
 
 /*********************************************/
 /*                                           */
@@ -472,6 +473,7 @@ exports.getBook = function(req, res){
       var usrId;
 
       async.waterfall([
+        // find selected book
         function(callback){
           collection.findOne(
             {
@@ -510,7 +512,7 @@ exports.getBook = function(req, res){
               }
             })
         },
-
+        // set selected book as current book
         function(book, callback) {
           collection.update({_id: usrId},
             {$set:
@@ -523,13 +525,54 @@ exports.getBook = function(req, res){
               if (err) {
                 console.log("Get book (3) " + err);
                 //res.send(500);
-                asyncErr = new Error("Get book (1) " + err);
+                asyncErr = new Error("Get book (3) " + err);
                 asyncErr.code = 500;
                 callback(asyncErr);
               } else {
                 callback(null, book);
               }
             })
+        },
+
+        // if book is in TXT format - read it; PDF format - do nothing
+        function(book, callback){
+          if (book.type === 'text/plain') {
+            var lines = 0;
+            var page = '';
+            var bookContent = [];
+            var strOnPage = 5;
+            var DataReader = txtreader.DataReader;
+
+            new DataReader (book.path, { encoding: "utf8" })
+              .on ("error", function (error) {
+                console.log ("Get book (4) " + error);
+                asyncErr = new Error("Get book (4) " + error);
+                asyncErr.code = 500;
+                callback(asyncErr);
+              })
+              .on ("line", function (line/*, nextByteOffset*/){
+                page += line + '\r\n';
+
+                if (++lines === strOnPage) {
+                  bookContent.push(page);
+                  console.log(bookContent)
+                  page = '';
+                  lines = 0;
+                }
+              })
+              .on ("end", function () {
+                if (page !== ''){
+                  bookContent.push(page);
+                  page = '';
+                }
+                book.content = bookContent;
+
+                callback(null, book);
+              })
+              .read ();
+          } else if (book.type === 'application/pdf') {
+            callback(null, book);
+          }
         }],
 
         function(err, result){

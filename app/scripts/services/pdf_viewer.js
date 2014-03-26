@@ -147,6 +147,7 @@ angular.module('readingRoomApp')
   .service('PDFViewerService', [ '$rootScope', function($rootScope) {
 
     var svc = { };
+    /*
     svc.nextPage = function() {
       $rootScope.$broadcast('pdfviewer.nextPage');
     };
@@ -154,7 +155,7 @@ angular.module('readingRoomApp')
     svc.prevPage = function() {
       $rootScope.$broadcast('pdfviewer.prevPage');
     };
-
+    */
     svc.Instance = function(id) {
       var instanceId = id;
 

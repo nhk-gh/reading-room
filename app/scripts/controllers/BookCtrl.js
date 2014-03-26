@@ -1,8 +1,11 @@
 'use strict';
 
 angular.module('readingRoomApp')
-  .controller('BookCtrl', [ '$scope', '$rootScope', '$window', '$log', '$routeParams', 'BookSrvc', 'userSrvc', 'PDFViewerService',
-    function ($scope, $rootScope, $window, $log, $routeParams, BookSrvc, userSrvc, PDFViewerService, TXTViewerSrvc) {
+  .controller('BookCtrl',
+    ['$scope', '$rootScope', '$window', '$log', '$routeParams', 'BookSrvc',
+      'userSrvc', 'PDFViewerService', 'TextViewerSrvc',
+    function ($scope, $rootScope, $window, $log, $routeParams, BookSrvc,
+              userSrvc, PDFViewerService, TextViewerSrvc) {
 
     //////////////////////////////////////////////////
 
@@ -57,7 +60,7 @@ angular.module('readingRoomApp')
               if ($scope.currentBook.type === 'application/pdf') {
                 $scope.vwer = PDFViewerService.Instance('viewer');
               } else {
-                $scope.vwer = TXTViewerSrvc.Instance('txt-viewer');
+                $scope.vwer = TextViewerSrvc.Instance('txt-viewer');
               }
               break;
             }
