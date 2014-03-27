@@ -538,9 +538,10 @@ exports.getBook = function(req, res){
         function(book, callback){
           if (book.type === 'text/plain') {
             var lines = 0;
+            var totalPages = 0;
             var page = '';
             var bookContent = [];
-            var strOnPage = 5;
+            var strOnPage = 60;
             var DataReader = txtreader.DataReader;
 
             new DataReader (book.path, { encoding: "utf8" })
@@ -551,25 +552,30 @@ exports.getBook = function(req, res){
                 callback(asyncErr);
               })
               .on ("line", function (line/*, nextByteOffset*/){
-                page += line + '\r\n';
+                page += line +'\r\n';
 
-                if (++lines === strOnPage) {
+                if (++lines >= strOnPage) {
                   bookContent.push(page);
-                  console.log(bookContent)
+                  console.log(lines);
                   page = '';
                   lines = 0;
+                  totalPages++;
                 }
               })
               .on ("end", function () {
                 if (page !== ''){
                   bookContent.push(page);
                   page = '';
+                  totalPages++;
                 }
                 book.content = bookContent;
+                book.totalPages = totalPages;
+                console.log(totalPages);
 
                 callback(null, book);
               })
               .read ();
+
           } else if (book.type === 'application/pdf') {
             callback(null, book);
           }

@@ -32,4 +32,10 @@ readingRoomApp = angular.module('readingRoomApp', [
       });
 
     //$locationProvider.html5Mode(true);
+  })
+  .constant('SCALE', {
+    MAX_SCALE: 2,
+    MIN_SCALE:1,
+    INITIAL_SCALE:1,
+    SCALE_STEP: 0.2
   });
