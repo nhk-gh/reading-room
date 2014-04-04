@@ -16,6 +16,9 @@ angular.module('readingRoomApp').controller('BookshelfCtrl', function ($scope, u
     BookshelfSrvc.deleteBook(book)
       .then(function(data) {
         userSrvc.user = data;
+        for (var b=0; b<userSrvc.user.bookshelf.length; b++) {
+          userSrvc.user.bookshelf[b].icon = userSrvc.user.bookshelf[b].icon || 'images/book-icon.png';
+        }
         $scope.reader = userSrvc.getUser();
       },
       function() {

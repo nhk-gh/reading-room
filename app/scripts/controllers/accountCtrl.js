@@ -4,6 +4,9 @@ angular.module('readingRoomApp').controller('AccountController',
   function accountController($scope, $rootScope, $modal, $location, $log, accountService, userSrvc){
 
     $scope.$on('logged-in', function(){
+      for (var b=0; b<userSrvc.user.bookshelf.length; b++) {
+        userSrvc.user.bookshelf[b].icon = userSrvc.user.bookshelf[b].icon || 'images/book-icon.png';
+      }
       $scope.user = userSrvc.user;
 
       if (parseInt($scope.user.currentBook,16) !== 0)  {
@@ -11,7 +14,7 @@ angular.module('readingRoomApp').controller('AccountController',
         for (var i=0; i < $scope.user.bookshelf.length; i++) {
           if ($scope.user.bookshelf[i].ind === $scope.user.currentBook) {
             page = $scope.user.bookshelf[i].currentChapter > 0 ? $scope.user.bookshelf[i].currentChapter : 1;
-            break;
+            //break;
           }
         }
         $location.path('/book/' + $scope.user.currentBook + '/' + page);
@@ -55,7 +58,7 @@ angular.module('readingRoomApp').controller('AccountController',
       });
     };
 
-    var ModalLogoutCtrl = function ($scope, $modalInstance) {
+    var ModalLogoutCtrl = ['$scope', '$modalInstance', function ($scope, $modalInstance) {
       $scope.okOut = function () {
         accountService.logout(userSrvc.user.email)
           .then(function(data) {
@@ -72,7 +75,7 @@ angular.module('readingRoomApp').controller('AccountController',
       $scope.cancelOut = function () {
         $modalInstance.dismiss('cancel');
       };
-    };
+    }];
 
     /////////////////////////////////////
     //
@@ -101,21 +104,36 @@ angular.module('readingRoomApp').controller('AccountController',
       $scope.user = userSrvc.user;
     };
 
-    var ModalLoginCtrl = function ($scope, $modalInstance) {
+    var ModalLoginCtrl = ['$scope', '$modalInstance', function ($scope, $modalInstance) {
+      $scope.loginErr = '';
+      $scope.loginInfo = '';
+
+      $scope.$on('password-sent', function(){
+        $scope.loginInfo = 'Password was send to your e-mail address';
+      });
+
       $scope.ok = function (res1, res2, res3) {
-        if($('#login-form').validateAccount() ){
+        var err = $('#login-form').validateAccount();
+        if(err === '' ){
           accountService.login(res1, res2)
             .then(function(data) {
               if (data.error === 200) {
                 data.user.remember = res3;
                 $modalInstance.close(data.user);
               } else {
-                $log.warn(data.message);
+                $log.error(data.message);
+                $scope.loginErr = data.message;
+                $scope.loginInfo = '';
               }
             }, function(status){
-              $log.info(status);
               $log.warn(status);
+              $scope.loginErr = status;
+              $scope.loginInfo = '';
             });
+        } else {
+          $scope.loginErr = err;
+          $scope.loginInfo = '';
+          $log.warn(err);
         }
       };
 
@@ -126,7 +144,7 @@ angular.module('readingRoomApp').controller('AccountController',
       $scope.passwordReminder = function(){
         $rootScope.$broadcast('reminder');
       };
-    };
+    }];
 
     /////////////////////////////////////
     //
@@ -152,19 +170,24 @@ angular.module('readingRoomApp').controller('AccountController',
       modalInstance.result.then(function (p) {
         userSrvc.user = p;
         $scope.user = userSrvc.user;
-
+        $rootScope.$broadcast('password-sent');
       }, function () {
         $log.info('Modal dismissed at: ' + new Date());
         userSrvc.clearUser();
       });
     };
 
-    var ModalReminderCtrl = function ($scope, $modalInstance, countriesSrvc, userSrvc/*, lf*/) {
+    var ModalReminderCtrl = ['$scope', '$modalInstance', 'countriesSrvc', 'userSrvc', function ($scope, $modalInstance, countriesSrvc, userSrvc/*, lf*/) {
       $scope.countries = countriesSrvc.countries;
       $scope.user = userSrvc.user;
+      $scope.remErr = '';
+      $scope.remInfo = '';
 
       $scope.okRem = function (email, look, name) {
-        if($('#reminder-form').validateAccount() ){
+        var err = $('#reminder-form').validateAccount();
+        if(err === '' ){
+          $scope.remInfo = 'Sending password to your e-mail ...';
+
           accountService.passwordReminder({email:email, lookfor: look, name: name})
             .then(function(data){
               if (data.error === 200) {
@@ -172,18 +195,25 @@ angular.module('readingRoomApp').controller('AccountController',
                 $modalInstance.close(data.user);
               } else {
                 $log.warn(data.message);
+                $scope.remErr = data.message;
+                $scope.remInfo = '';
               }
             }, function(status){
               $log.warn(status);
-              $log.warn(status);
+              $scope.remErr = status;
+              $scope.remInfo = '';
             });
+        } else {
+          $scope.remErr = err;
+          $scope.remInfo = '';
+          $log.warn(err);
         }
       };
 
       $scope.cancelRem = function () {
         $modalInstance.dismiss('cancel');
       };
-    };
+    }];
 
     /////////////////////////////////////
     //
@@ -212,29 +242,36 @@ angular.module('readingRoomApp').controller('AccountController',
       });
     };
 
-    var ModalRegisterCtrl = function ($scope, $modalInstance, countriesSrvc, userSrvc) {
+    var ModalRegisterCtrl = ['$scope', '$modalInstance', 'countriesSrvc', 'userSrvc', function ($scope, $modalInstance, countriesSrvc, userSrvc) {
       $scope.countries = countriesSrvc.countries;
       $scope.user = userSrvc.user;
+      $scope.regErr = '';
 
       $scope.okReg = function () {
-        if($('#register-form').validateAccount() ){
+        var err = $('#register-form').validateAccount();
+        if(err === '' ){
           accountService.register($scope.user)
             .then(function(data){
               if (data.error === 200) {
                 $modalInstance.close(data.user);
               } else {
                 $log.warn(data.message);
+                $scope.regErr = data.message;
               }
             }, function(status){
               $log.warn(status);
+              $scope.regErr = status;
             });
+        } else {
+          $scope.regErr = err;
+          $log.warn(err);
         }
       };
 
       $scope.cancelReg = function () {
         $modalInstance.dismiss('cancel');
       };
-    };
+    }];
   }
 );
 

@@ -35,7 +35,7 @@ angular.module('readingRoomApp')
           });
         };
 
-        var ModalAddBookCtrl = function ($scope, $modalInstance, item) {
+        var ModalAddBookCtrl = ['$scope', '$modalInstance', 'item' ,function ($scope, $modalInstance, item) {
           $scope.fileName = item;
           $scope.title = item.split('.').shift();
 
@@ -46,7 +46,7 @@ angular.module('readingRoomApp')
           $scope.cancel = function () {
             $modalInstance.dismiss('cancel');
           };
-        };
+        }];
 
         //////////
         //
@@ -88,8 +88,14 @@ angular.module('readingRoomApp')
 
               if (evt.target.status === 200 ) {
                 userSrvc.user = JSON.parse(evt.target.responseText).user;
+
+                for (var b=0; b<userSrvc.user.bookshelf.length; b++) {
+                  userSrvc.user.bookshelf[b].icon = userSrvc.user.bookshelf[b].icon || 'images/book-icon.png';
+                }
+
                 scope.reader = userSrvc.getUser();
                 scope.errorMsg = null;
+
               } else {
                 scope.errorMsg = evt.target.responseText;
               }

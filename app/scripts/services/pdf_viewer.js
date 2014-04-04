@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('readingRoomApp')
-  .directive('pdfviewer', function() {
+  .directive('pdfviewer',['SCALE', function(SCALE) {
     var canvas = null;
     var instanceId = null;
     var viewer = null;
@@ -19,7 +19,7 @@ angular.module('readingRoomApp')
       controller: [ '$scope', function($scope) {
         $scope.pageNum = 1;
         $scope.pdfDoc = null;
-        $scope.scale = 1.0;
+        $scope.scale = SCALE.INITIAL_SCALE;
         var scaleStep = 0.2;
 
         $scope.documentProgress = function(progressData) {
@@ -109,7 +109,7 @@ angular.module('readingRoomApp')
         });
 
         $scope.$on('pdfviewer.zoomIn', function() {
-          if ($scope.scale < 2) {
+          if ($scope.scale < SCALE.MAX_SCALE) {
             $scope.scale += scaleStep;
             $scope.renderPage($scope.pageNum);
           }
@@ -117,7 +117,7 @@ angular.module('readingRoomApp')
         });
 
         $scope.$on('pdfviewer.zoomOut', function() {
-          if ($scope.scale > 1) {
+          if ($scope.scale > SCALE.MIN_SCALE) {
             $scope.scale -= scaleStep;
             $scope.renderPage($scope.pageNum);
           }
@@ -141,7 +141,7 @@ angular.module('readingRoomApp')
         });
       }
     };
-  });
+  }]);
 
 angular.module('readingRoomApp')
   .service('PDFViewerService', [ '$rootScope', function($rootScope) {

@@ -36,6 +36,6 @@ readingRoomApp = angular.module('readingRoomApp', [
   .constant('SCALE', {
     MAX_SCALE: 2,
     MIN_SCALE:1,
-    INITIAL_SCALE:1,
+    INITIAL_SCALE:1.2,
     SCALE_STEP: 0.2
   });

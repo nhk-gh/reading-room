@@ -8,7 +8,6 @@
             <div class="modal-body" klb-after-error>
                  <div class="form-group">
                     <label for="username">E-mail</label>
-                    <label for="username">naum.krivoruk@gmail.com</label>
                     <input class='form-control' type='email'  placeholder="E-mail"
                            id='username' autocomplete='off' ng-model="res_1" autofocus/>
                 </div>
@@ -34,6 +33,21 @@
                 </div>
 
             </div>
+
+            <div class="row">
+                <div class='col-md-12 col-xs-12'>
+                    <div class="alert alert-danger text-center" style='white-space:normal' ng-show="loginErr !== ''">{{ loginErr }}
+                        <button class="button btn-default close" ng-click="loginErr = ''">&times;</button>
+                    </div>
+                 </div>
+            </div>
+            <div class="row">
+                <div class='col-md-12 col-xs-12'>
+                    <div class="alert alert-success text-center" style='white-space:normal' ng-show="loginInfo !== ''">{{ loginInfo }}
+                        <button class="button btn-default close" ng-click="loginInfo = ''">&times;</button>
+                    </div>
+                 </div>
+            </div>
             <div class="modal-footer">
                 <button type="submit" class="btn btn-primary btn-sm" ng-click="ok(res_1, res_2, res_3)">Ok</button>
                 <button class="btn btn-default btn-sm" ng-click="cancel()">Cancel</button>
@@ -41,8 +55,7 @@
         </form>
     </script>
 
-    <!--button class="btn btn-default" ng-click="open()">Open me!</button>
-    <div ng-show="selected">Selection from a modal: {{ selected }}</div-->
+
 </div>
 
 <!--div class="modal fade" id='login-dlg1' tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

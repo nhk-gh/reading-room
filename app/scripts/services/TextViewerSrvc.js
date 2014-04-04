@@ -43,6 +43,6 @@ angular.module('readingRoomApp')
           $rootScope.$broadcast('txtviewer.zoomOut');
         }
       };
-    }
+    };
     return svc;
   });

@@ -11,20 +11,10 @@
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
-      <script src="bower_components/jquery/jquery.js"></script>
-      <script src="libs/jquery-cookie-master/jquery.cookie.js"></script>
-      <script src="bower_components/angular/angular.js"></script>
-      <!--script src="bower_components/ui-bootstrap-tpls-0.9.0.js"></script-->
-      <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
-      <script src="libs/validator/klub-validator.js"></script>
-      <!--script src="scripts/libs/Dropzone/dropzone.js"></script>
-      <link rel="stylesheet" href="scripts/libs/Dropzone/dropzone.css"-->
-
       <!-- build:css(.tmp) styles/main.css -->
         <link rel="stylesheet" href="styles/main.css">
         <link rel="stylesheet" href="styles/bookshelf.css">
         <link rel="stylesheet" href="styles/book.css">
-        <!--link rel="stylesheet"  href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css"-->
       <!-- endbuild -->
 </head>
   <body ng-app="readingRoomApp">
@@ -38,6 +28,7 @@
     <![endif]-->
 
     <div class="container" ng-controller="AccountController" ng-cloak="">
+
         <div class="header" style="margin-bottom: 1px">
             <ul class="nav nav-pills pull-right" ng-hide='user.logged'>
                 <li><a href="#" ng-click="openLoginDlg()">Log in</a></li>
@@ -80,7 +71,13 @@
         <!--profile-dlg></profile-dlg-->
 
         <div class="footer">
-            <p>♥ from TheKlub team</p>
+            <p>
+                ♥ from
+                <a class="btn-link" href="http://www.theklub.info:3000" target="_blank">
+                    TheKlub
+                </a>
+                team
+            </p>
         </div>
     </div>
 
@@ -96,6 +93,13 @@
        ga('send', 'pageview');
     </script>
 
+    <script src="bower_components/jquery/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <!--script src="https://rawgithub.com/mozilla/pdf.js/gh-pages/build/pdf.js"></script>
+    <script src="https://rawgithub.com/mozilla/pdf.js/gh-pages/build/pdf.worker.js"></script-->
+    <script src="pdfjs/pdf.js"></script>
+    <script src="pdfjs/pdf.worker.js"></script>
 
     <!-- build:js scripts/plugins.js -->
     <script src="bower_components/sass-bootstrap/js/affix.js"></script>
@@ -117,7 +121,6 @@
     <script src="bower_components/angular-cookies/angular-cookies.js"></script>
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
-
     <!-- endbuild -->
 
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
@@ -140,15 +143,15 @@
 
     <!--script src="https://rawgithub.com/akrennmair/ng-pdfviewer/ed053c7c8030fee678d8c854376b55d8de42b76d/dist/ng-pdfviewer.min.js"></script-->
     <script src="scripts/services/pdf_viewer.js"></script>
-    <script src="https://rawgithub.com/mozilla/pdf.js/gh-pages/build/pdf.js"></script>
-    <script src="https://rawgithub.com/mozilla/pdf.js/gh-pages/build/pdf.worker.js"></script>
-    <!--script src="scripts/libs/pdfjs/pdf.js"></script>
-    <script src="scripts/libs/pdfjs/pdf.worker.js"></script-->
+
 
     <script src="scripts/directives/BookToolbarDctv.js"></script>
     <script src="scripts/directives/IntOnlyDctv.js"></script>
     <script src="scripts/directives/TextViewerDctv.js"></script>
     <script src="scripts/services/TextViewerSrvc.js"></script>
+
+    <script src="scripts/libs/jquery-cookie-master/jquery.cookie.js"></script>
+    <script src="scripts/libs/validator/klub-validator.js"></script>
     <!-- endbuild -->
 
     <!--script src="//localhost:35729/livereload.js"></script-->

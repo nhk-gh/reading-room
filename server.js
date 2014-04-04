@@ -45,12 +45,12 @@ app.set('port', process.env.PORT || 9000);
 app.set('env','production');
 process.env.NODE_ENV = 'production';
 */
-
 app.use(express.logger('dev'));
 app.use(express.bodyParser());
 app.use(express.methodOverride());
 app.use(express.cookieParser('Do not try'));
 app.use(express.session());
+
 app.use(app.router);
 
 if ('production' == app.get('env')) {

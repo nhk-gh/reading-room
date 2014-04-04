@@ -43,14 +43,14 @@ angular.module('readingRoomApp')
           viewer.height = viewport.height * $scope.scale;
           viewer.width = viewport.width * $scope.scale;
 
-          ctx.font= fontSize * $scope.scale +"px sans-serif";
+          ctx.font= fontSize * $scope.scale +'px sans-serif';
           ctx.textAlign = 'start';
           //ctx.fillText($scope.txtDoc.content[num-1], lnX, lnY);
           
           // wraps text on new line
           var text = $scope.txtDoc.content[num-1];
-          var lines = text.split("\n");
-          console.log(lines)
+          var lines = text.split('\n');
+          //console.log(lines)
           var str, wordWidth, words, index, currentLine = 0;
 
           var printNextLine = function(str) {

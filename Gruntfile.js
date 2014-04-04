@@ -179,7 +179,7 @@ module.exports = function (grunt) {
     compass: {
       options: {
         sassDir: '<%= yeoman.app %>/styles',
-        cssDir: '<%= yeoman.app %>/styles', //'.tmp/styles',
+        cssDir:  ['.tmp/styles', '<%= yeoman.app %>/styles'], //
         generatedImagesDir: '.tmp/images/generated',
         imagesDir: '<%= yeoman.app %>/images',
         javascriptsDir: '<%= yeoman.app %>/scripts',
@@ -224,7 +224,7 @@ module.exports = function (grunt) {
       html: ['<%= yeoman.dist %>/{,*/}*.html'],
       css: ['<%= yeoman.dist %>/styles/{,*/}*.css'],
       options: {
-        assetsDirs: ['<%= yeoman.dist %>']
+        assetsDirs: ['<%= yeoman.dist %>', '<%= yeoman.dist %>/images']
       }
     },
     imagemin: {
@@ -310,6 +310,18 @@ module.exports = function (grunt) {
         cwd: '<%= yeoman.app %>/styles',
         dest: '.tmp/styles/',
         src: '{,*/}*.css'
+      } ,
+      bookicon: {
+        expand: true,
+        cwd: '<%= yeoman.app %>/images',
+        dest: '<%= yeoman.dist %>/images',
+        src: 'book-icon.png'
+      },
+      pdfjs: {
+        expand: true,
+        cwd: '<%= yeoman.app %>/pdfjs',
+        dest: '<%= yeoman.dist %>/pdfjs',
+        src: '*.js'
       }
     },
     concurrent: {
@@ -405,7 +417,9 @@ module.exports = function (grunt) {
     'cssmin',
     'uglify',
     'rev',
-    'usemin'
+    'usemin',
+    'copy:bookicon',
+    'copy:pdfjs'
   ]);
 
   grunt.registerTask('default', [

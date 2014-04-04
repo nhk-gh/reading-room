@@ -51,7 +51,13 @@
                 <p class="form-control-static" style="color: firebrick"> All fields are necessary !  </p>
 
             </div>
-
+            <div class="row">
+                <div class='col-md-12 col-xs-12'>
+                    <div class="alert alert-danger text-center" style='white-space:normal' ng-show="regErr !== ''">{{ loginErr }}
+                        <button class="button btn-default close" ng-click="regErr = ''">&times;</button>
+                    </div>
+                </div>
+            </div>
             <div class="modal-footer" id='register-dlg-footer'>
                 <button type="submit" class="btn btn-primary btn-sm" ng-click="okReg()">Ok</button>
                 <button class="btn btn-default btn-sm" ng-click="cancelReg()">Cancel</button>

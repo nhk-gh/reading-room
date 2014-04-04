@@ -91,18 +91,20 @@
         var mes = "";
 
         if (has_empty_strings)
-           mes = "Please fill out empty strings!";
+           mes = "Please fill out empty strings!\n";
 
         if (password_inequality)
-            mes += "\nPassword confirmation error!";
+            mes += "Password confirmation error!\n";
 
         if (wrong_email)
-            mes += "\nWrong e-mail address!";
-
+            mes += "Wrong e-mail address!\n";
+        /*
         if (mes != "")
             alert(mes);
-
         return (mes == "");//!(has_empty_strings || wrong_email || password_inequality);
+        */
+        return mes;
+
 
     };
 
