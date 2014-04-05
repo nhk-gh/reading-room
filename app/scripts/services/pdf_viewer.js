@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('readingRoomApp')
-  .directive('pdfviewer',['SCALE', function(SCALE) {
+  .directive('pdfviewer',['$rootScope', 'SCALE', function($rootScope, SCALE) {
     var canvas = null;
     var instanceId = null;
     var viewer = null;
@@ -16,7 +16,7 @@ angular.module('readingRoomApp')
         src: '@',
         id: '='
       },
-      controller: [ '$scope', function($scope) {
+      controller: [ '$scope', 'SCALE', function($scope, SCALE) {
         $scope.pageNum = 1;
         $scope.pdfDoc = null;
         $scope.scale = SCALE.INITIAL_SCALE;
@@ -112,6 +112,7 @@ angular.module('readingRoomApp')
           if ($scope.scale < SCALE.MAX_SCALE) {
             $scope.scale += scaleStep;
             $scope.renderPage($scope.pageNum);
+            $rootScope.$broadcast('pdfviewer.zoomChanged', $scope.scale);
           }
 
         });
@@ -120,6 +121,7 @@ angular.module('readingRoomApp')
           if ($scope.scale > SCALE.MIN_SCALE) {
             $scope.scale -= scaleStep;
             $scope.renderPage($scope.pageNum);
+            $rootScope.$broadcast('pdfviewer.zoomChanged', $scope.scale);
           }
         });
 

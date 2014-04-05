@@ -3,13 +3,11 @@
 angular.module('readingRoomApp')
   .controller('BookCtrl',
     ['$scope', '$rootScope', '$window', '$log', '$routeParams', 'BookSrvc',
-      'userSrvc', 'PDFViewerService', 'TextViewerSrvc',
+      'userSrvc', 'PDFViewerService', 'TextViewerSrvc', 'SCALE',
     function ($scope, $rootScope, $window, $log, $routeParams, BookSrvc,
-              userSrvc, PDFViewerService, TextViewerSrvc) {
+              userSrvc, PDFViewerService, TextViewerSrvc, SCALE) {
 
     //////////////////////////////////////////////////
-
-   // $scope.vwer = PDFViewerService.Instance('viewer');
 
     $scope.nextPage = function() {
       if ($scope.vwer) {
@@ -39,6 +37,26 @@ angular.module('readingRoomApp')
       if ($scope.vwer) {
         $scope.vwer.zoomOut();
       }
+    };
+
+    $scope.currentScale = SCALE.INITIAL_SCALE;
+
+    $scope.$on('pdfviewer.zoomChanged', function(evt, scale) {
+      $scope.currentScale = scale;
+    });
+    $scope.enableZoomIn = function() {
+      var ret = false;
+      if ( $scope.currentScale < SCALE.MAX_SCALE){
+        ret = true;
+      }
+      return ret;
+    };
+    $scope.enableZoomOut = function(){
+      var ret = false;
+      if ( $scope.currentScale > SCALE.MIN_SCALE){
+        ret = true;
+      }
+      return ret;
     };
 
     $scope.pageLoaded = function(curPage, totalPages) {

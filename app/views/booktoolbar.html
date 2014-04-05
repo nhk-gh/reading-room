@@ -1,15 +1,18 @@
 <div class='row book-tb'>
     <div class='col-md-1 col-xs-1 col-md-offset-1 col-xs-offset-1'>
         <span class="glyphicon glyphicon-fast-backward pull-right btn-link blue-tooltip" ng-click="gotoPage(1)"
-              data-toggle="tooltip" data-placement="top" title="First page"></span>
+              data-toggle="tooltip" data-placement="top" title="First page"
+              ng-show="currentPage != 1" ></span>
     </div>
     <div class='col-md-1 col-xs-1'>
         <span class="glyphicon glyphicon-step-backward pull-left btn-link blue-tooltip" ng-click="prevPage()"
-              data-toggle="tooltip" data-placement="top" title="Previous page"></span>
+              data-toggle="tooltip" data-placement="top" title="Previous page"
+              ng-show="currentPage != 1"></span>
     </div>
     <div class='col-md-1 col-xs-1'>
         <span class="glyphicon glyphicon-zoom-out btn-link pull-right blue-tooltip" ng-click="zoomOut()"
-              data-toggle="tooltip" data-placement="top" title="Zoom out"></span>
+              data-toggle="tooltip" data-placement="top" title="Zoom out"
+              ng-show="enableZoomOut()"></span>
     </div>
     <div class='col-md-4 col-xs-4'>
         <span class='clearfix' style="float:none; margin-left: auto; margin-right: auto; display: table;">
@@ -19,14 +22,17 @@
     </div>
     <div class='col-md-1 col-xs-1'>
         <span class="glyphicon glyphicon-zoom-in pull-left btn-link blue-tooltip" ng-click="zoomIn()"
-              data-toggle="tooltip" data-placement="bottom" title="Zoom in"></span>
+              data-toggle="tooltip" data-placement="bottom" title="Zoom in"
+              ng-show="enableZoomIn()"></span>
     </div>
     <div class='col-md-1 col-xs-1'>
         <span class="glyphicon glyphicon-step-forward pull-right btn-link blue-tooltip" ng-click="nextPage()"
-              data-toggle="tooltip" data-placement="bottom" title="Next page"></span>
+              data-toggle="tooltip" data-placement="bottom" title="Next page"
+              ng-show="currentPage != totalPages"></span>
     </div>
     <div class='col-md-1 col-xs-1'>
         <span class="glyphicon glyphicon-fast-forward pull-left btn-link blue-tooltip" ng-click="gotoPage(totalPages)"
-              data-toggle="tooltip" data-placement="bottom" title="Last page"></span>
+              data-toggle="tooltip" data-placement="bottom" title="Last page"
+              ng-show="currentPage != totalPages"></span>
     </div>
 </div>

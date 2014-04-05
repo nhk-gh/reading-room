@@ -15,7 +15,7 @@ angular.module('readingRoomApp')
         src: '@',
         id: '='
       },
-      controller: [ '$scope', function($scope) {
+      controller: [ '$scope', '$rootScope', function($scope, $rootScope) {
         $scope.pageNum = 1;
         $scope.txtDoc = null;
         $scope.scale = SCALE.INITIAL_SCALE;
@@ -132,6 +132,7 @@ angular.module('readingRoomApp')
           if ($scope.scale < SCALE.MAX_SCALE) {
             $scope.scale += SCALE.SCALE_STEP;
             $scope.renderPage($scope.pageNum);
+            $rootScope.$broadcast('pdfviewer.zoomChanged', $scope.scale);
           }
         });
 
@@ -139,6 +140,7 @@ angular.module('readingRoomApp')
           if ($scope.scale > SCALE.MIN_SCALE) {
             $scope.scale -= SCALE.SCALE_STEP;
             $scope.renderPage($scope.pageNum);
+            $rootScope.$broadcast('pdfviewer.zoomChanged', $scope.scale);
           }
         });
       }],
