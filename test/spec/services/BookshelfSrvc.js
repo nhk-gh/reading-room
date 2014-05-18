@@ -7,8 +7,8 @@ describe('Service: Bookshelfsrvc', function () {
 
   // instantiate service
   var Bookshelfsrvc;
-  beforeEach(inject(function (_Bookshelfsrvc_) {
-    Bookshelfsrvc = _Bookshelfsrvc_;
+  beforeEach(inject(function (BookshelfSrvc) {
+    Bookshelfsrvc = BookshelfSrvc;
   }));
 
   it('should do something', function () {

@@ -10,13 +10,44 @@ angular.module('readingRoomApp').factory('accountService', function($q, $http, $
           deferred.resolve(data);
         })
         .error(function(data, status){
-          $log.warn('Log in error: ' + status);
+          $log.error('Local Log in error: ' + status);
+          deferred.reject(status);
+        });
+
+      return deferred.promise;
+    },
+ /*
+    loginFacebook : function(){
+      var deferred = $q.defer();
+
+      $http({method:'GET', url:'/login/fb'})
+        .success(function(data){
+          deferred.resolve(data);
+          $log.error(data);
+        })
+        .error(function(data, status){
+          $log.error('Facebook Log in error: ' + status);
           deferred.reject(status);
         });
 
       return deferred.promise;
     },
 
+    loginGoogle: function(){
+      var deferred = $q.defer();
+
+      $http({method:'GET', url:'/login/google'})
+        .success(function(data){
+          deferred.resolve(data);
+        })
+        .error(function(data, status){
+          $log.error('Google Log in error: ' + status);
+          deferred.reject(status);
+        });
+
+      return deferred.promise;
+    },
+ */
     getCountriesList: function(){
       var deferred = $q.defer();
 
@@ -25,7 +56,7 @@ angular.module('readingRoomApp').factory('accountService', function($q, $http, $
           deferred.resolve(data);
         })
         .error(function(data, status){
-          $log.warn('getCountriesList error: ' + status);
+          $log.error('getCountriesList error: ' + status);
           deferred.reject(status);
         });
 
@@ -48,7 +79,7 @@ angular.module('readingRoomApp').factory('accountService', function($q, $http, $
           deferred.resolve(data);
         })
         .error(function(data, status){
-          $log.warn('register error: ' + status);
+          $log.error('register error: ' + status);
           deferred.reject(status);
         });
 
@@ -63,7 +94,7 @@ angular.module('readingRoomApp').factory('accountService', function($q, $http, $
           deferred.resolve(data);
         })
         .error(function(data, status){
-          $log.warn('editProfile error: ' + status);
+          $log.error('editProfile error: ' + status);
           deferred.reject(status);
         });
 
@@ -78,7 +109,7 @@ angular.module('readingRoomApp').factory('accountService', function($q, $http, $
           deferred.resolve(data);
         })
         .error(function(data, status){
-          $log.warn('logOut error: ' + status);
+          $log.error('logOut error: ' + status);
           deferred.reject(status);
         });
 
@@ -93,7 +124,7 @@ angular.module('readingRoomApp').factory('accountService', function($q, $http, $
           deferred.resolve(data);
         })
         .error(function(data, status){
-          $log.warn('passReminder error: ' + status);
+          $log.error('passReminder error: ' + status);
           deferred.reject(status);
         });
 

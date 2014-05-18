@@ -7,8 +7,8 @@ describe('Service: Textviewersrvc', function () {
 
   // instantiate service
   var Textviewersrvc;
-  beforeEach(inject(function (_Textviewersrvc_) {
-    Textviewersrvc = _Textviewersrvc_;
+  beforeEach(inject(function (TextViewerSrvc) {
+    Textviewersrvc = TextViewerSrvc;
   }));
 
   it('should do something', function () {

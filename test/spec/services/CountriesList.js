@@ -7,8 +7,8 @@ describe('Service: Countrieslist', function () {
 
   // instantiate service
   var Countrieslist;
-  beforeEach(inject(function (_Countrieslist_) {
-    Countrieslist = _Countrieslist_;
+  beforeEach(inject(function (countriesSrvc) {
+    Countrieslist = countriesSrvc;
   }));
 
   it('should do something', function () {

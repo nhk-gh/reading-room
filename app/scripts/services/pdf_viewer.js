@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('readingRoomApp')
-  .directive('pdfviewer',['$rootScope', 'SCALE', function($rootScope, SCALE) {
+  .directive('pdfviewer',['$rootScope', function($rootScope) {
     var canvas = null;
     var instanceId = null;
     var viewer = null;

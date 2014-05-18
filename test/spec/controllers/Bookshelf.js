@@ -5,18 +5,18 @@ describe('Controller: BookshelfctrlCtrl', function () {
   // load the controller's module
   beforeEach(module('readingRoomApp'));
 
-  var BookshelfctrlCtrl,
+  var BookshelfCtrl,
     scope;
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope) {
     scope = $rootScope.$new();
-    BookshelfctrlCtrl = $controller('BookshelfctrlCtrl', {
+    BookshelfCtrl = $controller('BookshelfCtrl', {
       $scope: scope
     });
   }));
 
   it('should attach a list of awesomeThings to the scope', function () {
-    expect(scope.awesomeThings.length).toBe(3);
+    expect(BookshelfCtrl).toBeDefined();
   });
 });

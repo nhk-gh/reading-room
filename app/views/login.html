@@ -1,6 +1,6 @@
 <div>
     <script type="text/ng-template" id="myLogin">
-        <form role="form" id='login-form'>
+        <form role="form" id='login-form' novalidate="novalidate">
             <div class="modal-header">
                 <button class="btn btn-default close" ng-click="cancel()">&times;</button>
                 <h4 class="modal-title">Login</h4>
@@ -49,8 +49,18 @@
                  </div>
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-primary btn-sm" ng-click="ok(res_1, res_2, res_3)">Ok</button>
+                <button type="submit" class="btn btn-primary btn-sm" ng-click="ok(res_1, res_2, res_3)">Log in</button>
                 <button type="button" class="btn btn-default btn-sm" ng-click="cancel()">Cancel</button>
+            </div>
+            <div class="modal-footer" style="text-align: center; ">
+                Or log in with:
+                <a class="btn-link" ng-href='/login/fb'>
+                    <img ng-src="../images/facebook-icon (1).png" title="Facebook"/>
+                </a>
+                <a class="btn btn-link" disabled='disabled' ng-click="loginGoogle()">
+                    <img ng-src="../images/google-icon (1).png" title="Google"/>
+                </a>
+
             </div>
         </form>
     </script>

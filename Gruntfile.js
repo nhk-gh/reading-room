@@ -400,9 +400,9 @@ module.exports = function (grunt) {
   grunt.registerTask('test', [
     'clean:server',
     'concurrent:test',
-    'autoprefixer'//,
+    'autoprefixer',
     //'connect:test',
-    //'karma'
+    'karma'
   ]);
 
   grunt.registerTask('build', [

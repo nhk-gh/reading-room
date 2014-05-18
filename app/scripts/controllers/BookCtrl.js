@@ -68,7 +68,7 @@ angular.module('readingRoomApp')
           $scope.currentBook.ind,            // current book id
           $scope.currentBook.currentChapter, // current page before (user begin/continue reading the book)
           $scope.currentPage,                // current page after (user stop/finish reading the book)
-          false)                             // true - reset currenאBook field (0), flase set it equal to bookInd value
+          false)                             // true - reset currentBook field (0), flase set it equal to bookInd value
         .then(function(){
           for (var i=0; i < userSrvc.user.bookshelf.length; i++) {
             if (userSrvc.user.bookshelf[i].ind === $scope.currentBook.ind) {

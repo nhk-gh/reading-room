@@ -7,8 +7,8 @@ describe('Service: Book', function () {
 
   // instantiate service
   var Book;
-  beforeEach(inject(function (_Book_) {
-    Book = _Book_;
+  beforeEach(inject(function (_BookSrvc_) {
+    Book = _BookSrvc_;
   }));
 
   it('should do something', function () {

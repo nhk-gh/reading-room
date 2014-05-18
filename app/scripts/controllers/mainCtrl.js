@@ -3,17 +3,32 @@
 angular.module('readingRoomApp').controller('MainCtrl',
   function ($scope, $rootScope, $log, accountService, userSrvc) {
 
-    $scope.readLoginCookie = function(){
+    $scope.readLoginCookie = function() {
+      var lastUser = {}, encrypted, remember;
       var cook =  $.cookie('rem'); // last user e-mail and password
+      var pass =  $.cookie('fblogin'); //
 
-      if ( (cook !== undefined) && (cook !== {}) ) {
-        var lastUser = JSON.parse(cook);
+      if ( (pass !== undefined)  ) {
+        lastUser.e = JSON.parse(pass).profileUrl;
+        lastUser.p = JSON.parse(pass).id;
+        encrypted = false;
+        remember = false;
 
-        accountService.login(lastUser.e, lastUser.p, true)
+        $.removeCookie('fblogin');
+      } else {
+        if ((cook !== undefined) && (cook !== {}) ) {
+          lastUser = JSON.parse(cook);
+          encrypted = true;
+          remember = true;
+        }
+      }
+
+      if (lastUser.e) {
+        accountService.login(lastUser.e, lastUser.p, encrypted)
           .then(function(data){
             if (data.error === 200) {
               userSrvc.user = data.user;
-              userSrvc.user.remember = true;
+              userSrvc.user.remember = remember;
               $rootScope.$broadcast('logged-in');
 
             } else {
@@ -25,6 +40,7 @@ angular.module('readingRoomApp').controller('MainCtrl',
             userSrvc.clearUser();
           });
       }
+
     };
 
     $scope.readLoginCookie();

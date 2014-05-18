@@ -2,14 +2,14 @@
 
 angular.module('readingRoomApp').controller('AccountController',
   function accountController($scope, $rootScope, $modal, $location, $log, accountService, userSrvc){
-
+    //$.removeCookie('rem');
     $scope.$on('logged-in', function(){
       for (var b=0; b<userSrvc.user.bookshelf.length; b++) {
         userSrvc.user.bookshelf[b].icon = userSrvc.user.bookshelf[b].icon || 'images/book-icon.png';
       }
       $scope.user = userSrvc.user;
 
-      if (parseInt($scope.user.currentBook,16) !== 0)  {
+      if (parseInt($scope.user.currentBook, 16) !== 0)  {
         var page;
         for (var i=0; i < $scope.user.bookshelf.length; i++) {
           if ($scope.user.bookshelf[i].ind === $scope.user.currentBook) {
@@ -126,17 +126,53 @@ angular.module('readingRoomApp').controller('AccountController',
                 $scope.loginInfo = '';
               }
             }, function(status){
-              $log.warn(status);
+              $log.error(status);
               $scope.loginErr = status;
               $scope.loginInfo = '';
             });
         } else {
           $scope.loginErr = err;
           $scope.loginInfo = '';
-          $log.warn(err);
+          $log.error(err);
         }
       };
+      /*
+      $scope.loginGoogle = function () {
+        accountService.loginGoogle()
+          .then(function(data) {
+            if (data.error === 200) {
+              data.user.remember = res3;
+              $modalInstance.close(data.user);
+            } else {
+              $log.error(data.message);
+              $scope.loginErr = data.message;
+              $scope.loginInfo = '';
+            }
+          }, function(status){
+            $log.error('google error ' + status);
+            $scope.loginErr = status;
+            $scope.loginInfo = '';
+          });
+      };
 
+      $scope.loginFacebook = function (res1, res2, res3) {
+        accountService.loginFacebook()
+          .then(function(data) {
+            if (data.error === 200) {
+              data.user.remember = res3;
+              $modalInstance.close(data.user);
+            } else {
+              $log.error(data.message);
+              $scope.loginErr = data.message;
+              $scope.loginInfo = '';
+            }
+          }, function(status){
+            $log.error('fb error '+status);
+            $scope.loginErr = status;
+            $scope.loginInfo = '';
+          });
+      };
+      */
       $scope.cancel = function () {
         $modalInstance.dismiss('cancel');
       };

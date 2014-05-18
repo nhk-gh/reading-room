@@ -113,8 +113,7 @@ exports.initDB = initDB;
 /*********************************************/
 exports.index = function(req, res){
   //console.log(req.cookies);
-  //console.log(req.cookies.rem);
-  //console.log(JSON.parse(req.cookies.rem).e);
+  //console.log(req.cookies.passport);
   if ('production' == process.env.NODE_ENV) {
     //res.sendfile('/home/nhk/WebstormProjects/ReadingRoom/dist/index.html');
     res.sendfile(path.resolve(__dirname + '../../../dist/index.html'));
@@ -129,6 +128,115 @@ exports.index = function(req, res){
 /*          Authentication                   */
 /*                                           */
 /*********************************************/
+exports.fbLogin = function(req, res) {
+  var usr, encryptId;
+  var retVal = false;
+
+  if (req.session.fblogin) {
+    usr =  JSON.parse(req.session.fblogin);
+    encryptId = encrypt.encrypt(usr.id.toString());
+
+    photodb.collection("users", function(err, collection) {
+      if (err) {
+        console.log("fbLogin: Can not open 'users' collection!");
+        return false;
+      } else {
+        collection.findOne({userName:usr.username.givenName, password: encryptId }, function(err, result) {
+          if(err) {
+            console.log(err);
+            return false;
+          }
+          if(result !== null) {
+            // user found
+            console.log('user found !');
+            return true;
+          } else {
+            var newusr = {
+              userName: usr.username.givenName,
+              firstName: usr.username.givenName,
+              lastName: usr.username.familyName,
+              password: encryptId,
+              fullName: usr.username.givenName + " " + usr.username.familyName,
+              logged: true,
+              country: usr.location,
+              email: usr.profileUrl,
+              currentBook: 0,
+              remember: false,
+              bookshelf:[]
+            };
+
+            collection.insert(newusr, {w:1}, function(err, result) {
+              //assert.equal(null, err);
+              console.log('insertion result: ',result);
+              if (err) {
+                console.log("fbLogin: failed to insert into 'users' collection!");
+                return false;
+              }
+              else {
+                req.session.user = result[0];
+                return true;
+              }
+            });
+          }
+        });
+      }
+    });
+  }
+
+};
+
+exports.login = function(req, res) {
+  if(req.method.toLowerCase() != 'post') {
+    res.send({error: 'Method Not Allowed', code: 405});
+  }
+  else {
+    photodb.collection('users', function(err, collection){
+      if (err)
+        console.log('Login: Can not open "users" collection!');
+      else {
+        collection.findOne({email:req.body.username}, function(err, result) {
+          if(err) console.log(err);
+
+          if(result == null) {
+            res.send({message:'Login error: invalid username', error: 403});
+          }
+          else {
+            //auth(result);
+            var encryptPasswrd;// = encrypt.encrypt(req.body.password);
+            if (req.body.encrypted) {
+              encryptPasswrd =  req.body.password;
+            }
+            else {
+              encryptPasswrd = encrypt.encrypt(req.body.password);
+            }
+
+            if(encryptPasswrd != result.password) {
+              res.send({message:'Login error: invalid password', error: 403});
+            }
+            else {
+              collection.update({email:req.body.username, password: encryptPasswrd},
+                {$set:{logged: true}}, {w:1}, function(err){
+                  if (err)
+                    console.log(err);
+                  else{
+                    result.logged = true;
+                    req.session.user = result;
+                    //console.log('req.session.user: ',req.session.user);
+                    /*if (!req.cookies.rem) {
+                     res.cookie('rem', JSON.stringify({ e:result.email, p:result.password }),
+                     { maxAge: 2592000000, httpOnly: true });
+                     //}*/
+                    res.send({message:'Ok', error: 200, user: result});
+                  }
+                });
+            }
+          }
+        });
+      }
+    });
+  }
+};
+
 exports.register = function(req, res) {
 
   if(req.method.toLowerCase() !== "post") {
@@ -172,59 +280,6 @@ exports.register = function(req, res) {
                 res.send({message:'Ok', error: 200, user: result[0]});
               }
             });
-          }
-        });
-      }
-    });
-  }
-};
-
-exports.login = function(req, res) {
-
-  if(req.method.toLowerCase() != 'post') {
-    res.send({error: 'Method Not Allowed', code: 405});
-  }
-  else {
-    photodb.collection('users', function(err, collection){
-      if (err)
-        console.log('Login: Can not open "users" collection!');
-      else {
-        collection.findOne({email:req.body.username}, function(err, result) {
-          if(err) console.log(err);
-
-          if(result == null) {
-            res.send({message:'invalid username', error: 403});
-          }
-          else {
-            //auth(result);
-            var encryptPasswrd;// = encrypt.encrypt(req.body.password);
-            if (req.body.encrypted) {
-              encryptPasswrd =  req.body.password;
-            }
-            else {
-              encryptPasswrd = encrypt.encrypt(req.body.password);
-            }
-
-            if(encryptPasswrd != result.password) {
-              res.send({message:'invalid password', error: 403});
-            }
-            else {
-              collection.update({email:req.body.username, password: encryptPasswrd},
-                {$set:{logged: true}}, {w:1}, function(err){
-                  if (err)
-                    console.log(err);
-                  else{
-                    result.logged = true;
-                    req.session.user = result;
-                    //console.log(req.session.user);
-                    /*if (!req.cookies.rem) {
-                      res.cookie('rem', JSON.stringify({ e:result.email, p:result.password }),
-                                                       { maxAge: 2592000000, httpOnly: true });
-                    //}*/
-                    res.send({message:'Ok', error: 200, user: result});
-                  }
-                });
-            }
           }
         });
       }
@@ -345,8 +400,9 @@ exports.addBook = function(req, res){
       // find user
       collection.findOne(
         {
-          'firstName': req.session.user.firstName,
-          'lastName': req.session.user.lastName
+          _id: new ObjectID(req.session.user._id)
+          /*'firstName': req.session.user.firstName,
+           'lastName': req.session.user.lastName,  */
         }, function(err, result) {
           if (err)
           {
@@ -363,8 +419,9 @@ exports.addBook = function(req, res){
             // check if book is already in bookcase
             collection.findOne(
               {
-                'firstName': req.session.user.firstName,
-                'lastName': req.session.user.lastName,
+                _id: new ObjectID(req.session.user._id),
+                /*'firstName': req.session.user.firstName,
+                 'lastName': req.session.user.lastName,  */
                 'bookshelf.title': req.body.title,
                 'bookshelf.author': req.body.author
               }, function(err, result) {
@@ -478,8 +535,9 @@ exports.getBook = function(req, res){
         function(callback){
           collection.findOne(
             {
-              'firstName': req.session.user.firstName,
-              'lastName': req.session.user.lastName,
+              _id: new ObjectID(req.session.user._id),
+              /*'firstName': req.session.user.firstName,
+              'lastName': req.session.user.lastName,  */
               'bookshelf.ind': req.params.ind
             }, function(err, result) {
               if (err)
@@ -604,8 +662,9 @@ exports.deleteBook = function(req, res) {
     } else {
       // find user
       collection.findOne({
-        'firstName': req.session.user.firstName,
-        'lastName': req.session.user.lastName
+        _id: new ObjectID(req.session.user._id)
+        /*'firstName': req.session.user.firstName,
+         'lastName': req.session.user.lastName,  */
       }, function(err, result) {
         if (err) {
           console.log("Delete book error (0): " + err);
