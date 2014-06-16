@@ -63,10 +63,10 @@ var app = express();
 // all environments
 
 app.set('port', process.env.PORT || 9000);
-
+/*
 app.set('env','production');
 process.env.NODE_ENV = 'production';
-
+*/
 app.configure(function(){
   app.use(express.logger('dev'));
   app.use(express.bodyParser());
