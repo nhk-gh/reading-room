@@ -20,8 +20,8 @@
         var passwrds = this.find(":password");
 
         //this.each(function (){
-            var inputs = $(this).find(":input");
-
+            var inputs = this.find(":input");
+    alert(inputs);
             // check for empty input fields
             $.each(inputs, function(key, val){
                 var inp_type= $(val).attr("type");
