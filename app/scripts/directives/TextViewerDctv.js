@@ -69,8 +69,8 @@ angular.module('readingRoomApp')
 
               if (wordWidth > fitWidth) {
                 if (index === 1) {
-                  // Falls to this case if the first word in words[] is bigger than fitWidth
-                  // so we print this word on its own line; index = 2 because slice is
+                  // in case of the first word in words[] is bigger than fitWidth
+                  // we print this word on its own line
                   str = words.slice(0, 1).join(' ');
                   words = words.splice(1);
                 } else {

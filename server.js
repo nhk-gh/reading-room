@@ -39,6 +39,9 @@ var   express = require('express')
     , util = require('util')
     , GoogleStrategy = require('passport-google-oauth').OAuth2Strategy
     , AuthFacebookStrategy = require('passport-facebook').Strategy;
+//var mysql      = require('mysql');
+var GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET;
+var FB_CLIENT_ID, FB_CLIENT_SECRET, FB_CALLBACK_URL;
 
 var allowCORS = function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -60,10 +63,10 @@ var app = express();
 // all environments
 
 app.set('port', process.env.PORT || 9000);
-/*
+
 app.set('env','production');
 process.env.NODE_ENV = 'production';
-*/
+
 app.configure(function(){
   app.use(express.logger('dev'));
   app.use(express.bodyParser());
@@ -85,15 +88,26 @@ app.configure(function(){
 });
 
 if ('production' == app.get('env')) {
-    app.use(express.static(path.join(__dirname, 'dist')));
+  app.use(express.static(path.join(__dirname, 'dist')));
+
+  FB_CLIENT_ID = "302501756541152";
+  FB_CLIENT_SECRET = "b52890782700c6a38a47c3bc705755ab";
+  FB_CALLBACK_URL = 'http://theklub.info:9000/login/fb/callback';
+
 } else {
-    app.use(express.static(path.join(__dirname, 'app')));
-    app.use(express.errorHandler());
+  app.use(express.static(path.join(__dirname, 'app')));
+  app.use(express.errorHandler());
+
+  FB_CLIENT_ID = "1427968830799722";
+  FB_CLIENT_SECRET = "09883cb4f093b1891d19340b2bac4d0f";
+  FB_CALLBACK_URL = 'http://localhost:9000/login/fb/callback';
 }
+console.log(FB_CLIENT_ID, FB_CLIENT_SECRET);
+
 app.use(express.static('/home/ubuntu/bookcase', {maxAge: 31557600000}));
 
-var GOOGLE_CLIENT_ID = "449126736782-dhts44nmhag59ctol30mddc0gl9mcamh.apps.googleusercontent.com";
-var GOOGLE_CLIENT_SECRET = "rU4K6s8T8Fn9RKJocgEhFw38";
+GOOGLE_CLIENT_ID = "449126736782-dhts44nmhag59ctol30mddc0gl9mcamh.apps.googleusercontent.com";
+GOOGLE_CLIENT_SECRET = "rU4K6s8T8Fn9RKJocgEhFw38";
 
 /*
  passport.serializeUser(function(user, done) {
@@ -136,9 +150,9 @@ passport.use('google', new GoogleStrategy({
 ));
 
 passport.use('facebook', new AuthFacebookStrategy({
-    clientID: '486036178190247',
-    clientSecret: 'f2522a9e0fc7605f94bdfc63a7b7d716',
-    callbackURL: 'http://localhost:9000/login/fb/callback',
+    clientID: FB_CLIENT_ID,
+    clientSecret: FB_CLIENT_SECRET,
+    callbackURL: FB_CALLBACK_URL,
     profileFields: [
       'id',
       'name',
@@ -170,13 +184,6 @@ passport.use('facebook', new AuthFacebookStrategy({
   }
 ));
 
-/*
-app.get('/auth/google', passport.authenticate('google', { failureRedirect: '/' }),
-  function(req, res) {
-    console.log('456');
-    res.send({data:456});
-  });
-*/
 app.get('/login/google',
   passport.authenticate('google'),
   function(req, res){
@@ -190,16 +197,13 @@ app.get('/login/google/callback',
     console.log('123');
     //res.redirect('/');
   });
+
 app.get('/login/fb',
   passport.authenticate('facebook', {
     scope: ['email','user_location']
   })
 );
-/*
-app.get('/login/fb/callback',
-  passport.authenticate('facebook', {successRedirect: '/',failureRedirect: '/' })
-);
- */
+
 app.get('/login/fb/callback', function(req, res, next)  {
   passport.authenticate('facebook', { successRedirect: '/', failureRedirect: '/' },
     function(err, user, info){

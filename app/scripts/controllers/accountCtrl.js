@@ -200,7 +200,7 @@ angular.module('readingRoomApp').controller('AccountController',
           lf: function () {
             return $scope.lookfor;
           }
-        }  */
+        } */
       });
 
       modalInstance.result.then(function (p) {
@@ -213,7 +213,8 @@ angular.module('readingRoomApp').controller('AccountController',
       });
     };
 
-    var ModalReminderCtrl = ['$scope', '$modalInstance', 'countriesSrvc', 'userSrvc', function ($scope, $modalInstance, countriesSrvc, userSrvc/*, lf*/) {
+    var ModalReminderCtrl = ['$scope', '$modalInstance', 'countriesSrvc', 'userSrvc',
+                              function ($scope, $modalInstance, countriesSrvc, userSrvc/*, lf*/) {
       $scope.countries = countriesSrvc.countries;
       $scope.user = userSrvc.user;
       $scope.remErr = '';

@@ -149,7 +149,10 @@ exports.fbLogin = function(req, res) {
           if(result !== null) {
             // user found
             console.log('user found !');
+            console.log(result);
+            req.session.user = result;
             return true;
+
           } else {
             var newusr = {
               userName: usr.username.givenName,
