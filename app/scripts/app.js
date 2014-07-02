@@ -27,6 +27,11 @@ readingRoomApp = angular.module('readingRoomApp', [
         controller: 'BookCtrl'
       })
 
+      .when('/test', {
+        templateUrl: 'views/test.html',
+        controller: 'BookCtrl'
+      })
+
       .otherwise({
         redirectTo: '/'
       });

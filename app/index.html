@@ -15,6 +15,8 @@
         <link rel="stylesheet" href="styles/main.css">
         <link rel="stylesheet" href="styles/bookshelf.css">
         <link rel="stylesheet" href="styles/book.css">
+        <link rel="stylesheet" href="styles/reviews.css">
+
       <!-- endbuild -->
 </head>
   <body ng-app="readingRoomApp">
@@ -33,6 +35,9 @@
             <ul class="nav nav-pills pull-right" ng-hide='user.logged'>
                 <li><a href="#" ng-click="openLoginDlg()">Log in</a></li>
                 <li><a href="#" ng-click="openRegisterDlg()">Register</a></li>
+                <li><a class="btn btn-link pull-right" ng-click="showReviews()"> Reviews
+
+                </a></li>
             </ul>
             <div class="pull-right user-salutation" ng-show='user.logged'>
                 <div class="dropdown pull-left">
@@ -47,8 +52,8 @@
                         <li role="presentation"><a role="menuitem" tabindex="-1" href="#" ng-click="openLogoutDlg()">Log out</a></li>
                     </ul>
                 </div>
-                <a class="btn btn-link pull-right" title="Not implemented yet">
-                    Reviews
+                <a class="btn btn-link pull-right" ng-click="showReviews()"> Reviews
+
                 </a>
             </div>
             <!--ul class="nav nav-pills pull-right" ng-show='user.logged'>
@@ -68,6 +73,7 @@
         <logout-dlg></logout-dlg>
         <register-dlg></register-dlg>
         <reminder-dlg></reminder-dlg>
+        <review></review>
         <!--profile-dlg></profile-dlg-->
 
         <div class="footer">
@@ -136,10 +142,12 @@
     <script src="scripts/services/UserSrvc.js"></script>
     <script src="scripts/controllers/BookshelfCtrl.js"></script>
     <script src="scripts/directives/BookUploadDctv.js"></script>
+    <script src="scripts/directives/ReviewDctv.js"></script>
     <script src="scripts/directives/FadeMenuDctv.js"></script>
     <script src="scripts/services/BookshelfSrvc.js"></script>
     <script src="scripts/controllers/BookCtrl.js"></script>
     <script src="scripts/services/BookSrvc.js"></script>
+    <script src="scripts/services/ReviewSrvc.js"></script>
 
     <!--script src="https://rawgithub.com/akrennmair/ng-pdfviewer/ed053c7c8030fee678d8c854376b55d8de42b76d/dist/ng-pdfviewer.min.js"></script-->
     <script src="scripts/services/pdf_viewer.js"></script>

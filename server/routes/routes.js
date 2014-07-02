@@ -59,11 +59,23 @@ var populateCollection = function(collection_name, d) {
 
           case 'reviews':
             items = [{
-                book: '',                  // title
-                author:'',                 // author
+                id: 1,
+                book: 'I, Robot',                  // title
+                author:'Isaac Azimov',                 // author
                 reviewer: 'Naum Krivoruk', // full name
                 date: Date.now(),
-                review:'Interesting!',
+                review:'Amazing!',
+                links:[{
+                  link: '' // link for the legal downloading of the book
+                }]
+              },
+              {
+                id: 2,
+                book: 'Deadworld',                  // title
+                author:'Harry Harrison',                 // author
+                reviewer: 'Naum Krivoruk', // full name
+                date: Date.now(),
+                review:'Another amazing book!',
                 links:[{
                   link: '' // link for the legal downloading of the book
                 }]
@@ -106,6 +118,12 @@ var initDB = function(){
 };
 exports.initDB = initDB;
 
+exports.getdb = function(){
+  if (photodb === undefined)
+    initDB();
+
+  return photodb;
+};
 /*********************************************/
 /*                                           */
 /*               Main Page                   */

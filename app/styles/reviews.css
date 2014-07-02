@@ -1,0 +1,132 @@
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/nhk\/WebstormProjects\/ReadingRoom\/app\/styles\/reviews\.scss}line{font-family:\0000325}}
+.review-overlay {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  z-index: 100;
+  display: block;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/nhk\/WebstormProjects\/ReadingRoom\/app\/styles\/reviews\.scss}line{font-family:\0000335}}
+.review-overlay .review-close {
+  cursor: pointer;
+  color: white;
+  font-size: 36px;
+  position: absolute;
+  left: 95%;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/nhk\/WebstormProjects\/ReadingRoom\/app\/styles\/reviews\.scss}line{font-family:\0000343}}
+.review-overlay .review-container {
+  min-height: 800px;
+  position: absolute;
+  width: 80%;
+  left: 10%;
+  background-color: white;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/nhk\/WebstormProjects\/ReadingRoom\/app\/styles\/reviews\.scss}line{font-family:\0000353}}
+.review-overlay .review-container .review-header {
+  display: inline-block;
+  height: 40px;
+  width: 100%;
+  color: #428bca;
+  padding: 10px;
+  font-size: 12px;
+  border-bottom: 1px solid #428bca;
+  -webkit-border-top-left-radius: 5px;
+  -webkit-border-top-right-radius: 5px;
+  -moz-border-radius-topleft: 5px;
+  -moz-border-radius-topright: 5px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  background: linear-gradient(180deg, #bfd7dd, #f5f5f5, #bfd7dd);
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/nhk\/WebstormProjects\/ReadingRoom\/app\/styles\/reviews\.scss}line{font-family:\0000365}}
+.review-overlay .review-container .review-header #review-title {
+  font-size: 120%;
+  font-weight: bold;
+  margin-left: 3%;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/nhk\/WebstormProjects\/ReadingRoom\/app\/styles\/reviews\.scss}line{font-family:\0000370}}
+.review-overlay .review-container .review-header #search-box {
+  border-radius: 15px;
+  border: 1px solid #7dc3ca;
+  position: relative;
+  top: -2px;
+  background-color: white;
+  height: 25px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/nhk\/WebstormProjects\/ReadingRoom\/app\/styles\/reviews\.scss}line{font-family:\0000378}}
+.review-overlay .review-container .review-header #search-box #review-search {
+  position: relative;
+  left: 5px;
+  top: -2px;
+  outline: none;
+  border: none;
+  text-indent: 0px;
+  color: #428bca;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/nhk\/WebstormProjects\/ReadingRoom\/app\/styles\/reviews\.scss}line{font-family:\0000388}}
+.review-overlay .review-container .review-header #search-box button {
+  position: relative;
+  top: -2px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/nhk\/WebstormProjects\/ReadingRoom\/app\/styles\/reviews\.scss}line{font-family:\0000393}}
+.review-overlay .review-container .review-header .move-down {
+  margin-top: 2px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/nhk\/WebstormProjects\/ReadingRoom\/app\/styles\/reviews\.scss}line{font-family:\0000397}}
+.review-overlay .review-container .review-header .move-up {
+  margin-top: -2px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/nhk\/WebstormProjects\/ReadingRoom\/app\/styles\/reviews\.scss}line{font-family:\00003102}}
+.review-overlay .review-container .review-timeline {
+  padding: 15px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/nhk\/WebstormProjects\/ReadingRoom\/app\/styles\/reviews\.scss}line{font-family:\00003107}}
+.review-overlay .review-container .review-timeline .review-item {
+  color: #428bca;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 12px;
+  margin: 0px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/nhk\/WebstormProjects\/ReadingRoom\/app\/styles\/reviews\.scss}line{font-family:\00003114}}
+.review-overlay .review-container .review-timeline .review-item .review-title {
+  font-size: larger;
+  background: linear-gradient(180deg, #bfd7dd, #f5f5f5, #bfd7dd);
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/nhk\/WebstormProjects\/ReadingRoom\/app\/styles\/reviews\.scss}line{font-family:\00003118}}
+.review-overlay .review-container .review-timeline .review-item .review-title .review-item-collapse-btn {
+  position: absolute;
+  left: 3%;
+  font-weight: bold;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/nhk\/WebstormProjects\/ReadingRoom\/app\/styles\/reviews\.scss}line{font-family:\00003124}}
+.review-overlay .review-container .review-timeline .review-item .review-item-collapsable {
+  border-bottom: 1px solid rgba(86, 61, 124, 0.2);
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/nhk\/WebstormProjects\/ReadingRoom\/app\/styles\/reviews\.scss}line{font-family:\00003127}}
+.review-overlay .review-container .review-timeline .review-item .review-item-left {
+  line-height: 2;
+  border-right: 1px solid rgba(86, 61, 124, 0.2);
+  text-align: center;
+  /*background-color: #f5f5f5; */
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/nhk\/WebstormProjects\/ReadingRoom\/app\/styles\/reviews\.scss}line{font-family:\00003133}}
+.review-overlay .review-container .review-timeline .review-item .review-item-left .review-date {
+  font-size: 9px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/nhk\/WebstormProjects\/ReadingRoom\/app\/styles\/reviews\.scss}line{font-family:\00003137}}
+.review-overlay .review-container .review-timeline .review-item .review-item-right {
+  line-height: 1;
+  padding: 5px;
+}

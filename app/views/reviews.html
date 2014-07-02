@@ -1,0 +1,71 @@
+<div class="review-overlay" ng-show="showReviews">
+    <span class="review-close">&times;</span>
+
+    <div class="review-container">
+        <div class="review-header text-center">
+            <div class="pull-left">
+                <!--span class="move-down"> Review: </span>
+                <button class="btn btn-link btn-xs" title="Previous Review">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                </button>
+
+                <label class="current-review">1</label>
+                <label> &nbsp;/ &nbsp;</label>
+                <label class="total-reviews">111</label>
+
+                <button class="btn btn-link btn-xs" title="Next Review">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                </button-->
+                <span class="btn btn-xs" ng-click="collapseAll()">
+                    <span ng-show="reviews.allCollapsed" title="Expand all"> &plus; </span>
+                    <span ng-hide="reviews.allCollapsed" title="Collapse all"> &minus; </span>
+                </span>
+            </div>
+
+            <div id="review-title" class="pull-left">Readers Reviews</div>
+
+            <div class="pull-right move-up" >
+                <!--label for="review-all">Show all</label>
+                <input type="checkbox" id="review-all"/>
+
+                <span> &nbsp;&nbsp;&nbsp;</span-->
+                <div id="search-box">
+                    <input type="text"  placeholder="Search" id="review-search"/>
+                    <button class="btn btn-link btn-sm" >
+                        <span class="glyphicon glyphicon-search"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="review-timeline">
+            <div class="row review-item" ng-repeat="review in reviews">
+                <div class="row review-title">
+                    <div class="col-md-12 col-xs-12 text-center">
+                        <span class="review-item-collapse-btn btn btn-xs" ng-click="collapse($index)">
+                            <span ng-show="review.itemCollapsed" title="Expand review"> &plus; </span>
+                            <span ng-hide="review.itemCollapsed" title="Collapse review"> &minus; </span>
+                        </span>
+                        <span >
+                            <b>{{ review.author }}, &nbsp;&nbsp; <q>{{ review.book }}</q></b>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="row review-item-collapsable">
+                    <div class="col-md-3 col-xs-3 review-item-left">
+                        <div class="review-author">
+                            <span>{{ review.reviewer }}</span>
+                        </div>
+                        <div class="review-date">
+                            <span>{{ review.date }}</span>
+                        </div>
+                    </div>
+                    <div class="col-md-9 col-xs-9 review-item-right">
+                        <p>{{ review.review }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

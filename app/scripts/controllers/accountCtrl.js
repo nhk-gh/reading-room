@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('readingRoomApp').controller('AccountController',
-  function accountController($scope, $rootScope, $modal, $location, $log, accountService, userSrvc){
+  function accountController($scope, $rootScope, $modal, $location, $log, $compile, accountService, userSrvc){
     //$.removeCookie('rem');
     $scope.$on('logged-in', function(){
       for (var b=0; b<userSrvc.user.bookshelf.length; b++) {
@@ -309,6 +309,16 @@ angular.module('readingRoomApp').controller('AccountController',
         $modalInstance.dismiss('cancel');
       };
     }];
+
+    /////////////////////////////////////
+    //
+    //   Reviews
+    //
+    /////////////////////////////////////
+    $scope.showReviews = function() {
+      //angular.element('.review-overlay').toggleClass('hidden');
+      $rootScope.$broadcast ('show-reviews')
+    }
   }
 );
 

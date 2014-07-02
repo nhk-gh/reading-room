@@ -33,6 +33,7 @@ http.createServer(app).listen(app.get('port'), function () {
 
 var   express = require('express')
     , routes = require('./server/routes/routes')
+    , reviews = require('./server/routes/reviews')
     , http = require('http')
     , path = require('path')
     , passport = require('passport')
@@ -102,7 +103,7 @@ if ('production' == app.get('env')) {
   FB_CLIENT_SECRET = "09883cb4f093b1891d19340b2bac4d0f";
   FB_CALLBACK_URL = 'http://localhost:9000/login/fb/callback';
 }
-console.log(FB_CLIENT_ID, FB_CLIENT_SECRET);
+//console.log(FB_CLIENT_ID, FB_CLIENT_SECRET);
 
 app.use(express.static('/home/ubuntu/bookcase', {maxAge: 31557600000}));
 
@@ -194,7 +195,7 @@ app.get('/login/google',
 app.get('/login/google/callback',
   passport.authenticate('google', {  successRedirect: '/',failureRedirect: '/' }),
   function(req, res) {
-    console.log('123');
+    //console.log('123');
     //res.redirect('/');
   });
 
@@ -212,7 +213,7 @@ app.get('/login/fb/callback', function(req, res, next)  {
       req.session.fblogin = s;
       req.cookies.fblogin = s;
       res.cookie('fblogin', s);
-      console.log('req.cookies: ',req.cookies);
+      //console.log('req.cookies: ',req.cookies);
       /*
       console.log(req.cookies);
       console.log('req.cookies: ',req.cookies);
@@ -247,6 +248,14 @@ app.post('/reader', routes.addReader);
 app.put('/reader/:id', routes.editReader);
 app.put('/reader/:userID/:bookInd/:oldPage/:newPage', routes.setReaderCurrentBook);
 app.delete('/reader/:id', routes.deleteReader);
+
+app.get('/review', reviews.getAllReviews);
+/*
+app.get('/review/:id', reviews.GetReview);
+app.post('/review', reviews.addReview);
+app.put('/review/:id', reviews.editReview);
+app.delete('/review/:id', reviews.deleteReview);
+app.delete('/review/', reviews.deleteAllReviews);   */
 
 app.post('/book', routes.addBook);
 app.get('/book/:ind', routes.getBook);

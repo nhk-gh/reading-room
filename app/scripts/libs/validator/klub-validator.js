@@ -7,7 +7,7 @@
  */
 
 (function($){
-    jQuery.fn.validateAccount = function(options){
+    $.fn.validateAccount = function(options){
         options = $.extend({
             backColor: "red",
             foreColor: "white"
