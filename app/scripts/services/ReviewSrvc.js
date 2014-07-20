@@ -16,6 +16,21 @@ angular.module('readingRoomApp')
           });
 
         return deferred.promise;
+      },
+
+      saveReview: function(review){
+        var deferred = $q.defer();
+
+        $http({method:'POST', url:'/review', data:{ review: review }, cache: false})
+          .success(function(data){
+            deferred.resolve(data);
+          })
+          .error(function(data, status){
+            console.log(data, status);
+            deferred.reject(data);
+          });
+
+        return deferred.promise;
       }
     }
   });

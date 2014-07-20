@@ -4,33 +4,24 @@
     <div class="review-container">
         <div class="review-header text-center">
             <div class="pull-left">
-                <!--span class="move-down"> Review: </span>
-                <button class="btn btn-link btn-xs" title="Previous Review">
-                    <span class="glyphicon glyphicon-chevron-left"></span>
-                </button>
-
-                <label class="current-review">1</label>
-                <label> &nbsp;/ &nbsp;</label>
-                <label class="total-reviews">111</label>
-
-                <button class="btn btn-link btn-xs" title="Next Review">
-                    <span class="glyphicon glyphicon-chevron-right"></span>
-                </button-->
-                <span class="btn btn-xs" ng-click="collapseAll()">
-                    <span ng-show="reviews.allCollapsed" title="Expand all"> &plus; </span>
-                    <span ng-hide="reviews.allCollapsed" title="Collapse all"> &minus; </span>
+                <span class="btn btn-xs review-btn" ng-click="collapseAll()">
+                    <span ng-show="reviews.allCollapsed" class="glyphicon glyphicon-chevron-down" title="Expand all"></span>
+                    <span ng-hide="reviews.allCollapsed" class="glyphicon glyphicon-chevron-up" title="Collapse all"></span>
+                    <!--span ng-show="reviews.allCollapsed" title="Expand all">&plus;</span>
+                    <span ng-hide="reviews.allCollapsed" title="Collapse all">&minus;</span-->
+                </span>
+                <span class="btn btn-xs move-up review-btn">
+                    <!--img ng-src="../images/write-feather-icon (1).png"  title="Add review"/-->
+                    <span class="glyphicon glyphicon-pencil" title="Add review"
+                          ng-click="toggleAddReviewDlg()"></span>
                 </span>
             </div>
 
             <div id="review-title" class="pull-left">Readers Reviews</div>
 
             <div class="pull-right move-up" >
-                <!--label for="review-all">Show all</label>
-                <input type="checkbox" id="review-all"/>
-
-                <span> &nbsp;&nbsp;&nbsp;</span-->
                 <div id="search-box">
-                    <input type="text"  placeholder="Search" id="review-search"/>
+                    <input type="text"  placeholder="Search" id="review-search" ng-model="searchCriteria"/>
                     <button class="btn btn-link btn-sm" >
                         <span class="glyphicon glyphicon-search"></span>
                     </button>
@@ -38,13 +29,13 @@
             </div>
         </div>
 
-        <div class="review-timeline">
-            <div class="row review-item" ng-repeat="review in reviews">
+        <div class="row review-timeline">
+            <div class="row review-item" ng-repeat="review in reviews | searchReview: searchCriteria">
                 <div class="row review-title">
                     <div class="col-md-12 col-xs-12 text-center">
-                        <span class="review-item-collapse-btn btn btn-xs" ng-click="collapse($index)">
-                            <span ng-show="review.itemCollapsed" title="Expand review"> &plus; </span>
-                            <span ng-hide="review.itemCollapsed" title="Collapse review"> &minus; </span>
+                        <span class="review-item-collapse-btn btn btn-xs review-btn" ng-click="collapse($index)">
+                            <span ng-show="review.itemCollapsed" class="glyphicon glyphicon-chevron-down" title="Expand review"></span>
+                            <span ng-hide="review.itemCollapsed" class="glyphicon glyphicon-chevron-up" title="Collapse review"></span>
                         </span>
                         <span >
                             <b>{{ review.author }}, &nbsp;&nbsp; <q>{{ review.book }}</q></b>
@@ -62,10 +53,12 @@
                         </div>
                     </div>
                     <div class="col-md-9 col-xs-9 review-item-right">
-                        <p>{{ review.review }}</p>
+                        <p class="review-item-text">{{ review.review }}</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <add-review></add-review>
 </div>

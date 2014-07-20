@@ -1,0 +1,56 @@
+<div class="new-review" ng-show="addReviewVisible">
+    <div class="new-review-container">
+        <!--form role="form" id='addreview-form' novalidate="novalidate"-->
+            <div class="new-review-title">
+                Add Review
+                <button class="btn btn-default close" ng-click="toggleAddReviewDlg()">&times;</button>
+            </div>
+
+
+            <div class="row new-review-book">
+                <div class="col-md-6 col-xs-12">
+                    <label class="lbl"> Book: &nbsp;&nbsp;&nbsp;</label>
+                    <input type="text" class="new-review-book-title input-fld" ng-model="newReview.book"
+                            ng-keyup="enableAddBtn()"/>
+                </div>
+                <div class="col-md-6 col-xs-12">
+                    <label class="lbl"> Author: &nbsp;</label>
+                    <input type="text" class="new-review-book-author input-fld" ng-model="newReview.author"
+                           ng-keyup="enableAddBtn()"/>
+                </div>
+            </div>
+
+            <div class="row new-review-review">
+                <div class="col-md-12 col-xs-12">
+                    <textarea class="new-review-text input-fld" ng-model="newReview.review"
+                              placeholder="Type your review" autofocus
+                              ng-keyup="enableAddBtn()">
+                    </textarea>
+                </div>
+            </div>
+
+            <div class="row new-review-reviewer">
+                <div class="col-md-8 col-xs-8">
+                    <label class="lbl"> Reviewer: &nbsp;</label>
+                    <input type="text" class="new-review-author input-fld" ng-model="newReview.reviewer"
+                           ng-keyup="enableAddBtn()"/>
+                </div>
+                <div class="col-md-4 col-xs-4">
+                    <div class="btn btn-xs btn-info pull-right" ng-disabled="disableSaveBtn"
+                         ng-click="saveReview()"> Add
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class='col-md-12 col-xs-12'>
+                    <div class="alert alert-danger text-center" ng-show="newRevewErrorMsg !== null">{{ newRevewErrorMsg }}
+                        <button class="button btn-default close" ng-click="newRevewErrorMsg = null">&times;</button>
+                    </div>
+
+                </div>
+            </div>
+
+        <!--/form-->
+    </div>
+</div>

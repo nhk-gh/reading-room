@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('readingRoomApp')
-  .directive('review', function ($log, $timeout, $rootScope, ReviewSrvc) {
+  .directive('review', function ($log, $timeout, $rootScope, $window, ReviewSrvc) {
     return {
       templateUrl: 'views/reviews.html',
       restrict: 'EA',
@@ -50,7 +50,7 @@ angular.module('readingRoomApp')
 
             // sets proper all expand/collapse button state (sign)
             var allExpanded = 0;
-            angular.forEach(scope.reviews, function(rev, ind) {
+            angular.forEach(scope.reviews, function(rev) {
               if (!rev.itemCollapsed) {
                 allExpanded++;
               }
@@ -66,9 +66,13 @@ angular.module('readingRoomApp')
           }
 
           if (scope.reviews[ind].itemCollapsed){
-            el.fadeOut(500);
+             el.fadeOut(500);
+            /*el.addClass('review-collapse');
+            el.removeClass('review-expand');*/
           } else {
-            el.fadeIn(500);
+             el.fadeIn(500);
+             /*el.removeClass('review-collapse');
+            el.addClass('review-expand');*/
           }
         };
 
@@ -80,6 +84,15 @@ angular.module('readingRoomApp')
             scope.collapse(ind, true);
           });
         };
+
+        angular.element($window).on('resize', function(){
+          var h = element.find('.review-container').height();
+          var timeline = element.find('.review-timeline');
+          timeline.height(h-90);
+
+          console.log(h, timeline.height())
+        });
+
       }
     };
   });

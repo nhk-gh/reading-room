@@ -60,8 +60,8 @@ var populateCollection = function(collection_name, d) {
           case 'reviews':
             items = [{
                 id: 1,
-                book: 'I, Robot',                  // title
-                author:'Isaac Azimov',                 // author
+                book: 'I, Robot',          // title
+                author:'Isaac Azimov',     // author
                 reviewer: 'Naum Krivoruk', // full name
                 date: Date.now(),
                 review:'Amazing!',
@@ -71,8 +71,8 @@ var populateCollection = function(collection_name, d) {
               },
               {
                 id: 2,
-                book: 'Deadworld',                  // title
-                author:'Harry Harrison',                 // author
+                book: 'Deadworld',         // title
+                author:'Harry Harrison',   // author
                 reviewer: 'Naum Krivoruk', // full name
                 date: Date.now(),
                 review:'Another amazing book!',

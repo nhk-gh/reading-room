@@ -6,6 +6,8 @@ angular.module('readingRoomApp')
       restrict: 'A',
       link: function (scope, element, attrs) {
         attrs.$observe('setFocus', function (value) {
+
+          console.log('lll')
           if (value === 'true') {
             $timeout(function() {
               element[0].focus();

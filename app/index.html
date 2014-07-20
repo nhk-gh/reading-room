@@ -35,9 +35,7 @@
             <ul class="nav nav-pills pull-right" ng-hide='user.logged'>
                 <li><a href="#" ng-click="openLoginDlg()">Log in</a></li>
                 <li><a href="#" ng-click="openRegisterDlg()">Register</a></li>
-                <li><a class="btn btn-link pull-right" ng-click="showReviews()"> Reviews
-
-                </a></li>
+                <li><a class="btn btn-link pull-right" ng-click="showReviews()"> Reviews</a></li>
             </ul>
             <div class="pull-right user-salutation" ng-show='user.logged'>
                 <div class="dropdown pull-left">
@@ -52,9 +50,7 @@
                         <li role="presentation"><a role="menuitem" tabindex="-1" href="#" ng-click="openLogoutDlg()">Log out</a></li>
                     </ul>
                 </div>
-                <a class="btn btn-link pull-right" ng-click="showReviews()"> Reviews
-
-                </a>
+                <a class="btn btn-link pull-right" ng-click="showReviews()"> Reviews</a>
             </div>
             <!--ul class="nav nav-pills pull-right" ng-show='user.logged'>
                 <li ><a>Hi, {{ user.firstName }}</a></li>
@@ -161,6 +157,8 @@
     <script src="scripts/libs/jquery-cookie-master/jquery.cookie.js"></script>
     <script src="scripts/libs/validator/klub-validator.js"></script>
     <script src="scripts/directives/SetFocusDctv.js"></script>
+    <script src="scripts/filters/SearchReviewFilter.js"></script>
+    <script src="scripts/directives/AddReviewDctv.js"></script>
     <!-- endbuild -->
 
     <!--script src="//localhost:35729/livereload.js"></script-->

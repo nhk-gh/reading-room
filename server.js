@@ -250,12 +250,14 @@ app.put('/reader/:userID/:bookInd/:oldPage/:newPage', routes.setReaderCurrentBoo
 app.delete('/reader/:id', routes.deleteReader);
 
 app.get('/review', reviews.getAllReviews);
-/*
-app.get('/review/:id', reviews.GetReview);
 app.post('/review', reviews.addReview);
+
+/*
+app.get('/review/:id', reviews.getReview);
 app.put('/review/:id', reviews.editReview);
 app.delete('/review/:id', reviews.deleteReview);
-app.delete('/review/', reviews.deleteAllReviews);   */
+app.delete('/review/', reviews.deleteAllReviews);
+*/
 
 app.post('/book', routes.addBook);
 app.get('/book/:ind', routes.getBook);
