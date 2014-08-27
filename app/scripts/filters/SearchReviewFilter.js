@@ -13,7 +13,7 @@ angular.module('readingRoomApp')
           return review.filter(function(item) {
             s = (item.author + ' ' + item.book).toLowerCase().trim();
             return s.indexOf(criteria.toLowerCase()) > -1;
-          })
+          });
         }
       }
     };

@@ -34,9 +34,9 @@
 
             </div>
 
-            <div class="row">
+            <div class="row" ng-show="loginErr !== ''">
                 <div class='col-md-12 col-xs-12'>
-                    <div class="alert alert-danger text-center" style='white-space:normal' ng-show="loginErr !== ''">{{ loginErr }}
+                    <div class="alert alert-danger text-center" style='white-space:normal'>{{ loginErr }}
                         <button class="button btn-default close" ng-click="loginErr = ''">&times;</button>
                     </div>
                  </div>

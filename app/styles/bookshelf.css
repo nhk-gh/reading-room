@@ -167,6 +167,20 @@
   background-color: inherit;
 }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/nhk\/WebstormProjects\/ReadingRoom\/app\/styles\/bookshelf\.scss}line{font-family:\00003145}}
+#addbook-form {
+  color: #428bca;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/nhk\/WebstormProjects\/ReadingRoom\/app\/styles\/bookshelf\.scss}line{font-family:\00003148}}
+#addbook-form input {
+  color: #428bca;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/nhk\/WebstormProjects\/ReadingRoom\/app\/styles\/bookshelf\.scss}line{font-family:\00003153}}
+#fl-mane {
+  font-weight: normal;
+}
+
 /*********************************************/
 /*                                           */
 /*               Animations                  */
@@ -174,48 +188,48 @@
 /*********************************************/
 /*  fadeIn  */
 @keyframes fadeIn {
-  /* line 153, bookshelf.scss */
+  /* line 165, bookshelf.scss */
   from {
     opacity: 0;
   }
 
-  /* line 154, bookshelf.scss */
+  /* line 166, bookshelf.scss */
   to {
     opacity: 1;
   }
 }
 
 @-moz-keyframes fadeIn {
-  /* line 158, bookshelf.scss */
+  /* line 170, bookshelf.scss */
   from {
     opacity: 0;
   }
 
-  /* line 159, bookshelf.scss */
+  /* line 171, bookshelf.scss */
   to {
     opacity: 1;
   }
 }
 
 @-webkit-keyframes fadeIn {
-  /* line 162, bookshelf.scss */
+  /* line 174, bookshelf.scss */
   from {
     opacity: 0;
   }
 
-  /* line 163, bookshelf.scss */
+  /* line 175, bookshelf.scss */
   to {
     opacity: 1;
   }
 }
 
 @-o-keyframes fadeIn {
-  /* line 166, bookshelf.scss */
+  /* line 178, bookshelf.scss */
   from {
     opacity: 0;
   }
 
-  /* line 167, bookshelf.scss */
+  /* line 179, bookshelf.scss */
   to {
     opacity: 1;
   }
@@ -223,48 +237,48 @@
 
 /*  fadeOut  */
 @keyframes fadeOut {
-  /* line 173, bookshelf.scss */
+  /* line 185, bookshelf.scss */
   from {
     opacity: 1;
   }
 
-  /* line 174, bookshelf.scss */
+  /* line 186, bookshelf.scss */
   to {
     opacity: 0;
   }
 }
 
 @-moz-keyframes fadeOut {
-  /* line 178, bookshelf.scss */
+  /* line 190, bookshelf.scss */
   from {
     opacity: 1;
   }
 
-  /* line 179, bookshelf.scss */
+  /* line 191, bookshelf.scss */
   to {
     opacity: 0;
   }
 }
 
 @-webkit-keyframes fadeOut {
-  /* line 182, bookshelf.scss */
+  /* line 194, bookshelf.scss */
   from {
     opacity: 1;
   }
 
-  /* line 183, bookshelf.scss */
+  /* line 195, bookshelf.scss */
   to {
     opacity: 0;
   }
 }
 
 @-o-keyframes fadeOut {
-  /* line 186, bookshelf.scss */
+  /* line 198, bookshelf.scss */
   from {
     opacity: 1;
   }
 
-  /* line 187, bookshelf.scss */
+  /* line 199, bookshelf.scss */
   to {
     opacity: 0;
   }
@@ -276,23 +290,23 @@
 /*                                           */
 /*********************************************/
 @media screen and (max-width: 768px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/nhk\/WebstormProjects\/ReadingRoom\/app\/styles\/bookshelf\.scss}line{font-family:\00003196}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/nhk\/WebstormProjects\/ReadingRoom\/app\/styles\/bookshelf\.scss}line{font-family:\00003208}}
   .book-title {
     font-size: 80%;
   }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/nhk\/WebstormProjects\/ReadingRoom\/app\/styles\/bookshelf\.scss}line{font-family:\00003199}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/nhk\/WebstormProjects\/ReadingRoom\/app\/styles\/bookshelf\.scss}line{font-family:\00003211}}
   .hidden {
     left: 85%;
   }
 }
 @media screen and (max-width: 480px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/nhk\/WebstormProjects\/ReadingRoom\/app\/styles\/bookshelf\.scss}line{font-family:\00003205}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/nhk\/WebstormProjects\/ReadingRoom\/app\/styles\/bookshelf\.scss}line{font-family:\00003217}}
   .book-title {
     font-size: 60%;
   }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/nhk\/WebstormProjects\/ReadingRoom\/app\/styles\/bookshelf\.scss}line{font-family:\00003208}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/nhk\/WebstormProjects\/ReadingRoom\/app\/styles\/bookshelf\.scss}line{font-family:\00003220}}
   .hidden {
     left: 80%;
   }

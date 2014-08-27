@@ -23,7 +23,7 @@ angular.module('readingRoomApp')
     */
     return {
       restrict: 'A',
-      require: '^ngModel',
+      require: 'ngModel',
       link: function(scope, element, attrs, ngModelCtrl) {
         if(!ngModelCtrl) {
           return;

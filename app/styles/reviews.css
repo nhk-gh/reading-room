@@ -161,7 +161,7 @@
   bottom: 0px;
   z-index: 200;
   display: block;
-  background-color: rgba(66, 139, 202, 0.8);
+  background-color: rgba(0, 0, 0, 0.8);
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/home\/nhk\/WebstormProjects\/ReadingRoom\/app\/styles\/reviews\.scss}line{font-family:\00003187}}
 .new-review input {
@@ -170,6 +170,7 @@
   outline: none;
   box-shadow: none;
   color: #428bca;
+  text-indent: 5px;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;

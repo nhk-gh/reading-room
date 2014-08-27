@@ -182,7 +182,7 @@ $input-shadow-color: rgba(66, 139, 202, 0.5);
   bottom: 0px;
   z-index: 200;
   display: block;
-  background-color: rgba(66, 139, 202, 0.8);
+  background-color: rgba(0, 0, 0, 0.8); //rgba(66, 139, 202, 0.8);
 
   input {
     border: 1px solid $review-border-color;
@@ -190,7 +190,7 @@ $input-shadow-color: rgba(66, 139, 202, 0.5);
     outline: none;
     box-shadow: none;
     color: $review-color;
-
+    text-indent: 5px;
     @include rounded_border(5px);
     transition: border ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
   }

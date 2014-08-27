@@ -7,7 +7,7 @@ angular.module('readingRoomApp')
       restrict: 'E',
       replace: true,
 
-      link: function (scope, element) {
+      link: function (scope) {
         scope.newReview = {};
         scope.addReviewVisible = false;
         scope.newRevewErrorMsg = null;
@@ -40,9 +40,9 @@ angular.module('readingRoomApp')
         scope.toggleAddReviewDlg = function() {
           if (!scope.addReviewVisible) {
             scope.newReview.reviewer = userSrvc.user.fullName;
-            scope.newReview.book = "";   // book title
-            scope.newReview.author = ""; // book author
-            scope.newReview.review = ""; // review itself
+            scope.newReview.book = '';   // book title
+            scope.newReview.author = ''; // book author
+            scope.newReview.review = ''; // review itself
           }
 
           scope.addReviewVisible = !scope.addReviewVisible;

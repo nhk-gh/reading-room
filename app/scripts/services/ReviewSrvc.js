@@ -32,5 +32,5 @@ angular.module('readingRoomApp')
 
         return deferred.promise;
       }
-    }
+    };
   });

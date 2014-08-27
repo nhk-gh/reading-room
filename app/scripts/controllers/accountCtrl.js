@@ -2,7 +2,8 @@
 
 angular.module('readingRoomApp').controller('AccountController',
   function accountController($scope, $rootScope, $modal, $location, $log, $compile, accountService, userSrvc){
-    //$.removeCookie('rem');
+    $scope.user = {};
+
     $scope.$on('logged-in', function(){
       for (var b=0; b<userSrvc.user.bookshelf.length; b++) {
         userSrvc.user.bookshelf[b].icon = userSrvc.user.bookshelf[b].icon || 'images/book-icon.png';
@@ -121,7 +122,7 @@ angular.module('readingRoomApp').controller('AccountController',
                 data.user.remember = res3;
                 $modalInstance.close(data.user);
               } else {
-                $log.error(data.message);
+                $log.warn(data.message);
                 $scope.loginErr = data.message;
                 $scope.loginInfo = '';
               }
@@ -133,7 +134,7 @@ angular.module('readingRoomApp').controller('AccountController',
         } else {
           $scope.loginErr = err;
           $scope.loginInfo = '';
-          $log.error(err);
+          $log.warn(err);
         }
       };
       /*
@@ -317,8 +318,8 @@ angular.module('readingRoomApp').controller('AccountController',
     /////////////////////////////////////
     $scope.showReviews = function() {
       //angular.element('.review-overlay').toggleClass('hidden');
-      $rootScope.$broadcast ('show-reviews')
-    }
+      $rootScope.$broadcast ('show-reviews');
+    };
   }
 );
 
