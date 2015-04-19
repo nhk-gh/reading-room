@@ -14,10 +14,10 @@ angular.module('readingRoomApp')
         scope.disableSaveBtn = true;
 
         scope.enableAddBtn = function() {
-          $log.info('newReview.book: ' + scope.newReview.book);
-          $log.info('newReview.author: ' + scope.newReview.author);
-          $log.info('newReview.review: ' + scope.newReview.review);
-          $log.info('newReview.reviewer: ' + scope.newReview.reviewer);
+          //$log.info('newReview.book: ' + scope.newReview.book);
+          //$log.info('newReview.author: ' + scope.newReview.author);
+          //$log.info('newReview.review: ' + scope.newReview.review);
+          //$log.info('newReview.reviewer: ' + scope.newReview.reviewer);
           scope.disableSaveBtn = (scope.newReview.reviewer.trim() === '') || (scope.newReview.book.trim() === '') ||
             (scope.newReview.author.trim() === '') || (scope.newReview.review.trim() === '');
         };

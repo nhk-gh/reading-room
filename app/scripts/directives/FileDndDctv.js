@@ -71,12 +71,12 @@ angular.module('readingRoomApp').directive('fileDropzone', function() {
       var fb = element.find('#file-browse');
 
       element.on('click', function(evt) {
-        console.log(evt);
+        //console.log(evt);
         fb[0].click();
       });
 
       fb.on('change', function(evt){
-        console.log(evt);
+        //console.log(evt);
         prepareFile(evt.target.files[0]);
       });
 

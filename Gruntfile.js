@@ -389,7 +389,7 @@ module.exports = function (grunt) {
       'watch'
     ]);
   });   */
-  grunt.registerTask('server', [
+  grunt.registerTask('serve', [
     'clean:server',
     'coffee:dist',
     'compass:server',
